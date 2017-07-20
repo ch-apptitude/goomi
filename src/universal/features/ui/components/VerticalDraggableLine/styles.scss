@@ -1,0 +1,34 @@
+.DraggableLine {
+  cursor: move;
+  /* color: red; */
+  position: fixed;
+  z-index: 9999;
+
+  &__Vertical {
+    height: 100%;
+    width: 20px;
+
+    .DraggableLine__Inner {
+      height: 100%;
+      width: 2px;
+      margin-left: 0px;
+      left: 0px;
+    }
+  }
+
+  &__Horizontal {
+    width: 100%;
+    height: 20px;
+
+    .DraggableLine__Inner {
+      width: 100%;
+      height: 2px;
+      margin-bottom: 0px;
+      bottom: 0px;
+    }
+  }
+
+  &__Inner {
+    background-color: red;
+  }
+}

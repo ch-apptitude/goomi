@@ -1,0 +1,18 @@
+.InputSelectDate {
+  display: flex;
+  flex-direction: row;
+
+  > * {
+    width: calc(100% / 2.5);
+  }
+
+  > *:first-child {
+    margin-right: 10px;
+    width: calc(100% / 3.65);
+  }
+
+  > *:last-child {
+    margin-left: 10px;
+    width: calc(100% / 3.65);
+  }
+}

@@ -1,0 +1,50 @@
+/**
+*
+* {{ properCase name }}
+*
+*/
+
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+{{#if wantMessages}}
+import { FormattedMessage } from 'react-intl';
+{{/if}}
+
+{{#if wantMessages}}
+import messages from './messages';
+{{/if}}
+{{#if wantCSS}}
+import styles from './styles.scss';
+{{/if}}
+
+class {{ properCase name }} extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+    
+  render() {
+    return (
+      {{#if wantCSS}}
+      <div className={{curly true}}styles.{{ properCase name }}{{curly}}>
+      {{else}}
+      <div>
+      {{/if}}
+      {{#if wantMessages}}
+        <FormattedMessage {...messages.header} />
+      {{/if}}
+      </div>
+    );
+  }
+}
+
+{{ properCase name }}.defaultProps = {
+};
+
+{{ properCase name }}.contextTypes = {
+};
+
+{{ properCase name }}.propTypes = {
+};
+
+export default {{ properCase name }};

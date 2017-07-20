@@ -1,0 +1,39 @@
+/*
+ *
+ * {{properCase name }}
+ *
+ */
+
+import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { createStructuredSelector } from 'reselect';
+
+const mapStateToProps = createStructuredSelector({
+    // count: selectCount()
+});
+
+const mapDispatchToProps = (dispatch, props) => ({
+    // incrementCount: () => dispatch(...)
+});
+
+function {{properCase name}}(WrappedComponent) {
+
+
+    class Enhanced extends Component {
+        constructor(props) {
+            super(props);
+            this.state = {};
+        }
+
+        render() {
+            const { ...keys } = this.props;
+            return (<WrappedComponent {...keys} />);
+        }
+    }
+
+    return connect(mapStateToProps, mapDispatchToProps)(Enhanced);
+} 
+
+export default {{properCase name}};

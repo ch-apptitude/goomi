@@ -1,0 +1,14 @@
+:global {
+  .notification-error .notification-title {
+    color: orange !important;
+  }
+
+  .notification-success .notification-title {
+    color: #4fcc82 !important;
+  }
+
+  .notification-dismiss {
+    background-color: transparent !important;
+    color: #545352 !important;
+  }
+}

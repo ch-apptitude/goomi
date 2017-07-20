@@ -1,0 +1,19 @@
+/*
+ *
+ * {{ properCase name }} actions
+ *
+ */
+ import { CALL_API, createRequestTypes } from 'services/api';
+
+ export const POST_NOTE = createRequestTypes('POST_NOTE');
+ export const postNote = (body) => ({
+     type: CALL_API,
+     endpoint: 'athlete/note',
+     method: 'POST',
+     body,
+     callType: POST_NOTE,
+ });
+
+export const DEFAULT_ACTION = 'App/{{ camelCase name }}/DEFAULT_ACTION';
+
+export const defaultAction = () => ({ type: DEFAULT_ACTION });

@@ -1,0 +1,35 @@
+.RoundedIcon {
+  border-radius: 50%;
+  background-color: rgba(230, 227, 225, 0.5);
+  color: #545352;
+  box-sizing: border-box;
+  position: relative;
+
+  &__Content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &.black {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+  }
+
+  &.green {
+    background-color: #4fcc82;
+
+    & * {
+      color: white;
+    }
+  }
+
+  &.orange {
+    background-color: orange;
+
+    & * {
+      color: white;
+    }
+  }
+}

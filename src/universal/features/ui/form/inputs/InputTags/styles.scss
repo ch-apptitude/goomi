@@ -1,0 +1,46 @@
+@import "../input";
+
+.InputTags {
+  height: 100%;
+  width: 100%;
+}
+
+:global {
+  @import '~react-tagsinput/react-tagsinput';
+
+  .react-tagsinput {
+    @include input();
+    padding: 9.5px 20px;
+
+    ::placeholder {
+      color: #545352;
+    }
+
+    &--focused {
+      border-color: none;
+    }
+
+    &-input {
+      margin-bottom: 0;
+      @include placeholder();
+    }
+
+    &-tag {
+      background-color: #545352;
+      color: white;
+      border: none;
+      border-radius: 2px;
+    }
+
+    &-remove {
+      background: #706f6d;
+      height: 18px;
+      width: 13px;
+      border-radius: 50%;
+      vertical-align: middle;
+      line-height: 13px;
+      padding-left: 5px;
+      margin-left: 5px;
+    }
+  }
+}

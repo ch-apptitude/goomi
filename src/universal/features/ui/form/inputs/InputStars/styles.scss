@@ -1,0 +1,15 @@
+.InputStars {
+  width: 100%;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+:global {
+  .dv-star-rating-star {
+    margin: 0 2.5px;
+
+    > i {
+      color: inherit;
+    }
+  }
+}
