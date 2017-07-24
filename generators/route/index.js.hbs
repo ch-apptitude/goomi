@@ -14,18 +14,18 @@ import messages from './messages';
 import styles from './styles.scss';
 {{/if}}
 
-const {{ properCase name }} = ({}, { intl }) => (
-    <div {{#if wantCSS}}className={{curly true}}styles.{{ properCase name }}{{curly}}{{/if}}>
-        <Helmet title={intl.formatMessage(messages.{{ camelCase name }})} />
-        <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={4} mdOffset={4}>
-            </Col>
-        </Row>
-    </div>
+const {{ properCase name }} = (props, { intl }) => (
+  <div {{#if wantCSS}}className={{curly true}}styles.{{ properCase name }}{{curly}}{{/if}}>
+    <Helmet title={intl.formatMessage(messages.{{ camelCase name }})} />
+    <Row>
+      <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={4} mdOffset={4}>
+      </Col>
+    </Row>
+  </div>
 );
 
 {{ properCase name }}.contextTypes = {
-    intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired
 }
 
 export default {{ properCase name }};
