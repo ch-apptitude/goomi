@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import main from './client';
 
 function run() {
@@ -17,12 +18,13 @@ if (!global.Intl) {
       // Add all large polyfills here
       'intl',
       'intl/locale-data/jsonp/fr.js',
+      // POLYFILLS FOR GENERATOR
     ],
     require => {
       // and require them here
-      require('intl'); //eslint-disable-line
-      require('intl/locale-data/jsonp/fr.js'); //eslint-disable-line
-
+      require('intl');
+      require('intl/locale-data/jsonp/fr.js');
+      // REQUIRE FOR GENERATOR
       run();
     },
     'polyfills',

@@ -4,6 +4,12 @@
 
 const absolutePath = require('../utils/absolutePath');
 
+const COMPONENT_TYPE = {
+  CLASS: 'ES6 Class',
+  STATELESS_FUNCTION: 'Stateless Function',
+  FORM: 'Form',
+};
+
 module.exports = {
   description: 'Add an unconnected component',
   prompts: [
@@ -12,7 +18,7 @@ module.exports = {
       name: 'type',
       message: 'Select the type of component',
       default: 'Stateless Function',
-      choices: () => ['ES6 Class', 'Stateless Function'],
+      choices: Object.values(COMPONENT_TYPE),
     },
     {
       type: 'input',
@@ -44,18 +50,12 @@ module.exports = {
       default: true,
       message: 'Do you want i18n messages (i.e. will this component use text)?',
     },
-    {
-      type: 'confirm',
-      name: 'isForm',
-      default: false,
-      message: 'Does your component will be a form?',
-    },
   ],
   actions: (data) => {
     // Generate index.js and index.test.js
     const actions = [];
     // If they want a i18n messages file
-    if (data.isForm) {
+    if (data.type === COMPONENT_TYPE.FORM) {
       actions.push({
         type: 'add',
         path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/components/{{properCase name}}/validate.js`,
@@ -72,7 +72,7 @@ module.exports = {
       actions.push({
         type: 'add',
         path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/components/{{properCase name}}/index.js`,
-        templateFile: data.type === 'ES6 Class' ? './component/es6.js.hbs' : './component/stateless.js.hbs',
+        templateFile: data.type === COMPONENT_TYPE.CLASS ? './component/es6.js.hbs' : './component/stateless.js.hbs',
         abortOnFail: true,
       });
     }

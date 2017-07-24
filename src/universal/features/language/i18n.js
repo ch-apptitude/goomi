@@ -7,10 +7,13 @@
 import { addLocaleData } from 'react-intl';
 
 import fr from 'react-intl/locale-data/fr';
-
 import frTranslationMessages from 'features/language/translations/fr.json';
+// IMPORT FOR GENERATOR
 
-[fr].forEach(addLocaleData);
+[
+  fr,
+  // FOREACH FOR GENERATOR
+].forEach(addLocaleData);
 
 const formatTranslationMessages = (messages) => {
   const formattedMessages = {};
@@ -22,4 +25,5 @@ const formatTranslationMessages = (messages) => {
 
 export const translationMessages = {
   fr: formatTranslationMessages(frTranslationMessages),
+  // MESSAGES FOR GENERATOR
 };

@@ -5,7 +5,10 @@ const environment = {
 
 const config = Object.assign(
   {
-    locale: ['fr'],
+    locale: [
+      'fr',
+      // LOCAL FOR GENERATOR
+    ],
     localStoragePrefix: 'Goomi',
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || '3000',
