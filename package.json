@@ -18,14 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/ch-apptitude/goomi.git"
   },
-  "keywords": [
-    "react",
-    "boilerplate",
-    "ssr",
-    "redux",
-    "redux-saga",
-    "postcss"
-  ],
+  "keywords": ["react", "boilerplate", "ssr", "redux", "redux-saga", "postcss"],
   "author": "Apptitude <nathan.loisel@apptitude.ch> (http://apptitude.ch)",
   "license": "MIT",
   "bugs": {
@@ -34,6 +27,6 @@
   "homepage": "https://github.com/ch-apptitude/goomi",
   "preferGlobal": true,
   "bin": {
-    "plop": "./index.js"
+    "goomi": "./index.js"
   }
 }
