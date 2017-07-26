@@ -35,7 +35,6 @@ myApplicationName
 ├── package-lock.json
 ├── .gitignore
 ├── webpack
-├── tools
 ├── generators
 └── src
     └── client
@@ -49,6 +48,40 @@ myApplicationName
       └── appConfig.js
 ```
 When the installation is over, run `npm run dev`  to start the application in dev mode.
+
+### Generators
+A couple of generators are embedded inside goomi.
+- List all generators
+
+- Generate a Feature
+```
+goomi generate
+```
+- Generate a new route
+```
+goomi generate route
+```
+- Generate a HOC
+```
+goomi generate hoc
+```
+- Generate a Component
+```
+goomi generate component
+```
+- Generate a Container
+```
+goomi generate component
+```
+- Add a new language
+```
+goomi generate language
+```
+- Generate translation files
+```
+goomi extract-intl
+```
+
 
 
 ## Support
