@@ -1,0 +1,34 @@
+.InputSlider {
+  height: 100%;
+  width: 100%;
+
+  &__Values {
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+      margin-top: 5px;
+    }
+  }
+}
+
+:global {
+  @import '~rc-slider/assets/index';
+
+  .rc-slider-handle {
+    &:hover {
+      border-color: orange;
+    }
+    border: solid 2px orange;
+  }
+
+  .rc-slider-rail {
+    height: 2px;
+  }
+
+  .rc-slider-track {
+    background-color: orange;
+    height: 2px;
+    top: 40%;
+  }
+}

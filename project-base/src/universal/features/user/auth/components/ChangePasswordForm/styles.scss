@@ -1,0 +1,16 @@
+.ChangePasswordForm {
+  height: 100%;
+  width: 100%;
+
+  &__Succeed {
+    text-align: center;
+    width: 100%;
+    color: #4fcc82;
+  }
+
+  &__Error {
+    text-align: center;
+    width: 100%;
+    color: #ed6262;
+  }
+}

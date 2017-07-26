@@ -1,0 +1,59 @@
+.InputCheckbox {
+  overflow: auto;
+  padding: 8px 15px 8px 0px;
+  @include borderRadius;
+  cursor: pointer;
+  display: inline-flex !important;
+
+  .InputCheckbox__Text * {
+    color: #545352 !important;
+  }
+
+  &__Icon {
+    vertical-align: top;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    font-size: 15px;
+    margin-top: 4px;
+    border: solid 1px #dad8d7;
+    border-radius: 5px;
+    @include animate;
+    position: relative;
+  }
+
+  &__Text {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 3px 0 3px 8px;
+    height: 20px;
+  }
+
+  &_Hidden {
+    display: none;
+  }
+}
+
+.InputCheckbox_Active {
+  .InputCheckbox__Text * {
+    color: #545352 !important;
+  }
+
+  .InputCheckbox__Icon {
+    color: #4fcc82;
+    background-color: #4fcc82;
+    border: solid 1px #4fcc82;
+    overflow: hidden;
+
+    > span {
+      position: absolute;
+      left: 52%;
+      top: 42%;
+      transform: translate(-50%, -50%) rotate(30deg) rotateY(180deg);
+      display: block;
+      color: white;
+      text-align: center;
+      line-height: 15px;
+    }
+  }
+}

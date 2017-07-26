@@ -1,0 +1,57 @@
+@import '../inputs/input';
+
+.Field {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &__Input {
+    @include input();
+
+    input[type='number'] {
+      background: #f3f1f0;
+      border: none;
+      font-size: $font_size_text_big;
+      vertical-align: baseline;
+    }
+
+    &_HasError {
+      border: 2px solid #ed6262;
+      padding: 13px 20px;
+    }
+  }
+
+  &__Label {
+    background-color: white;
+    display: block;
+    font-size: 15px;
+    margin-top: 20px;
+
+    > * {
+      display: block;
+    }
+
+    > *:first-child {
+      line-height: 15px;
+    }
+
+    &__Helper {
+      vertical-align: baseline;
+      margin-left: 5px;
+    }
+
+    &__Required {
+      color: #ed6262;
+    }
+  }
+
+  &__Error {
+    padding: 0 10px;
+    margin: 5px 0px;
+    border-radius: 3px;
+    z-index: 150;
+    box-sizing: border-box;
+    color: #ed6262 !important;
+    display: block;
+  }
+}

@@ -1,0 +1,19 @@
+/*
+ *
+ * EmailValidationPage style
+ *
+ */
+
+.EmailValidationPage {
+    height: 100%;
+    width: 100%;
+
+    &__Succeed, &__Failed {
+        & > *:first-child {
+            margin-bottom: 30px;
+        }
+    }
+
+    &__Loading {
+    }
+}

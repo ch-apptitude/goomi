@@ -1,0 +1,722 @@
+[
+  {
+    "id": "routing.NotFound.body",
+    "defaultMessage": "La page que vous cherchez n’existe pas ou l’URL est incorrecte.",
+    "message": "",
+    "files": ["src/universal/features/routing/components/NotFound/messages.js"]
+  },
+  {
+    "id": "routing.NotFound.continue",
+    "defaultMessage": "Retour à la page d’accueil",
+    "message": "",
+    "files": ["src/universal/features/routing/components/NotFound/messages.js"]
+  },
+  {
+    "id": "routing.NotFound.errorTitle",
+    "defaultMessage": "Erreur 404",
+    "message": "",
+    "files": ["src/universal/features/routing/components/NotFound/messages.js"]
+  },
+  {
+    "id": "routing.NotFound.title",
+    "defaultMessage": "Désolé mais la page est introuvable.",
+    "message": "",
+    "files": ["src/universal/features/routing/components/NotFound/messages.js"]
+  },
+  {
+    "id": "routing.RedirectBox.title",
+    "defaultMessage": "Cette page vous est inaccessible.",
+    "message": "",
+    "files": ["src/universal/features/routing/components/RedirectBox/messages.js"]
+  },
+  {
+    "id": "routing.EmailValidationPage.continueProfileComplete",
+    "defaultMessage": "Compléter mon profil",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/EmailValidationPage/messages.js"]
+  },
+  {
+    "id": "routing.EmailValidationPage.emailValidationPage",
+    "defaultMessage": "Validation de l'email",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/EmailValidationPage/messages.js"]
+  },
+  {
+    "id": "routing.EmailValidationPage.validationFailed",
+    "defaultMessage": "Cet email est déjà validé.",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/EmailValidationPage/messages.js"]
+  },
+  {
+    "id": "routing.EmailValidationPage.validationInProgress",
+    "defaultMessage": "Validation de l'email en cours...",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/EmailValidationPage/messages.js"]
+  },
+  {
+    "id": "routing.EmailValidationPage.validationSucceed",
+    "defaultMessage": "Email Validé avec succès",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/EmailValidationPage/messages.js"]
+  },
+  {
+    "id": "routing.ForgotPasswordPage.forgotPasswordPage",
+    "defaultMessage": "ForgotPasswordPage",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/ForgotPasswordPage/messages.js"]
+  },
+  {
+    "id": "app.pages.NotFound.notFound",
+    "defaultMessage": "Page introuvable",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/NotFoundPage/messages.js"]
+  },
+  {
+    "id": "routing.ProfilePage.parameters",
+    "defaultMessage": "Paramètres",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/ProfilePage/messages.js"]
+  },
+  {
+    "id": "routing.ProfilePage.profile",
+    "defaultMessage": "Profile",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/ProfilePage/messages.js"]
+  },
+  {
+    "id": "app.pages.Register.register",
+    "defaultMessage": "Inscription",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/RegisterPage/messages.js"]
+  },
+  {
+    "id": "routing.ResetPasswordPage.resetPasswordPage",
+    "defaultMessage": "ResetPasswordPage",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/ResetPasswordPage/messages.js"]
+  },
+  {
+    "id": "routing.UnverifiedEmail.changeEmail",
+    "defaultMessage": "changer l'adresse mail de mon compte",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/UnverifiedEmail/messages.js"]
+  },
+  {
+    "id": "routing.UnverifiedEmail.checkYourMailBox",
+    "defaultMessage": "Email de confirmation renvoyé. Vérifiez votre boite mail.",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/UnverifiedEmail/messages.js"]
+  },
+  {
+    "id": "routing.UnverifiedEmail.description",
+    "defaultMessage": "Pour utiliser les services de {{name}}, vous devez confirmer votre adresse mail.\n        Utilisez le lien de l'email que nous vous avons envoyé à l'adresse : {email}.",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/UnverifiedEmail/messages.js"]
+  },
+  {
+    "id": "routing.UnverifiedEmail.or",
+    "defaultMessage": "ou",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/UnverifiedEmail/messages.js"]
+  },
+  {
+    "id": "routing.UnverifiedEmail.problemsWithEmail",
+    "defaultMessage": "Vous rencontrez un problème? Vous pouvez",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/UnverifiedEmail/messages.js"]
+  },
+  {
+    "id": "routing.UnverifiedEmail.resendConfirmEmail",
+    "defaultMessage": "demander un nouvel email de confirmation",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/UnverifiedEmail/messages.js"]
+  },
+  {
+    "id": "routing.UnverifiedEmail.unverifiedEmail",
+    "defaultMessage": "Adresse mail non confirmée",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/UnverifiedEmail/messages.js"]
+  },
+  {
+    "id": "routing.LoginRedirect.body",
+    "defaultMessage": "Vous devez etre connecté pour y accéder.",
+    "message": "",
+    "files": ["src/universal/features/routing/containers/messages.js"]
+  },
+  {
+    "id": "routing.LoginRedirect.login",
+    "defaultMessage": "Me connecter",
+    "message": "",
+    "files": ["src/universal/features/routing/containers/messages.js"]
+  },
+  {
+    "id": "routing.LoginRedirect.register",
+    "defaultMessage": "Créer un compte",
+    "message": "",
+    "files": ["src/universal/features/routing/containers/messages.js"]
+  },
+  {
+    "id": "routing.ProfileCompleteRedirect.body",
+    "defaultMessage": "Vous devez compléter votre profil pour y accéder.",
+    "message": "",
+    "files": ["src/universal/features/routing/containers/messages.js"]
+  },
+  {
+    "id": "routing.ProfileCompleteRedirect.button",
+    "defaultMessage": "Compléter mon profil",
+    "message": "",
+    "files": ["src/universal/features/routing/containers/messages.js"]
+  },
+  {
+    "id": "routing.VerifiedRedirect.VerifiedRedirectBodyRedirect",
+    "defaultMessage": "Un lien pour verifier votre adresse email vous a été envoyé à l’adresse {email}. Vous allez être redirigé vers la page d'acceuil.",
+    "message": "",
+    "files": ["src/universal/features/routing/containers/messages.js"]
+  },
+  {
+    "id": "routing.VerifiedRedirect.body",
+    "defaultMessage": "Vous devez valider votre addresse mail pour y accéder. Une demande de confirmation vous a été envoyée par email à l’adresse {email}.",
+    "message": "",
+    "files": ["src/universal/features/routing/containers/messages.js"]
+  },
+  {
+    "id": "routing.VerifiedRedirect.button",
+    "defaultMessage": "Continuer",
+    "message": "",
+    "files": ["src/universal/features/routing/containers/messages.js"]
+  },
+  {
+    "id": "routing.resendConfirmEmail.button",
+    "defaultMessage": "Renvoyer l'email de validation",
+    "message": "",
+    "files": ["src/universal/features/routing/containers/messages.js"]
+  },
+  {
+    "id": "ui.app.Header.Header.disconnect",
+    "defaultMessage": "Me déconnecter",
+    "message": "",
+    "files": ["src/universal/features/ui/app/Header/messages.js"]
+  },
+  {
+    "id": "ui.app.Header.Header.login",
+    "defaultMessage": "Se connecter",
+    "message": "",
+    "files": ["src/universal/features/ui/app/Header/messages.js"]
+  },
+  {
+    "id": "ui.app.Header.register",
+    "defaultMessage": "S'inscrire",
+    "message": "",
+    "files": ["src/universal/features/ui/app/Header/messages.js"]
+  },
+  {
+    "id": "ui.FlagLanguage.de",
+    "defaultMessage": "Allemand",
+    "message": "",
+    "files": ["src/universal/features/ui/components/FlagLanguage/messages.js"]
+  },
+  {
+    "id": "ui.FlagLanguage.en",
+    "defaultMessage": "Anglais",
+    "message": "",
+    "files": ["src/universal/features/ui/components/FlagLanguage/messages.js"]
+  },
+  {
+    "id": "ui.FlagLanguage.fr",
+    "defaultMessage": "Francais",
+    "message": "",
+    "files": ["src/universal/features/ui/components/FlagLanguage/messages.js"]
+  },
+  {
+    "id": "ui.Notifications.message.CHANGE_PASSWORD_RESPONSE_SUCCESS",
+    "defaultMessage": "Votre mot de pase a bien été mis à jour.",
+    "message": "",
+    "files": ["src/universal/features/ui/components/Notification/messages.js"]
+  },
+  {
+    "id": "ui.Notifications.message.USER_UPDATE_RESPONSE_SUCCESS",
+    "defaultMessage": "Vos informations utilisateur ont bien été mises à jour.",
+    "message": "",
+    "files": ["src/universal/features/ui/components/Notification/messages.js"]
+  },
+  {
+    "id": "ui.Notifications.message.forgotPasswordSuccess",
+    "defaultMessage": "Vous recevrez un e-mail dans quelques minutes comprenant un lien pour réinitialiser votre mot de passe",
+    "message": "",
+    "files": ["src/universal/features/ui/components/Notification/messages.js"]
+  },
+  {
+    "id": "ui.Notifications.message.networkError",
+    "defaultMessage": "Un problème est survenu. Nous allons resoudre le problème au plus vite. Merci de votre compréhension.",
+    "message": "",
+    "files": ["src/universal/features/ui/components/Notification/messages.js"]
+  },
+  {
+    "id": "ui.Notifications.message.resetPasswordSuccess",
+    "defaultMessage": "Votre mot de passe a bien été modifié",
+    "message": "",
+    "files": ["src/universal/features/ui/components/Notification/messages.js"]
+  },
+  {
+    "id": "ui.Notifications.message.tokenExpired",
+    "defaultMessage": "Le lien est invalide ou expiré",
+    "message": "",
+    "files": ["src/universal/features/ui/components/Notification/messages.js"]
+  },
+  {
+    "id": "ui.Notifications.message.unkownError",
+    "defaultMessage": "Une erreur est survenu, merci de contacter l'administrateur du système.",
+    "message": "",
+    "files": ["src/universal/features/ui/components/Notification/messages.js"]
+  },
+  {
+    "id": "ui.Notifications.title.error",
+    "defaultMessage": "Erreur",
+    "message": "",
+    "files": ["src/universal/features/ui/components/Notification/messages.js"]
+  },
+  {
+    "id": "ui.Notifications.title.success",
+    "defaultMessage": "Succès",
+    "message": "",
+    "files": ["src/universal/features/ui/components/Notification/messages.js"]
+  },
+  {
+    "id": "ui.form.error.RepasswordNotEqual",
+    "defaultMessage": "Le mot de passe ne correspond pas à l'original",
+    "message": "",
+    "files": ["src/universal/features/ui/form/error-messages.js"]
+  },
+  {
+    "id": "ui.form.error.invalidEmail",
+    "defaultMessage": "L'adresse email n'est pas valide.",
+    "message": "",
+    "files": ["src/universal/features/ui/form/error-messages.js"]
+  },
+  {
+    "id": "ui.form.error.requiredBirthDate",
+    "defaultMessage": "Veulliez renseigner votre Date de naissance.",
+    "message": "",
+    "files": ["src/universal/features/ui/form/error-messages.js"]
+  },
+  {
+    "id": "ui.form.error.requiredCgv",
+    "defaultMessage": "Vous devez accepter les conditions générales pour continuer.",
+    "message": "",
+    "files": ["src/universal/features/ui/form/error-messages.js"]
+  },
+  {
+    "id": "ui.form.error.requiredEmail",
+    "defaultMessage": "Veuillez renseigner l'adresse email",
+    "message": "",
+    "files": ["src/universal/features/ui/form/error-messages.js"]
+  },
+  {
+    "id": "ui.form.error.requiredFirstName",
+    "defaultMessage": "Veuillez renseigner votre prénom.",
+    "message": "",
+    "files": ["src/universal/features/ui/form/error-messages.js"]
+  },
+  {
+    "id": "ui.form.error.requiredLastName",
+    "defaultMessage": "Veuillez renseigner votre nom.",
+    "message": "",
+    "files": ["src/universal/features/ui/form/error-messages.js"]
+  },
+  {
+    "id": "ui.form.error.requiredPassword",
+    "defaultMessage": "Veuillez renseigner votre mot de passe.",
+    "message": "",
+    "files": ["src/universal/features/ui/form/error-messages.js"]
+  },
+  {
+    "id": "ui.form.error.requiredPicture",
+    "defaultMessage": "Veulliez ajouter une photo de profile.",
+    "message": "",
+    "files": ["src/universal/features/ui/form/error-messages.js"]
+  },
+  {
+    "id": "ui.form.AddressForm.address",
+    "defaultMessage": "Rue et numéro",
+    "message": "",
+    "files": ["src/universal/features/ui/form/AddressForm/messages.js"]
+  },
+  {
+    "id": "ui.form.AddressForm.country",
+    "defaultMessage": "Pays",
+    "message": "",
+    "files": ["src/universal/features/ui/form/AddressForm/messages.js"]
+  },
+  {
+    "id": "ui.form.AddressForm.locality",
+    "defaultMessage": "Localité",
+    "message": "",
+    "files": ["src/universal/features/ui/form/AddressForm/messages.js"]
+  },
+  {
+    "id": "ui.form.AddressForm.zip",
+    "defaultMessage": "NPA",
+    "message": "",
+    "files": ["src/universal/features/ui/form/AddressForm/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.april",
+    "defaultMessage": "Avril",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.august",
+    "defaultMessage": "Aout",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.december",
+    "defaultMessage": "Décembre",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.february",
+    "defaultMessage": "Février",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.january",
+    "defaultMessage": "Janvier",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.july",
+    "defaultMessage": "Juillet",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.june",
+    "defaultMessage": "Juin",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.march",
+    "defaultMessage": "Mars",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.may",
+    "defaultMessage": "Mai",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.november",
+    "defaultMessage": "Novembre",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.october",
+    "defaultMessage": "Octobre",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "ui.form.InputSelectDate.september",
+    "defaultMessage": "Septembre",
+    "message": "",
+    "files": ["src/universal/features/ui/form/inputs/InputSelectDate/messages.js"]
+  },
+  {
+    "id": "user.auth.ChangePasswordForm.save",
+    "defaultMessage": "Changer mon mot de passe",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ChangePasswordForm/messages.js"]
+  },
+  {
+    "id": "user.auth.ChangePasswordForm.succeed",
+    "defaultMessage": "Mot de passe changé !",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ChangePasswordForm/messages.js"]
+  },
+  {
+    "id": "user.auth.ResetPasswordForm.oldPassword",
+    "defaultMessage": "Mot de passe actuel",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ChangePasswordForm/messages.js"]
+  },
+  {
+    "id": "user.auth.ResetPasswordForm.password",
+    "defaultMessage": "Nouveau mot de passe",
+    "message": "",
+    "files": [
+      "src/universal/features/user/auth/components/ChangePasswordForm/messages.js",
+      "src/universal/features/user/auth/components/ResetPasswordForm/messages.js"
+    ]
+  },
+  {
+    "id": "user.auth.ResetPasswordForm.repassword",
+    "defaultMessage": "Confirmer le mot de passe",
+    "message": "",
+    "files": [
+      "src/universal/features/user/auth/components/ChangePasswordForm/messages.js",
+      "src/universal/features/user/auth/components/ResetPasswordForm/messages.js"
+    ]
+  },
+  {
+    "id": "app.pages.LoginPage.login",
+    "defaultMessage": "Connexion",
+    "message": "",
+    "files": ["src/universal/features/routing/pages/LoginPage/messages.js"]
+  },
+  {
+    "id": "user.auth.ForgotPasswordForm.save",
+    "defaultMessage": "Recevoir un email de réinitialisation",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ForgotPasswordForm/messages.js"]
+  },
+  {
+    "id": "user.auth.ResetPasswordForm.email",
+    "defaultMessage": "Entrez votre adresse mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ForgotPasswordForm/messages.js"]
+  },
+  {
+    "id": "user.auth.ResetPasswordForm.emailPlaceholder",
+    "defaultMessage": "Entrez votre adresse",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ForgotPasswordForm/messages.js"]
+  },
+  {
+    "id": "user.auth.User.email",
+    "defaultMessage": "E-mail",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/LoginForm/messages.js"]
+  },
+  {
+    "id": "user.auth.User.firstName",
+    "defaultMessage": "Prénom",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/LoginForm/messages.js"]
+  },
+  {
+    "id": "user.auth.User.forgot",
+    "defaultMessage": "Mot de passe oublié ?",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/LoginForm/messages.js"]
+  },
+  {
+    "id": "user.auth.User.lastName",
+    "defaultMessage": "Nom",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/LoginForm/messages.js"]
+  },
+  {
+    "id": "user.auth.User.login",
+    "defaultMessage": "Connexion",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/LoginForm/messages.js"]
+  },
+  {
+    "id": "user.auth.User.password",
+    "defaultMessage": "Mot de passe",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/LoginForm/messages.js"]
+  },
+  {
+    "id": "user.auth.ProfileCompleted.body",
+    "defaultMessage": "Vous avez désormais accès à l’ensemble du site. Nous vous souhaitons un plein succès !",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ProfileCompleted/messages.js"]
+  },
+  {
+    "id": "user.auth.ProfileCompleted.continue",
+    "defaultMessage": "Accéder à mon profil",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ProfileCompleted/messages.js"]
+  },
+  {
+    "id": "user.auth.ProfileCompleted.title",
+    "defaultMessage": "Félicitations, votre profil est désormais complet !",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ProfileCompleted/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.cgv",
+    "defaultMessage": "J'ai lu et j'accepte les conditions générales",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/RegisterForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.email",
+    "defaultMessage": "E-mail",
+    "message": "",
+    "files": [
+      "src/universal/features/user/auth/components/RegisterForm/messages.js",
+      "src/universal/features/user/components/UserDetailsForm/messages.js"
+    ]
+  },
+  {
+    "id": "user.auth.RegisterForm.firstName",
+    "defaultMessage": "Prénom",
+    "message": "",
+    "files": [
+      "src/universal/features/user/auth/components/RegisterForm/messages.js",
+      "src/universal/features/user/components/UserDetailsForm/messages.js"
+    ]
+  },
+  {
+    "id": "user.auth.RegisterForm.lastName",
+    "defaultMessage": "Nom",
+    "message": "",
+    "files": [
+      "src/universal/features/user/auth/components/RegisterForm/messages.js",
+      "src/universal/features/user/components/UserDetailsForm/messages.js"
+    ]
+  },
+  {
+    "id": "user.auth.RegisterForm.password",
+    "defaultMessage": "Mot de passe",
+    "message": "",
+    "files": [
+      "src/universal/features/user/auth/components/RegisterForm/messages.js",
+      "src/universal/features/user/components/UserDetailsForm/messages.js"
+    ]
+  },
+  {
+    "id": "user.auth.RegisterForm.register",
+    "defaultMessage": "Inscription",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/RegisterForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.repassword",
+    "defaultMessage": "Retaper votre mot de passe",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/RegisterForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.submitRegister",
+    "defaultMessage": "S'inscrire",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/RegisterForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterSuccess.body",
+    "defaultMessage": "Une demande de confirmation vous a été envoyée par email à l’adresse {email}.",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/RegisterSuccess/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterSuccess.continue",
+    "defaultMessage": "Continuer",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/RegisterSuccess/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterSuccess.success",
+    "defaultMessage": "Félicitations, votre inscription est terminée !",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/RegisterSuccess/messages.js"]
+  },
+  {
+    "id": "user.auth.ResetPasswordForm.save",
+    "defaultMessage": "Changer mon mot de passe",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ResetPasswordForm/messages.js"]
+  },
+  {
+    "id": "user.auth.ResetPasswordResponse.loading",
+    "defaultMessage": "Réinitialisation du mot de passe en cours.",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ResetPasswordResponse/messages.js"]
+  },
+  {
+    "id": "user.auth.ResetPasswordResponse.success",
+    "defaultMessage": "Votre mot de passe a été changé. Vous allez être rediriger automatiquement sur la page d'accueil dans quelques secondes.",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ResetPasswordResponse/messages.js"]
+  },
+  {
+    "id": "user.ProfilePictureForm.chooseProfilePicture",
+    "defaultMessage": "Choisissez une image de profil",
+    "message": "",
+    "files": ["src/universal/features/user/components/ProfilePictureForm/messages.js"]
+  },
+  {
+    "id": "user.ProfilePictureForm.continue",
+    "defaultMessage": "Continuer",
+    "message": "",
+    "files": ["src/universal/features/user/components/ProfilePictureForm/messages.js"]
+  },
+  {
+    "id": "user.ProfilePictureForm.profilePicture",
+    "defaultMessage": "Image de profil",
+    "message": "",
+    "files": ["src/universal/features/user/components/ProfilePictureForm/messages.js"]
+  },
+  {
+    "id": "user.ProfilePictureForm.return",
+    "defaultMessage": "Retour",
+    "message": "",
+    "files": ["src/universal/features/user/components/ProfilePictureForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.birthDate",
+    "defaultMessage": "Date de naissance",
+    "message": "",
+    "files": ["src/universal/features/user/components/UserDetailsForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.completeYourProfile",
+    "defaultMessage": "Complétez votre profil",
+    "message": "",
+    "files": ["src/universal/features/user/components/UserDetailsForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.continue",
+    "defaultMessage": "Continuer",
+    "message": "",
+    "files": ["src/universal/features/user/components/UserDetailsForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.resendConfirmEmail",
+    "defaultMessage": "Renvoyer un email de confirmation",
+    "message": "",
+    "files": ["src/universal/features/user/components/UserDetailsForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.return",
+    "defaultMessage": "Retour",
+    "message": "",
+    "files": ["src/universal/features/user/components/UserDetailsForm/messages.js"]
+  },
+  {
+    "id": "user.auth.RegisterForm.save",
+    "defaultMessage": "Sauvegarder",
+    "message": "",
+    "files": ["src/universal/features/user/components/UserDetailsForm/messages.js"]
+  },
+  {
+    "id": "user.UserProfile.header",
+    "defaultMessage": "UserProfile",
+    "message": "",
+    "files": ["src/universal/features/user/components/UserProfile/messages.js"]
+  },
+  {
+    "id": "user.auth.ForgotPasswordResponse.loading",
+    "defaultMessage": "Demande de réinitialisation de mot de passe en cours.",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ForgotPasswordResponse/messages.js"]
+  },
+  {
+    "id": "user.auth.ForgotPasswordResponse.success",
+    "defaultMessage": "Un lien permettant de réinitialiser votre mot de passe a été envoyé sur votre boite mail. Ce lien sera valable 10 jours.",
+    "message": "",
+    "files": ["src/universal/features/user/auth/components/ForgotPasswordResponse/messages.js"]
+  }
+]

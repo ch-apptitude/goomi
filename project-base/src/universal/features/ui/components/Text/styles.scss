@@ -1,0 +1,108 @@
+.Text * {
+  font-family: $font-family;
+  display: inline-block;
+  color: inherit;
+  margin: 0;
+}
+
+.Text {
+  margin: 0;
+}
+
+.uppercase,
+.uppercase * {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.first_uppercase,
+.first_uppercase * {
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.lowercase,
+.lowercase * {
+  text-transform: lowercase;
+}
+
+.white,
+.white > * {
+  color: white;
+}
+
+.green,
+.green > * {
+  color: #4fcc82;
+}
+
+.grey,
+.grey > * {
+  color: #cecccb;
+}
+
+.light_grey,
+.light_grey > * {
+  color: #efecea;
+}
+
+.black,
+.black > * {
+  color: #545352;
+}
+
+.black_light,
+.black_light > * {
+  color: #545352;
+}
+
+.orange,
+.orange > * {
+  color: orange;
+}
+
+.red,
+.red > * {
+  color: #ed6262;
+}
+
+.textSmall,
+.textSmall * {
+  font-size: $font_size_text_small; // 11px
+  line-height: $font_size_text_small*1.3;
+  font-weight: 400;
+}
+
+.text,
+.text * {
+  font-size: $font_size_text; // 13px
+  line-height: $font_size_text*1.3;
+  font-weight: 400;
+}
+
+.textBig,
+.textBig * {
+  font-size: $font_size_text_big; // 15px
+  line-height: $font_size_text_big*1.3;
+  font-weight: 400;
+}
+
+.title,
+.title * {
+  font-size: $font_size_title; // 20px
+  line-height: $font_size_title*1.3;
+  font-weight: 400;
+}
+
+.titleBig,
+.titleBig * {
+  font-size: $font_size_title_big; // 24px
+  line-height: $font_size_title_big*1.3;
+}
+
+.extraBig,
+.extraBig * {
+  font-size: $font_size_extra_big; // 41px
+  line-height: $font_size_extra_big*1.3;
+}

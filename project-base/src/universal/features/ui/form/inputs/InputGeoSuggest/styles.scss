@@ -1,0 +1,43 @@
+@import "../input";
+
+.InputGeoSuggest {
+  height: 100%;
+  padding: 0;
+
+  :global(.geosuggest__input) {
+    padding: 15px 20px;
+  }
+
+  &__Input {
+    @include input();
+    @include ellipsis;
+  }
+
+  :global(.geosuggest__suggests--hidden) {
+    transform: scale3d(0, 0, 0) !important;
+  }
+
+  :global(.geosuggest__suggests-wrapper) {
+    margin-left: -15px;
+    position: absolute;
+    z-index: 1;
+  }
+
+  :global(.geosuggest__suggests) {
+    transition: 225ms cubic-bezier(.53, -0.24, 0, 1.3);
+    box-shadow: 0px 0px 4px #cecece;
+    background-color: white;
+    transform: scale3d(1, 1, 1);
+    margin: 0;
+
+    :global(.geosuggest__item) {
+      list-style: none;
+      padding: 10px 5px;
+      cursor: pointer;
+    }
+
+    :global(.geosuggest__item--active) {
+      background-color: #efecea;
+    }
+  }
+}

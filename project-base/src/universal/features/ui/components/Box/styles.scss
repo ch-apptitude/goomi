@@ -1,0 +1,41 @@
+.Box {
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-block;
+  background-color: white;
+  padding: 20px;
+
+  &__BorderTop {
+    border-top: solid 1px #efecea;
+  }
+
+  &__SmallHeight {
+    padding: 12.5px 30px;
+  }
+
+  &__Small {
+    padding: 10px;
+  }
+
+  &__Medium {
+    padding: 30px 15px;
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  .Box {
+    padding: 55px;
+
+    &__SmallHeight {
+      padding: 25px 60px;
+    }
+
+    &__Small {
+      padding: 20px;
+    }
+
+    &__Medium {
+      padding: 40px 30px;
+    }
+  }
+}

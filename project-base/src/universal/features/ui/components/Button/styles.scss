@@ -1,0 +1,106 @@
+button {
+  background-color: inherit;
+}
+
+.Button {
+  display: block;
+  cursor: pointer;
+  color: #545352;
+  padding: 11px 8px;
+  border-radius: 2px;
+  @include animate;
+  outline: none;
+  border: none;
+  text-align: center;
+  box-sizing: content-box;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &__Link {
+    text-align: left;
+  }
+
+  & * {
+    @include animate;
+    margin: 0;
+  }
+
+  &__Inline {
+    width: auto;
+  }
+
+  &__Tiny {
+    padding: 4px 6px;
+  }
+
+  &__FitWidth {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__OrangeBackground {
+    background-color: orange;
+
+    &:hover {
+      background-color: orange_dark;
+    }
+
+    &:disabled {
+      background-color: orange_light;
+    }
+  }
+
+  &__GreenBackground {
+    background-color: #4fcc82;
+
+    &:hover {
+      background-color: #4fcc82_dark;
+    }
+
+    &:disabled {
+      background-color: #8ad8a4;
+    }
+  }
+
+  &__RedBackground {
+    background-color: #ed6262;
+
+    &:hover {
+      background-color: #ed6262_dark;
+    }
+
+    &:disabled {
+      background-color: #ef7f7f;
+    }
+  }
+
+  &__GreyBackground {
+    background-color: #f3f1f0;
+
+    &:hover {
+      background-color: #efecea;
+    }
+
+    &:disabled {
+      background-color: white;
+    }
+  }
+
+  &__LightBackground {
+    background-color: white;
+
+    &:hover {
+      background-color: white;
+
+      * {
+        color: #545352;
+      }
+    }
+
+    &:disabled {
+      background-color: white;
+    }
+  }
+}
