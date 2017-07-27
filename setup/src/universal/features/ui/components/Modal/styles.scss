@@ -1,0 +1,28 @@
+.Modal {
+  &__CloseButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate3d(50%, -50%, 0);
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+
+    &__Inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      background-color: #545352;
+      color: white;
+      height: 22px;
+      width: 22px;
+      text-align: center;
+      line-height: 22px;
+    }
+  }
+}

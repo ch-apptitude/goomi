@@ -6,12 +6,12 @@
  */
 import { addLocaleData } from 'react-intl';
 
-import fr from 'react-intl/locale-data/fr';
-import frTranslationMessages from 'features/language/translations/fr.json';
+import en from 'react-intl/locale-data/en';
+import enTranslationMessages from 'features/language/translations/en.json';
 // IMPORT FOR GENERATOR
 
 [
-  fr,
+  en,
   // FOREACH FOR GENERATOR
 ].forEach(addLocaleData);
 
@@ -24,6 +24,6 @@ const formatTranslationMessages = (messages) => {
 };
 
 export const translationMessages = {
-  fr: formatTranslationMessages(frTranslationMessages),
+  en: formatTranslationMessages(enTranslationMessages),
   // MESSAGES FOR GENERATOR
 };

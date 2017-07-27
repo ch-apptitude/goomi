@@ -1,3 +1,5 @@
+const PORT = process.env.PORT || '3000';
+
 const environment = {
   development: {},
   production: {},
@@ -5,20 +7,16 @@ const environment = {
 
 const config = Object.assign(
   {
+    port: PORT,
     locale: [
-      'fr',
+      'en',
       // LOCAL FOR GENERATOR
     ],
     localStoragePrefix: '{{name}}',
-    host: process.env.HOST || 'localhost',
-    port: process.env.PORT || '3000',
-    apiHost: process.env.APIHOST || 'localhost', // /!\ Need to cahnge this for the build prod :: write directly the APIHOST
-    apiPort: process.env.APIPORT || '5000', // /!\ Need to cahnge this for the build prod :: write directly the APIPORT
-    apiVersion: process.env.NODE_ENV === 'production' ? 'api/v1' : 'v1',
-    socketUrl: process.env.NODE_ENV === 'production' ? '' : 'localhost:5000',
+    port: 3000,
     app: {
       title: '{{name}}',
-      description: 'Platforme for sports coach',
+      description: '',
 
       head: {
         titleTemplate: '{{name}} : %s',
@@ -59,7 +57,7 @@ const config = Object.assign(
           },
           {
             name: 'description',
-            content: 'Platforme for sports coach',
+            content: '',
           },
           {
             name: 'theme-color',
@@ -71,12 +69,5 @@ const config = Object.assign(
   },
   environment,
 );
-
-Object.assign(config, {
-  url:
-    process.env.NODE_ENV === 'production'
-      ? `/${config.apiVersion}`
-      : `http://${config.apiHost}:${config.apiPort}/${config.apiVersion}`,
-});
 
 module.exports = config;

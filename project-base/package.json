@@ -4,7 +4,9 @@
   "description": "A react boilerplate with redux, saga based on a feature-oriented structure",
   "main": "./src/server/server.babel.js",
   "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/webpack.config.devnossr.js ",
     "dev": "cross-env NODE_ENV=development node ./src/server/server.babel.js",
+    "dev-nossr": "cross-env NODE_ENV=development node ./src/server/server.babel.js",
     "prod": "cross-env NODE_ENV=production node ./src/server/server.babel.js",
     "prodServer": "PORT=5051 NODE_ENV=production forever start -l '{{name}}-prod.log' -a ./src/server/server.babel.js",
     "stageServer": "PORT=5061 NODE_ENV=production forever start -l '{{name}}-stage.log' -a ./src/server/server.babel.js",
@@ -95,6 +97,8 @@
     "file-loader": "^0.9.0",
     "fs": "0.0.1-security",
     "glob": "^7.1.1",
+    "html-loader": "^0.5.0",
+    "html-webpack-plugin": "^2.29.0",
     "ignore-styles": "^5.0.1",
     "image-webpack-loader": "^3.1.0",
     "inquirer-select-directory": "^1.1.2",
@@ -110,6 +114,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.13.1",
     "webpack": "^3.3.0",
-    "webpack-combine-loaders": "^2.0.3"
+    "webpack-combine-loaders": "^2.0.3",
+    "webpack-dev-server": "^2.6.1"
   }
 }

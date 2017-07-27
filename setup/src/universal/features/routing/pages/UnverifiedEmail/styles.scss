@@ -1,0 +1,24 @@
+/*
+ *
+ * UnverifiedEmail style
+ *
+ */
+
+.UnverifiedEmail {
+  height: 100%;
+  width: 100%;
+
+  &__Links {
+    margin-top: 30px;
+    line-height: 1.5em;
+    a {
+      text-decoration-line: underline;
+      display: inline;
+      font-size: 1.1em;
+    }
+  }
+
+  &__Title {
+    margin-bottom: 50px;
+  }
+}

@@ -5,33 +5,6 @@ $sm-only-viewport: "only screen and (min-width: 48em) and (max-width: 64em)";
 $md-viewport: "only screen and (min-width: 64em)";
 $md-only-viewport: "only screen and (min-width: 64em) and (max-width: 75em)";
 $lg-viewport: "only screen and (min-width: 75em)";
-// Font
-$font_size_text_small: 11px;
-$font_size_text: 13px;
-$font_size_text_big: 15px;
-$font_size_title: 20px;
-$font_size_title_big: 24px;
-$font_size_extra_big: 41px;
-$font_family: "SofiaPro", sans-serif;
-$header_height: 66px;
 
-//mixin
-@mixin borderRadius() {
-  border-radius: 2px;
-}
-
-@mixin animate($speed: 0.3s) {
-  transition: all $speed ease-in-out;
-}
-
-@mixin ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@mixin verticalAlign {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
+$font-family: 'Open Sans';
+$base-font-size: 13px;

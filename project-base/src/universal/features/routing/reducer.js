@@ -1,8 +1,6 @@
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { fromJS } from 'immutable';
 
-import { LOGOUT } from 'features/user/actions';
-
 // Initial routing state
 const routeInitialState = fromJS({ locationBeforeTransitions: null });
 
@@ -14,8 +12,6 @@ export default function routing(state = routeInitialState, action) {
     /* istanbul ignore next */
     case LOCATION_CHANGE:
       return state.merge({ locationBeforeTransitions: action.payload });
-    case LOGOUT:
-      return state; // TODO handle redirect on login
     default:
       return state;
   }

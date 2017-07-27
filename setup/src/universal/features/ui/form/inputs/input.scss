@@ -1,0 +1,23 @@
+@mixin input() {
+  border: none;
+  background-color: #efecea;
+  border-radius: 2px;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: $font_size_text_big;
+  color: #545352;
+  margin-top: 15px;
+  @include placeholder();
+}
+
+@mixin placeholder() {
+  &::placeholder {
+    color: #545352;
+    font-size: $font_size_text_big;
+    letter-spacing: 0;
+    opacity: 0.4;
+    vertical-align: baseline;
+    text-align: left;
+  }
+}

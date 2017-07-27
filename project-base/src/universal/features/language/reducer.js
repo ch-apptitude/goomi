@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export const CHANGE_LOCALE = 'app/LanguageToggle/CHANGE_LOCALE';
 
-const initialLanguage = 'fr';
+const initialLanguage = 'en';
 
 const initialState = fromJS({ locale: initialLanguage });
 
@@ -15,7 +15,7 @@ moment.locale('en', {
 });
 
 moment.locale(initialLanguage);
-moment.locale('fr', {
+moment.locale('en', {
   relativeTime: {
     past: '%s ',
   },

@@ -1,0 +1,56 @@
+:global {
+  .rc-tabs-nav {
+    height: 45px;
+  }
+
+  .rc-tabs-top .rc-tabs-bar {
+    border-bottom: none !important;
+  }
+
+  .rc-tabs-tab {
+    line-height: 30px;
+    background-color: white;
+    margin-right: 5px !important;
+    color: #545352 !important;
+    border-radius: 2px 2px 0 0;
+
+    &:not(.rc-tabs-tab-active) {
+      background-color: #e6e2e0;
+    }
+  }
+
+  .rc-tabs-nav-container {
+    background-color: #f3f1f0;
+  }
+
+  .rc-tabs-ink-bar {
+    opacity: 0;
+  }
+
+  .rc-tabs-top .rc-tabs-content-animated .rc-tabs-tabpane {
+    height: 100%;
+  }
+}
+
+.Tabs_Small {
+  :global(.rc-tabs-tab) {
+    width: 44px;
+    padding: 5px 10px;
+  }
+
+  :global(.rc-tabs-nav) {
+    height: 36px;
+  }
+
+  :global(.rc-tabs-nav-container) {
+    background: none;
+  }
+
+  :global(.rc-tabs-tab:not(.rc-tabs-tab-active)) {
+    background: none;
+  }
+
+  :global(.rc-tabs-tab) {
+    background: #f3f1f0;
+  }
+}
