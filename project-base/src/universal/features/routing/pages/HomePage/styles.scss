@@ -7,5 +7,18 @@
 .HomePage {
   height: 100%;
   width: 100%;
-  position: relative;
+  display: flex;
+  color: white;
+
+  > div {
+    margin: auto;
+    display: flex;
+    > h1 {
+      font-size: 60px;
+    }
+    > a {
+      font-size: 20px;
+      margin: auto auto 0 auto;
+    }
+  }
 }
