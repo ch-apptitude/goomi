@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var combineLoaders = require('webpack-combine-loaders');
 var AssetsPlugin = require('assets-webpack-plugin');
 
@@ -14,8 +13,6 @@ const client = path.join(src, 'client');
 const universal = path.join(src, 'universal');
 
 const clientInclude = [client, universal, config];
-
-const ExtractTextPluginSASS = new ExtractTextPlugin({ filename: '{{name}}.css', ignoreOrder: true });
 
 module.exports = require('./webpack.config.base')({
   target: 'web',
@@ -57,47 +54,8 @@ module.exports = require('./webpack.config.base')({
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    ExtractTextPluginSASS,
     new webpack.optimize.OccurrenceOrderPlugin(),
   ],
 
   jsIncludes: clientInclude,
-
-  jsLoaderPreset: [
-    [
-      'es2015',
-      {
-        modules: false,
-      },
-    ],
-    'react',
-    'stage-2',
-  ],
-
-  scssLoader: ExtractTextPluginSASS.extract({
-    fallback: 'style-loader',
-    use: [
-      {
-        loader: 'css-loader',
-        options: {
-          modules: true,
-          importLoaders: 2,
-          localIdentName: '[name]__[local]___[hash:base64:5]',
-        },
-      },
-      {
-        loader: 'postcss-loader',
-      },
-      {
-        loader: 'sass-loader',
-        options: {
-          data: '@import "assets/style/variables.scss";',
-          includePaths: [universal],
-          outputStyle: 'expanded',
-          sourceMap: true,
-          sourceMapContents: true,
-        },
-      },
-    ],
-  }),
 });

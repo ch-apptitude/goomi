@@ -5,36 +5,41 @@
 */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
+
+import Text from 'features/common_ui/components/Text';
 
 import messages from './messages';
-import styles from './styles.scss';
+
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  text-align: center;
+`;
+
+const Title = styled(Text)`
+    margin-bottom: 30px;
+`;
 
 const NotFound = () => (
-  <div className={styles.NotFound}>
+  <Container>
     <Row>
       <Col xs={12}>
-        <Text className={styles.NotFound__ErrorTitle} domElement="h1" color="red" size="title">
-          <FormattedMessage {...messages.errorTitle} />
-        </Text>
+        <Text message={messages.errorTitle} tagName="h1" size={30} />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <Text className={styles.NotFound__Title} domElement="h1" size="title">
-          <FormattedMessage {...messages.title} />
-        </Text>
+        <Title message={messages.title} tagName="h1" />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <Text className={styles.NotFound__Body} domElement="p">
-          <FormattedMessage {...messages.body} />
-        </Text>
+        <Text message={messages.body} tagName="p" />
       </Col>
     </Row>
-  </div>
+  </Container>
 );
 
 export default NotFound;

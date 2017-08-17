@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var autoprefixer = require('autoprefixer');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 require('es6-promise').polyfill();
 
@@ -13,6 +12,21 @@ var buildSrc = path.resolve(root, 'build');
 var clientSrc = path.resolve(src, 'client');
 var serverSrc = path.resolve(src, 'server');
 var universalSrc = path.resolve(src, 'universal');
+
+const babelOptions = {
+  presets: ['es2015', 'react', 'stage-2'],
+  compact: true,
+  plugins: [
+    'transform-class-properties',
+    'styled-components',
+    [
+      'module-resolver',
+      {
+        root: ['./src/client', './src/universal', './src/server', './node_modules'],
+      },
+    ],
+  ],
+};
 
 module.exports = function(options) {
   return {
@@ -44,19 +58,6 @@ module.exports = function(options) {
         fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
       }),
       new webpack.optimize.OccurrenceOrderPlugin(),
-      new webpack.LoaderOptionsPlugin({
-        options: {
-          context: __dirname, // must evaluate to root of project
-          output: {
-            path: './',
-          },
-          postcss: () => [
-            autoprefixer({
-              browsers: ['last 3 version', 'ie >= 10'],
-            }),
-          ],
-        },
-      }),
     ]),
 
     resolve: {
@@ -72,19 +73,10 @@ module.exports = function(options) {
           use: [
             {
               loader: 'babel-loader',
-              options: {
-                presets: options.jsLoaderPreset || ['es2015', 'react', 'stage-2'],
-              },
+              options: babelOptions,
             },
           ],
           include: options.jsIncludes /*,*/,
-        },
-
-        // SCSS
-        {
-          test: /\.s?css$/,
-          include: [universalSrc, nodeModulesSrc],
-          loader: options.scssLoader,
         },
 
         // JSON

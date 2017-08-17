@@ -1,7 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var combineLoaders = require('webpack-combine-loaders');
 var AssetsPlugin = require('assets-webpack-plugin');
 
@@ -13,7 +12,6 @@ const universal = path.join(src, 'universal');
 const server = path.join(src, 'server');
 
 const serverInclude = [server, universal, config];
-const ExtractTextPluginSASS = new ExtractTextPlugin({ filename: '{{name}}.css', ignoreOrder: true });
 
 module.exports = require('./webpack.config.base')({
   target: 'node',
@@ -36,7 +34,6 @@ module.exports = require('./webpack.config.base')({
       },
     }),
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
-    ExtractTextPluginSASS,
     new webpack.DefinePlugin({
       __CLIENT__: true,
       __PRODUCTION__: true,
@@ -48,31 +45,4 @@ module.exports = require('./webpack.config.base')({
   ],
 
   jsIncludes: serverInclude,
-
-  scssLoader: ExtractTextPluginSASS.extract({
-    fallback: 'style-loader',
-    use: [
-      {
-        loader: 'css-loader',
-        options: {
-          modules: true,
-          importLoaders: 2,
-          localIdentName: '[name]__[local]___[hash:base64:5]',
-        },
-      },
-      {
-        loader: 'postcss-loader',
-      },
-      {
-        loader: 'sass-loader',
-        options: {
-          data: '@import "assets/style/variables.scss";',
-          includePaths: [universal],
-          outputStyle: 'expanded',
-          sourceMap: true,
-          sourceMapContents: true,
-        },
-      },
-    ],
-  }),
 });

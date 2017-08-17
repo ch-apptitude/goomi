@@ -44,29 +44,4 @@ module.exports = require('./webpack.config.base')({
   ],
 
   jsIncludes: devInclude,
-
-  scssLoader: combineLoaders([
-    {
-      loader: 'style-loader',
-    },
-    {
-      loader: 'css-loader',
-      query: {
-        modules: true,
-        importLoaders: 2,
-        localIdentName: '[name]__[local]___[hash:base64:5]',
-      },
-    },
-    {
-      loader: 'postcss-loader',
-    },
-    {
-      loader: 'sass-loader',
-      options: {
-        data: '@import "assets/style/variables.scss";',
-        includePaths: [universal],
-        outputStyle: 'compressed',
-      },
-    },
-  ]),
 });
