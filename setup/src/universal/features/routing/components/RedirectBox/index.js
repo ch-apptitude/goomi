@@ -11,7 +11,7 @@ import { Row, Col } from 'react-flexbox-grid';
 
 import Box from 'features/ui/components/Box';
 import Text from 'features/ui/components/Text';
-import { GreenButton } from 'features/ui/components/Button';
+import Button from 'features/ui/components/Button';
 
 import messages from './messages';
 import styles from './styles.scss';
@@ -38,7 +38,7 @@ const RedirectBox = ({ title, titleValues, body, bodyValues, buttons }) => (
       <Row center="xs">
         {buttons.map((button) => (
           <Col xs={6} sm={4} key={button.message.id}>
-            <GreenButton
+            <Button
               className={styles.RedirectBox__Button}
               onClick={button.onClick}
               linkTo={button.linkTo}

@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   title: {
     id: 'routing.RedirectBox.title',
-    defaultMessage: 'Cette page vous est inaccessible.',
+    defaultMessage: 'Cannot reach this page.',
   },
 });

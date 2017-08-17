@@ -12,14 +12,14 @@ export default defineMessages({
   },
   errorTitle: {
     id: 'routing.NotFound.errorTitle',
-    defaultMessage: 'Erreur 404',
+    defaultMessage: 'Error 404',
   },
   body: {
     id: 'routing.NotFound.body',
-    defaultMessage: 'La page que vous cherchez n’existe pas ou l’URL est incorrecte.',
+    defaultMessage: "This page doesn't exists.",
   },
   continue: {
     id: 'routing.NotFound.continue',
-    defaultMessage: 'Retour à la page d’accueil',
+    defaultMessage: 'Back to home page.',
   },
 });

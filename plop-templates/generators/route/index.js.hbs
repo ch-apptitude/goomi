@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { injectIntl, intlShape } from 'react-intl';
 import Helmet from 'react-helmet';
 import { Row, Col } from 'react-flexbox-grid';
 
@@ -14,7 +15,7 @@ import messages from './messages';
 import styles from './styles.scss';
 {{/if}}
 
-const {{ properCase name }} = (props, { intl }) => (
+const {{ properCase name }} = ({ intl }) => (
   <div {{#if wantCSS}}className={{curly true}}styles.{{ properCase name }}{{curly}}{{/if}}>
     <Helmet title={intl.formatMessage(messages.{{ camelCase name }})} />
     <Row>
@@ -24,8 +25,8 @@ const {{ properCase name }} = (props, { intl }) => (
   </div>
 );
 
-{{ properCase name }}.contextTypes = {
-  intl: PropTypes.object.isRequired
+{{ properCase name }}.propTypes = {
+  intl: intlShape.isRequired
 }
 
-export default {{ properCase name }};
+export default injectIntl({{ properCase name }});

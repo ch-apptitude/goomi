@@ -3,40 +3,40 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   LoginRedirectBody: {
     id: 'routing.LoginRedirect.body',
-    defaultMessage: 'Vous devez etre connecté pour y accéder.',
+    defaultMessage: 'You have to be connected to access it.',
   },
   LoginRedirectRegister: {
     id: 'routing.LoginRedirect.register',
-    defaultMessage: 'Créer un compte',
+    defaultMessage: 'Create an account',
   },
   LoginRedirectLogin: {
     id: 'routing.LoginRedirect.login',
-    defaultMessage: 'Me connecter',
+    defaultMessage: 'Login',
   },
   ProfileCompleteRedirectBody: {
     id: 'routing.ProfileCompleteRedirect.body',
-    defaultMessage: 'Vous devez compléter votre profil pour y accéder.',
+    defaultMessage: 'You must complete your profile before.',
   },
   ProfileCompleteRedirectButton: {
     id: 'routing.ProfileCompleteRedirect.button',
-    defaultMessage: 'Compléter mon profil',
+    defaultMessage: 'Complete my profile',
   },
   VerifiedRedirectBody: {
     id: 'routing.VerifiedRedirect.body',
     defaultMessage:
-      'Vous devez valider votre addresse mail pour y accéder. Une demande de confirmation vous a été envoyée par email à l’adresse {email}.',
+      'You must activate your email address.',
   },
   VerifiedRedirectBodyRedirect: {
     id: 'routing.VerifiedRedirect.VerifiedRedirectBodyRedirect',
     defaultMessage:
-      "Un lien pour verifier votre adresse email vous a été envoyé à l’adresse {email}. Vous allez être redirigé vers la page d'acceuil.",
+      "You have to validate your email address. You will be redirected to the home page.",
   },
   VerifiedRedirectButton: {
     id: 'routing.VerifiedRedirect.button',
-    defaultMessage: 'Continuer',
+    defaultMessage: 'Continue',
   },
   resendConfirmEmail: {
     id: 'routing.resendConfirmEmail.button',
-    defaultMessage: "Renvoyer l'email de validation",
+    defaultMessage: "Resend confirm email",
   },
 });
