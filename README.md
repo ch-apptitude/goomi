@@ -2,6 +2,8 @@
 
 Start a React project without configuration with Redux, Redux-Saga, PostCSS, intl, server side rendering
 
+*Made by [Nathan Loisel](https://twitter.com/Nathloisel) & [Jeremy Barthoux](https://twitter.com/jeremybarthoux), supported by [Apptitude](https://apptitude.ch)*
+
 ## Table of Contents
 
 - [Installation](#installation)
