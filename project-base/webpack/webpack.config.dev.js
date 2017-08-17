@@ -65,9 +65,7 @@ module.exports = require('./webpack.config.base')({
       options: {
         data: '@import "assets/style/variables.scss";',
         includePaths: [universal],
-        outputStyle: 'expanded',
-        sourceMap: true,
-        sourceMapContents: true,
+        outputStyle: 'compressed',
       },
     },
   ]),
