@@ -29,20 +29,18 @@ injectGlobal`
     -webkit-font-smoothing: subpixel-antialiased;
   }
 
-  :global {
-    .clear {
-      clear: both;
-    }
+  .clear {
+    clear: both;
+  }
 
-    #root {
-      height: 100%;
-    }
+  #root {
+    height: 100%;
+  }
 
-    .ReactModalPortal {
-      height: 100%;
-      width: 100%;
-      position: fixed;
-    }
+  .ReactModalPortal {
+    height: 100%;
+    width: 100%;
+    position: fixed;
   }
 
   img {

@@ -1,11 +1,13 @@
 /*
  *
- * Register
+ * HomePage
  *
  */
 
 import React from 'react';
 import styled from 'styled-components';
+
+import Text from 'features/common_ui/components/Text';
 
 const Container = styled.div`
   height: 100%;
@@ -16,24 +18,24 @@ const Container = styled.div`
   > div {
     margin: auto;
     display: flex;
-    > h1 {
-      font-size: 60px;
-    }
-    > a {
-      font-size: 20px;
-      margin: auto auto 0 auto;
-    }
   }
+`;
+const Link = styled(Text)`
+      margin: auto auto 0 auto;
 `;
 
 const HomePage = () => (
   <Container>
     <div>
-      <h2>Made by</h2>
-      <h1>APPTITUDE</h1>
-      <a href="https://apptitude.ch" target="_blank" rel="noopener noreferrer">
+      <Text tagName="h2" color="white">
+        Made by
+      </Text>
+      <Text tagName="h1" size={60} color="white">
+        APPTITUDE
+      </Text>
+      <Link tagName="a" size={20} color="white" href="https://apptitude.ch" target="_blank" rel="noopener noreferrer">
         apptitude.ch
-      </a>
+      </Link>
     </div>
   </Container>
 );
