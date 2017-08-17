@@ -11,8 +11,8 @@ import { UserPropTypes } from 'features/user/constants';
 import HOCAuth from 'features/user/hoc/HOCAuth';
 
 import ProfilePicture from 'features/user/components/ProfilePicture';
-import Logo from 'features/ui/components/Logo';
-import Button, { GreenButton } from 'features/ui/components/Button';
+import Logo from 'features/common_ui/components/Logo';
+import Button, { GreenButton } from 'features/common_ui/components/Button';
 
 import styles from './styles.scss';
 import messages from './messages';

@@ -9,12 +9,12 @@ import PropTypes from 'prop-types';
 import { Form } from 'react-form';
 import { Row, Col } from 'react-flexbox-grid';
 
-import Box from 'features/ui/components/Box';
-import Text from 'features/ui/components/Text';
-import { GreenButton } from 'features/ui/components/Button';
-import Field from 'features/ui/form/Field';
+import Box from 'features/common_ui/components/Box';
+import Text from 'features/common_ui/components/Text';
+import { GreenButton } from 'features/common_ui/components/Button';
+import Field from 'features/common_ui/form/Field';
 
-import errorMessages from 'features/ui/form/error-messages';
+import errorMessages from 'features/common_ui/form/error-messages';
 import validate from './validate';
 import messages from './messages';
 import styles from './styles.scss';

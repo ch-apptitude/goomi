@@ -10,8 +10,8 @@ import { FormattedMessage } from 'react-intl';
 
 import { Form } from 'react-form';
 
-import Field from 'features/ui/form/Field';
-import Text from 'features/ui/components/Text';
+import Field from 'features/common_ui/form/Field';
+import Text from 'features/common_ui/components/Text';
 import { Row, Col } from 'react-flexbox-grid';
 
 import messages from './messages';

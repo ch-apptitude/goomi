@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import InitialsBadge from 'features/ui/components/InitialsBadge';
+import InitialsBadge from 'features/common_ui/components/InitialsBadge';
 
 import styles from './styles.scss';
 

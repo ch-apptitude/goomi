@@ -8,9 +8,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import Box from 'features/ui/components/Box';
+import Box from 'features/common_ui/components/Box';
 
-import errorMessages from 'features/ui/form/error-messages';
+import errorMessages from 'features/common_ui/form/error-messages';
 import messages from './messages';
 import styles from './styles.scss';
 

@@ -9,9 +9,9 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-flexbox-grid';
 
-import Box from 'features/ui/components/Box';
-import Text from 'features/ui/components/Text';
-import Button from 'features/ui/components/Button';
+import Box from 'features/common_ui/components/Box';
+import Text from 'features/common_ui/components/Text';
+import Button from 'features/common_ui/components/Button';
 
 import messages from './messages';
 import styles from './styles.scss';

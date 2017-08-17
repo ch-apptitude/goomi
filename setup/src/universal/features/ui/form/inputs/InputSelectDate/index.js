@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import InputSelect from 'features/ui/form/inputs/InputSelect';
+import InputSelect from 'features/common_ui/form/inputs/InputSelect';
 
 import messages from './messages';
 import styles from './styles.scss';

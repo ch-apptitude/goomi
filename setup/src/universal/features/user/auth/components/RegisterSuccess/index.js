@@ -12,9 +12,9 @@ import HOCAuth from 'features/user/hoc/HOCAuth';
 import HOCRedirect from 'features/routing/hoc/HOCRedirect';
 
 import { UserPropTypes, USER_STATUS } from 'features/user/constants';
-import Box from 'features/ui/components/Box';
-import Text from 'features/ui/components/Text';
-import { GreenButton } from 'features/ui/components/Button';
+import Box from 'features/common_ui/components/Box';
+import Text from 'features/common_ui/components/Text';
+import { GreenButton } from 'features/common_ui/components/Button';
 
 import messages from './messages';
 import styles from './styles.scss';

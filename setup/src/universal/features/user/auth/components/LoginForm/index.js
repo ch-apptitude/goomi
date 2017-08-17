@@ -13,12 +13,12 @@ import { Form } from 'react-form';
 
 import HOCAuth from 'features/user/hoc/HOCAuth';
 
-import Field from 'features/ui/form/Field';
-import Button, { GreenButton } from 'features/ui/components/Button';
-import Text from 'features/ui/components/Text';
-import Box from 'features/ui/components/Box';
+import Field from 'features/common_ui/form/Field';
+import Button, { GreenButton } from 'features/common_ui/components/Button';
+import Text from 'features/common_ui/components/Text';
+import Box from 'features/common_ui/components/Box';
 
-import errorMessages from 'features/ui/form/error-messages';
+import errorMessages from 'features/common_ui/form/error-messages';
 
 import messages from './messages';
 import styles from './styles.scss';

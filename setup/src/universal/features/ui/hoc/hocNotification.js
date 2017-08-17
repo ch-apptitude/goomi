@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { compose, setPropTypes } from 'recompose';
 import { createStructuredSelector } from 'reselect';
 
-import { selectNotifications } from 'features/ui/selectors';
+import { selectNotifications } from 'features/common_ui/selectors';
 
 const mapStateToProps = createStructuredSelector({
   notifications: selectNotifications(),

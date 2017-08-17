@@ -8,11 +8,11 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormField } from 'react-form';
 
-import Text from 'features/ui/components/Text';
-import Icon from 'features/ui/components/Icon';
-import Tooltip from 'features/ui/components/Tooltip';
+import Text from 'features/common_ui/components/Text';
+import Icon from 'features/common_ui/components/Icon';
+import Tooltip from 'features/common_ui/components/Tooltip';
 
-import errorMessages from 'features/ui/form/error-messages';
+import errorMessages from 'features/common_ui/form/error-messages';
 
 import InputCheckbox from '../inputs/InputCheckbox';
 import InputIconCheckbox from '../inputs/InputIconCheckbox';

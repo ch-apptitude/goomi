@@ -10,10 +10,10 @@ import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-flexbox-grid';
 import { Form } from 'react-form';
 
-import Field from 'features/ui/form/Field';
-import { GreenButton } from 'features/ui/components/Button';
-import Text from 'features/ui/components/Text';
-import Box from 'features/ui/components/Box';
+import Field from 'features/common_ui/form/Field';
+import { GreenButton } from 'features/common_ui/components/Button';
+import Text from 'features/common_ui/components/Text';
+import Box from 'features/common_ui/components/Box';
 
 import messages from './messages';
 import validate from './validate';

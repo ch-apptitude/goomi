@@ -8,8 +8,8 @@ import { connect } from 'react-redux';
 import { compose, setPropTypes } from 'recompose';
 import { createStructuredSelector } from 'reselect';
 
-import { selectModalOpen, selectModalParams } from 'features/ui/selectors';
-import { toogleModalOpen } from 'features/ui/actions';
+import { selectModalOpen, selectModalParams } from 'features/common_ui/selectors';
+import { toogleModalOpen } from 'features/common_ui/actions';
 
 // -------------------------------------------
 // CONNECT : State & Action

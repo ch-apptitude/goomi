@@ -12,9 +12,9 @@ import { Row, Col } from 'react-flexbox-grid';
 
 import { sendConfirmEmail } from 'features/user/actions';
 
-import { GreenButton } from 'features/ui/components/Button';
-import Text from 'features/ui/components/Text';
-import Box from 'features/ui/components/Box';
+import { GreenButton } from 'features/common_ui/components/Button';
+import Text from 'features/common_ui/components/Text';
+import Box from 'features/common_ui/components/Box';
 
 import messages from './messages';
 import styles from './styles.scss';

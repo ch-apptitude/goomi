@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import hocNotification from 'features/ui/hoc/hocNotification';
+import hocNotification from 'features/common_ui/hoc/hocNotification';
 import Notifications from 'react-notification-system-redux';
 
 import { messagesTitle, messages } from './messages';

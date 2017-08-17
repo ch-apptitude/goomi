@@ -6,12 +6,14 @@ import _ from 'lodash';
 
 import { selectUserStatus } from 'features/user/selectors';
 import { USER_STATUS } from 'features/user/constants';
-import NotFound from 'features/routing/components/NotFound';
 import LoginRedirect from 'features/routing/containers/LoginRedirectContainer';
 import ProfileCompleteRedirect from 'features/routing/containers/ProfileCompleteRedirectContainer';
 import VerifiedRedirect from 'features/routing/containers/VerifiedRedirectContainer';
 
-export default function HOCAuth(WrappedComponent, requiredStatus, excludedStatus) {
+import NotFound from 'features/routing/components/NotFound';
+import Loader from 'features/common_ui/components/Loader';
+
+export default function HOCRedirect(WrappedComponent, requiredStatus, excludedStatus) {
   const mapStateToProps = createStructuredSelector({
     userStatus: selectUserStatus(),
   });
@@ -31,7 +33,7 @@ export default function HOCAuth(WrappedComponent, requiredStatus, excludedStatus
     };
 
     if (userStatus.indexOf(USER_STATUS.LOADING) !== -1) {
-      return <div>Loading user...</div>;
+      return <Loader />;
     }
     if (excludedStatus) {
       const exclStatus = [].concat([], excludedStatus);

@@ -8,7 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ReactModal from 'react-modal';
-import hocModal from 'features/ui/hoc/hocModal';
+import hocModal from 'features/common_ui/hoc/hocModal';
 
 import styles from './styles.scss';
 

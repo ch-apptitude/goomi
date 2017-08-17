@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Row, Col } from 'react-flexbox-grid';
 
-import Button from 'features/ui/components/Button';
+import Button from 'features/common_ui/components/Button';
 import HOCAuth from 'features/user/hoc/HOCAuth';
 import { UserPropTypes } from 'features/user/constants';
 

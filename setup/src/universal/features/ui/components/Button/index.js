@@ -8,8 +8,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
-import Text from 'features/ui/components/Text';
-import Icon from 'features/ui/components/Icon';
+import Text from 'features/common_ui/components/Text';
+import Icon from 'features/common_ui/components/Icon';
 
 import styles from './styles.scss';
 

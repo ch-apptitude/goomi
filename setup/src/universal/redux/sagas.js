@@ -1,5 +1,5 @@
 import * as routingSaga from 'features/routing/sagas';
-import * as uiSaga from 'features/ui/sagas';
+import * as uiSaga from 'features/common_ui/sagas';
 import * as serviceApiSaga from 'services/api/sagas';
 import * as userSaga from 'features/user/sagas';
 /* apptitude IMPORT DO NOT TOUCH */

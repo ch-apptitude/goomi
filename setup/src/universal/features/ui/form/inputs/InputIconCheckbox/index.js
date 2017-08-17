@@ -7,9 +7,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Icon from 'features/ui/components/Icon';
-import iconList from 'features/ui/components/Icon//icon-list';
-import InputCheckbox from 'features/ui/form/inputs/InputCheckbox';
+import Icon from 'features/common_ui/components/Icon';
+import iconList from 'features/common_ui/components/Icon//icon-list';
+import InputCheckbox from 'features/common_ui/form/inputs/InputCheckbox';
 
 import styles from './styles.scss';
 

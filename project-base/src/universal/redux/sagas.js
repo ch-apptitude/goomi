@@ -1,5 +1,5 @@
 import * as routingSaga from 'features/routing/sagas';
-import * as uiSaga from 'features/ui/sagas';
+import * as uiSaga from 'features/common_ui/sagas';
 /* apptitude IMPORT DO NOT TOUCH */
 
 const injectSagas = (sagas, nestedSagas) =>

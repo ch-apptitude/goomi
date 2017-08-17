@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import VirtualizedSelect from 'react-virtualized-select';
 
-import Icon from 'features/ui/components/Icon';
+import Icon from 'features/common_ui/components/Icon';
 
 import styles from './styles.scss';
 

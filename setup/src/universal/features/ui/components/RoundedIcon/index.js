@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Icon, { iconProps } from 'features/ui/components/Icon';
+import Icon, { iconProps } from 'features/common_ui/components/Icon';
 
 import styles from './styles.scss';
 

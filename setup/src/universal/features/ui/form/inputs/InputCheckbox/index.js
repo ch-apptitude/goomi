@@ -6,7 +6,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Text from 'features/ui/components/Text';
+import Text from 'features/common_ui/components/Text';
 
 import styles from './styles.scss';
 

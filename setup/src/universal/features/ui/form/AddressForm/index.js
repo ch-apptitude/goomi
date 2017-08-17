@@ -12,7 +12,7 @@ import { Row, Col } from 'react-flexbox-grid';
 
 import countries from 'services/countries';
 
-import Field from 'features/ui/form/Field';
+import Field from 'features/common_ui/form/Field';
 
 import messages from './messages';
 

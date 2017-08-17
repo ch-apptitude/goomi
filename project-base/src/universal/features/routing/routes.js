@@ -1,4 +1,4 @@
-import App from 'features/ui/app/App';
+import App from 'features/common_ui/app/App';
 import HomePage from 'features/routing/pages/HomePage';
 import NotFoundPage from 'features/routing/pages/NotFoundPage';
 

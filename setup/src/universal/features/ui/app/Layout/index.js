@@ -8,8 +8,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
-import Header from 'features/ui/app/Header';
-import Modal from 'features/ui/components/Modal';
+import Header from 'features/common_ui/app/Header';
+import Modal from 'features/common_ui/components/Modal';
 
 import styles from './styles.scss';
 

@@ -9,13 +9,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
-import Text from 'features/ui/components/Text';
+import Text from 'features/common_ui/components/Text';
 import ProfilePicture from 'features/user/components/ProfilePicture';
-import RoundedIcon from 'features/ui/components/RoundedIcon';
-import RoundedNumber from 'features/ui/components/RoundedNumber';
-import InputCheckbox from 'features/ui/form/inputs/InputCheckbox';
-import { GetFormInput } from 'features/ui/form/Field';
-import { OrangeButton, GreenButton, GreyButton, LightButton, RedButton } from 'features/ui/components/Button';
+import RoundedIcon from 'features/common_ui/components/RoundedIcon';
+import RoundedNumber from 'features/common_ui/components/RoundedNumber';
+import InputCheckbox from 'features/common_ui/form/inputs/InputCheckbox';
+import { GetFormInput } from 'features/common_ui/form/Field';
+import { OrangeButton, GreenButton, GreyButton, LightButton, RedButton } from 'features/common_ui/components/Button';
 
 import ChangePasswordForm from 'features/user/auth/components/ChangePasswordForm';
 import ResetPasswordForm from 'features/user/auth/components/ResetPasswordForm';
@@ -24,7 +24,7 @@ import LoginForm from 'features/user/auth/components/LoginForm';
 import RegisterForm from 'features/user/auth/components/RegisterForm';
 import ProfilePictureForm from 'features/user/components/ProfilePictureForm';
 
-import hocModal from 'features/ui/hoc/hocModal';
+import hocModal from 'features/common_ui/hoc/hocModal';
 
 const user = {
   _id: 'dfskbosfdpsoh',

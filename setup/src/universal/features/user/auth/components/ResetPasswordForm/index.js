@@ -9,9 +9,9 @@ import PropTypes from 'prop-types';
 import { Form } from 'react-form';
 import { Row, Col } from 'react-flexbox-grid';
 
-import Box from 'features/ui/components/Box';
-import { GreenButton } from 'features/ui/components/Button';
-import Field from 'features/ui/form/Field';
+import Box from 'features/common_ui/components/Box';
+import { GreenButton } from 'features/common_ui/components/Button';
+import Field from 'features/common_ui/form/Field';
 
 import validate from './validate';
 import messages from './messages';

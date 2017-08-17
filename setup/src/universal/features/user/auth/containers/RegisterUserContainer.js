@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 import RegisterForm from 'features/user/auth/components/RegisterForm';
 import HOCAuth from 'features/user/hoc/HOCAuth';
-import errorMessages from 'features/ui/form/error-messages';
+import errorMessages from 'features/common_ui/form/error-messages';
 
 class RegisterUserContainer extends Component {
   handleSubmitionErrors(form, { code, errors }) {

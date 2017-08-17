@@ -8,12 +8,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Flag from 'react-world-flags';
 
-import Text from 'features/ui/components/Text';
+import Text from 'features/common_ui/components/Text';
 
 import messages from './messages';
 import styles from './styles.scss';
 
-const getCode = lang => {
+const getCode = (lang) => {
   if (lang === 'en') {
     return 'gb';
   }
@@ -23,10 +23,11 @@ const getCode = lang => {
 const FlagLanguage = ({ lang, hasLabel }, { intl }) => (
   <div className={styles.FlagLanguage}>
     <Flag code={getCode(lang)} className={styles.FlagLanguage__Flag} />
-    {hasLabel &&
+    {hasLabel && (
       <Text domElement="h3" size="textBig" color="black_light">
         {intl.formatMessage(messages[lang])}
-      </Text>}
+      </Text>
+    )}
   </div>
 );
 
