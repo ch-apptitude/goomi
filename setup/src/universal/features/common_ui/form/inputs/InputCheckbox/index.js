@@ -6,9 +6,67 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
 import Text from 'features/common_ui/components/Text';
 
-import styles from './styles.scss';
+const CheckBox = styled.div`
+  overflow: auto;
+  padding: 8px 15px 8px 0px;
+  cursor: pointer;
+  display: inline-flex !important;
+
+  .text * {
+    color: #545352 !important;
+  }
+
+  .icon {
+    vertical-align: top;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    font-size: 15px;
+    margin-top: 4px;
+    border: solid 1px #dad8d7;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .text {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 3px 0 3px 8px;
+    height: 20px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .active {
+    .text * {
+      color: #545352 !important;
+    }
+
+    .icon {
+      color: #4fcc82;
+      background-color: #4fcc82;
+      border: solid 1px #4fcc82;
+      overflow: hidden;
+
+      > span {
+        position: absolute;
+        left: 52%;
+        top: 42%;
+        transform: translate(-50%, -50%) rotate(30deg) rotateY(180deg);
+        display: block;
+        color: white;
+        text-align: center;
+        line-height: 15px;
+      }
+    }
+  }
+`;
 
 class InputCheckbox extends PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -35,13 +93,13 @@ class InputCheckbox extends PureComponent {
     }
 
     return (
-      <div className={className} onClick={this.toggleCheckbox}>
-        <div className={styles.InputCheckbox__Icon}>{checked && <span>L</span>}</div>
-        <Text className={styles.InputCheckbox__Text} domElement="p" size="textBig">
+      <CheckBox className={checked && 'active'} onClick={this.toggleCheckbox}>
+        <div className="icon">{checked && <span>L</span>}</div>
+        <Text className="text" domElement="p" size="textBig">
           {typeof label === 'string' ? <span>{label}</span> : label}
         </Text>
         <input
-          className={styles.InputCheckbox_Hidden}
+          className="hidden"
           name={name}
           id={id}
           type="radio"
@@ -49,7 +107,7 @@ class InputCheckbox extends PureComponent {
           checked={checked}
           onChange={this.toggleCheckbox}
         />
-      </div>
+      </CheckBox>
     );
   }
 }

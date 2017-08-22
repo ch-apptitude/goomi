@@ -7,10 +7,53 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
+import styled from 'styled-components';
 
 import Icon from 'features/common_ui/components/Icon';
 
-import styles from './styles.scss';
+const StyledDropzone = styled(Dropzone)`
+  height: 180px;
+  width: 180px;
+  background-color: #efecea;
+  border-radius: 50%;
+  margin: auto;
+  overflow: hidden;
+  cursor: pointer;
+
+.preview {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  transition: all 200ms;
+  &:hover {
+    background-color: #545352;
+  }
+  > * {
+    margin: auto;
+  }
+  img {
+    transition: all 200ms;
+  }
+  &:hover &__Icon {
+    opacity: 0.7;
+  }
+  &:hover img {
+    opacity: 0.2;
+  }
+}
+`;
+
+const PreviewIcon = styled(Icon)`
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 70px;
+  transition: all 200ms;
+`;
 
 class InputDropZone extends PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -52,7 +95,7 @@ class InputDropZone extends PureComponent {
     const { accept, minSize, maxSize, disableClick, name, id, content } = this.props;
 
     return (
-      <Dropzone
+      <StyledDropzone
         id={id}
         className={styles.InputDropZone}
         name={name}
@@ -63,12 +106,12 @@ class InputDropZone extends PureComponent {
         maxSize={maxSize}
         disableClick={disableClick}
       >
-        <div className={styles.InputDropZone__Preview}>
+        <div className="preview">
           {!this.state.value && content}
           {!!this.state.value && <img src={this.state.value.preview} alt="profile preview" />}
-          <Icon icon="cloud-upload" className={styles.InputDropZone__Preview__Icon} />
+          <PreviewIcon icon="cloud-upload" />
         </div>
-      </Dropzone>
+      </StyledDropzone>
     );
   }
 }

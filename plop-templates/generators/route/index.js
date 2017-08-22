@@ -12,7 +12,7 @@ module.exports = {
       name: 'name',
       message: 'What name for the page?',
       default: 'AboutPage',
-      validate: value => {
+      validate: (value) => {
         if (/.+/.test(value)) {
           return !routeExists(value) || `"${value}" doesn't exist.`;
         }
@@ -25,7 +25,7 @@ module.exports = {
       name: 'path',
       message: 'Enter the path of the route.',
       default: '/about',
-      validate: value => {
+      validate: (value) => {
         if (/.+/.test(value)) {
           return true;
         }
@@ -43,7 +43,7 @@ module.exports = {
 
   // Add the route to the routes.js file above the error route
   // TODO smarter route adding
-  actions: data => {
+  actions: (data) => {
     const actions = [];
 
     actions.push({
@@ -69,14 +69,6 @@ module.exports = {
         },
         $1`,
     });
-
-    if (data.wantCSS) {
-      actions.push({
-        type: 'add',
-        path: process.cwd() + '/src/universal/features/routing/pages/{{properCase name}}/styles.scss',
-        templateFile: './route/styles.scss.hbs',
-      });
-    }
 
     actions.push({
       type: 'add',

@@ -6,8 +6,13 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import styles from './styles.scss';
+const StyledRadioGroup = styled.div`
+  height: 100%;
+  width: 100%;
+  margin-top: 15px !important;
+`;
 
 class InputRadioGroup extends Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -50,10 +55,10 @@ class InputRadioGroup extends Component {
   render() {
     const { id, name } = this.props;
     return (
-      <div className={styles.InputRadioGroup}>
+      <StyledRadioGroup>
         {this.getRadios()}
         <input id={id} type="hidden" name={name} value={this.state.value} />
-      </div>
+      </StyledRadioGroup>
     );
   }
 }

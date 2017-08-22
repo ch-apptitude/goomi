@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { UserPropTypes } from 'features/user/constants';
 import HOCAuth from 'features/user/hoc/HOCAuth';
@@ -17,18 +18,39 @@ import Button, { GreenButton } from 'features/common_ui/components/Button';
 import styles from './styles.scss';
 import messages from './messages';
 
+const HeaderMenu = styled.div`
+  margin-right: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    display: inline-block;
+  }
+`;
+
+const HeaderContainer = styled.div`
+  height: ${(props) => props.theme.metrics.header_height}px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+`;
+
 const AnonymHeader = () => (
-  <div className={styles.HeaderMenu}>
-    <GreenButton className={styles.HeaderMenu__Item} linkTo="/register" message={messages.register} />
-    <Button className={styles.HeaderMenu__Item} linkTo="/login" message={messages.login} />
-  </div>
+  <HeaderMenu>
+    <GreenButton linkTo="/register" message={messages.register} />
+    <Button linkTo="/login" message={messages.login} />
+  </HeaderMenu>
 );
 
 const UserHeader = ({ user, logout }) => (
-  <div className={styles.HeaderMenu}>
-    <Button className={styles.HeaderMenu__Item} onClick={logout} message={messages.logout} />
-    <ProfilePicture firstName={user.firstName} lastName={user.lastName} size={38} className={styles.HeaderMenu__ProfilePicture} />
-  </div>
+  <HeaderMenu>
+    <Button onClick={logout} message={messages.logout} />
+    <ProfilePicture firstName={user.firstName} lastName={user.lastName} size={38} />
+  </HeaderMenu>
 );
 
 UserHeader.propTypes = {
@@ -42,10 +64,10 @@ const Header = ({ user, logout }) => {
     menu = <UserHeader user={user} logout={logout} />;
   }
   return (
-    <div className={styles.Header}>
+    <HeaderContainer>
       <Button className={styles.Header__Logo} linkTo="/" message={<Logo />} />
       {menu}
-    </div>
+    </HeaderContainer>
   );
 };
 

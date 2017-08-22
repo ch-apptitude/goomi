@@ -9,13 +9,16 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Form } from 'react-form';
 import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
 import Button from 'features/common_ui/components/Button';
 import Field from 'components/form/Field';
 
 import validate from './validate';
 import messages from './messages';
-import styles from './styles.scss';
+
+const FormContainer = styled.form`
+`;
 
 class {{ properCase name }} extends Component {
   constructor(props) {
@@ -25,7 +28,7 @@ class {{ properCase name }} extends Component {
   }
 
   renderForm = ({ submitForm }) => (
-    <form onSubmit={submitForm} className={{curly true}}styles.{{ properCase name }}{{curly}} name="{{ properCase name }}">
+    <FormContainer onSubmit={submitForm} name="{{ properCase name }}">
       <FormattedMessage {...messages.header} />
       <Row>
         <Col xs={12}>
@@ -33,7 +36,7 @@ class {{ properCase name }} extends Component {
         </Col>
       </Row>
       <Button className={styles.{{ properCase name }}__Submit} type="submit" message={messages.submit} />
-    </form>
+    </FormContainer>
   );
 
   render() {

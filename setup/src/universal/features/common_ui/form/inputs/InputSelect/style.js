@@ -1,13 +1,14 @@
-@import "../input";
+import styled from 'styled-components';
+import 'react-select/dist/react-select.css';
+import { InputStyle, PlaceholderStyle } from '../input-style';
 
-:global {
-  @import '~react-select/dist/react-select';
+export default styled.div`
   .Select span {
     position: relative;
   }
   .Select-control,
   .is-open > .Select-control {
-    @include input();
+    {InputStyle}
   }
 
   .Select-placeholder,
@@ -17,9 +18,6 @@
     line-height: inherit;
     top: initial;
     right: initial;
-    // padding-left: 30px;
-    // padding-right: 50px;
-    // @include verticalAlign;
   }
 
   .Select-option {
@@ -61,7 +59,7 @@
   }
   .has-value.Select--single > .Select-control .Select-value .Select-value-label,
   .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
-    @include placeholder();
+    {PlaceholderStyle}
   }
 
   .is-focused:not(.is-open) > .Select-control {
@@ -79,4 +77,4 @@
   .Select-arrow-zone {
     line-height: 0;
   }
-}
+`;

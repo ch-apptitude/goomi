@@ -113,7 +113,6 @@ class TimeInput extends PureComponent {
       <input
         id={this.props.id}
         name={this.props.name}
-        className={this.props.className}
         type={this.getType()}
         disabled={this.props.disabled}
         placeholder={this.props.placeholder}
@@ -129,7 +128,6 @@ class TimeInput extends PureComponent {
 TimeInput.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   type: PropTypes.string,

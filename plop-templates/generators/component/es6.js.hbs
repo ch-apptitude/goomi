@@ -9,12 +9,17 @@ import PropTypes from 'prop-types';
 {{#if wantMessages}}
 import { FormattedMessage } from 'react-intl';
 {{/if}}
+{{#if wantCSS}}
+import styled from 'styled-components';
+{{/if}}
 
 {{#if wantMessages}}
 import messages from './messages';
 {{/if}}
+
 {{#if wantCSS}}
-import styles from './styles.scss';
+const {{ properCase name }}Container = styled.div`
+`;
 {{/if}}
 
 class {{ properCase name }} extends Component {
@@ -26,14 +31,18 @@ class {{ properCase name }} extends Component {
   render() {
     return (
       {{#if wantCSS}}
-      <div className={{curly true}}styles.{{ properCase name }}{{curly}}>
+      <{{ properCase name }}Container>
+        {{#if wantMessages}}
+        <FormattedMessage {...messages.header} />
+        {{/if}}
+      </{{ properCase name }}Container>
       {{else}}
       <div>
-      {{/if}}
       {{#if wantMessages}}
         <FormattedMessage {...messages.header} />
       {{/if}}
       </div>
+      {{/if}}
     );
   }
 }

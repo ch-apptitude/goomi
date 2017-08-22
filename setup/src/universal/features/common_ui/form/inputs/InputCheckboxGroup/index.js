@@ -11,8 +11,6 @@ import InputCheckbox from 'features/common_ui/form/inputs/InputCheckbox';
 import iconList from 'features/common_ui/components/Icon//icon-list';
 import InputIconCheckbox from 'features/common_ui/form/inputs/InputIconCheckbox';
 
-import styles from './styles.scss';
-
 class InputCheckboxGroup extends PureComponent {
   constructor(props) {
     super(props);
@@ -59,7 +57,7 @@ class InputCheckboxGroup extends PureComponent {
   render() {
     const { options, name, value, id } = this.props;
     return (
-      <div className={styles.InputCheckboxGroup}>
+      <div>
         {options.map(this.itemRenderer)}
         <input type="hidden" value={value} id={id} name={name} />
       </div>

@@ -9,20 +9,35 @@ import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from 'react-intl';
 import Helmet from 'react-helmet';
 import { Row, Col } from 'react-flexbox-grid';
+{{#if wantCSS}}
+import styled from 'styled-components';
+{{/if}}
 
 import messages from './messages';
+
 {{#if wantCSS}}
-import styles from './styles.scss';
+const {{ properCase name }}Container = styled.div`
+`;
 {{/if}}
 
 const {{ properCase name }} = ({ intl }) => (
-  <div {{#if wantCSS}}className={{curly true}}styles.{{ properCase name }}{{curly}}{{/if}}>
+  {{#if wantCSS}}
+  <{{ properCase name }}Container>
+    <Helmet title={intl.formatMessage(messages.{{ camelCase name }})} />
+    <Row>
+      <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={4} mdOffset={4}>
+      </Col>
+    </Row>
+  </{{ properCase name }}Container>
+  {{else}}
+  <div>
     <Helmet title={intl.formatMessage(messages.{{ camelCase name }})} />
     <Row>
       <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={4} mdOffset={4}>
       </Col>
     </Row>
   </div>
+  {{/if}}
 );
 
 {{ properCase name }}.propTypes = {

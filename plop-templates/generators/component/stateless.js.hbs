@@ -6,28 +6,37 @@
 
 import React from 'react';
 // import PropTypes from 'prop-types';
+{{#if wantCSS}}
+import styled from 'styled-components';
+{{/if}}
 {{#if wantMessages}}
 import { FormattedMessage } from 'react-intl';
+{{/if}}
+
+{{#if wantCSS}}
+const {{ properCase name }}Container = styled.div`
+`;
 {{/if}}
 
 
 {{#if wantMessages}}
 import messages from './messages';
 {{/if}}
-{{#if wantCSS}}
-import styles from './styles.scss';
-{{/if}}
 
 const {{ properCase name }} = () => (
-  {{#if wantCSS}}
-  <div className={{curly true}}styles.{{ properCase name }}{{curly}}>
-  {{else}}
-  <div>
-  {{/if}}
-  {{#if wantMessages}}
-    <FormattedMessage {...messages.header} />
-  {{/if}}
-  </div>
+      {{#if wantCSS}}
+      <{{ properCase name }}Container>
+        {{#if wantMessages}}
+        <FormattedMessage {...messages.header} />
+        {{/if}}
+      </{{ properCase name }}Container>
+      {{else}}
+      <div>
+      {{#if wantMessages}}
+        <FormattedMessage {...messages.header} />
+      {{/if}}
+      </div>
+      {{/if}}
 );
 
 

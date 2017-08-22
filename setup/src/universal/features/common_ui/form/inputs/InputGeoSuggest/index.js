@@ -7,8 +7,47 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Geosuggest from 'react-geosuggest';
+import styled from 'styled-components';
 
-import styles from './styles.scss';
+import { InputStyle } from '../input-style';
+
+const StyledGeosuggest = styled(Geosuggest)`
+  .geosuggest__input {
+    padding: 15px 20px;
+  }
+
+  .input {
+    ${InputStyle}
+  }
+
+  .geosuggest__suggests--hidden {
+    transform: scale3d(0, 0, 0) !important;
+  }
+
+  .geosuggest__suggests-wrapper {
+    margin-left: -15px;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .geosuggest__suggests {
+    transition: 225ms cubic-bezier(.53, -0.24, 0, 1.3);
+    box-shadow: 0px 0px 4px #cecece;
+    background-color: white;
+    transform: scale3d(1, 1, 1);
+    margin: 0;
+
+    .geosuggest__item {
+      list-style: none;
+      padding: 10px 5px;
+      cursor: pointer;
+    }
+
+    .geosuggest__item--active {
+      background-color: #efecea;
+    }
+  }
+`;
 
 class InputGeoSuggest extends Component {
   constructor(props) {
@@ -80,18 +119,14 @@ class InputGeoSuggest extends Component {
   };
 
   render() {
-    const { className, placeholder, name, id } = this.props;
-    let clazzName = styles.InputGeoSuggest;
-    if (className) {
-      clazzName = `${clazzName} ${className}`;
-    }
+    const { placeholder, name, id } = this.props;
+
     return (
-      <Geosuggest
+      <StyledGeosuggest
         ref={this.initGeoSuggest}
         name={name}
         id={id}
-        className={clazzName}
-        inputClassName={styles.InputGeoSuggest__Input}
+        inputClassName="input"
         onSuggestSelect={this.onSeachSuggest}
         onChange={this.onChange}
         placeholder={placeholder}
@@ -103,7 +138,6 @@ class InputGeoSuggest extends Component {
 InputGeoSuggest.defaultProps = {
   onChange: console.log, // eslint-disable-line no-console
   placeholder: undefined,
-  className: undefined,
   value: '',
 };
 
@@ -114,7 +148,6 @@ InputGeoSuggest.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  className: PropTypes.string,
   value: PropTypes.oneOfType([
     //eslint-disable-line
     PropTypes.shape({

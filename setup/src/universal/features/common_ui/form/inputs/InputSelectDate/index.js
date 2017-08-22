@@ -7,11 +7,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import styled from 'styled-components';
 
 import InputSelect from 'features/common_ui/form/inputs/InputSelect';
 
 import messages from './messages';
-import styles from './styles.scss';
+
+const StyledSelectDate = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  > * {
+    width: calc(100% / 2.5);
+  }
+
+  > *:first-child {
+    margin-right: 10px;
+    width: calc(100% / 3.65);
+  }
+
+  > *:last-child {
+    margin-left: 10px;
+    width: calc(100% / 3.65);
+  }
+`;
 
 class InputSelectDate extends Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -112,7 +131,7 @@ class InputSelectDate extends Component {
   render() {
     const { name } = this.props;
     return (
-      <div className={styles.InputSelectDate}>
+      <StyledSelectDate>
         <InputSelect name={name} options={this.getDays()} value={this.state.day} onChange={this.dayChange} searchable required />
         <InputSelect
           name={name}
@@ -132,7 +151,7 @@ class InputSelectDate extends Component {
           searchable
           required
         />
-      </div>
+      </StyledSelectDate>
     );
   }
 }

@@ -28,12 +28,11 @@ class InputText extends PureComponent {
   };
 
   render() {
-    const { name, mask, maskChar, className, placeholder, id, ...etc } = this.props;
+    const { name, mask, maskChar, placeholder, id, ...etc } = this.props;
     return (
       <InputElement
         {...etc}
         placeholder={placeholder}
-        className={className}
         onChange={(evt) => this.onChange(evt.target.value)}
         name={name}
         id={id}
@@ -53,12 +52,10 @@ InputText.propTypes = {
   placeholder: PropTypes.string,
   mask: PropTypes.string,
   maskChar: PropTypes.string,
-  className: PropTypes.string,
 };
 
 InputText.defaultProps = {
   placeholder: '',
-  className: '',
   mask: null,
   maskChar: null,
   value: '',

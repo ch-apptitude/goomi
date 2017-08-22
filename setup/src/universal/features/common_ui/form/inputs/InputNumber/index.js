@@ -7,7 +7,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import RCInputNumber from 'rc-input-number';
-import styles from './styles.scss';
+import StyledInputNumber from './style';
 
 class InputNumber extends PureComponent {
   constructor(props) {
@@ -29,24 +29,23 @@ class InputNumber extends PureComponent {
   }
 
   render() {
-    const { name, min, max, step, className, id, unite, ...etc } = this.props;
+    const { name, min, max, step, id, unite, ...etc } = this.props;
     // more feature : https://github.com/react-component/input-number/blob/master/README.md
     return (
-      <div className={styles.InputNumber}>
+      <StyledInputNumber>
         <RCInputNumber
           {...etc}
           type="number"
           name={name}
           id={id}
-          className={className}
           max={max}
           min={min}
           step={step}
           value={this.state.value}
-          onChange={newValue => this.onChange(newValue)}
+          onChange={(newValue) => this.onChange(newValue)}
         />
-        {!!unite && <span className={styles.InputNumber__Unite}>{unite}</span>}
-      </div>
+        {!!unite && <span className="unite">{unite}</span>}
+      </StyledInputNumber>
     );
   }
 }
@@ -62,11 +61,9 @@ InputNumber.propTypes = {
   max: PropTypes.number,
   min: PropTypes.number,
   step: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  className: PropTypes.string,
 };
 
 InputNumber.defaultProps = {
-  className: '',
   onChange: () => {},
   max: Number.MAX_SAFE_INTEGER,
   min: Number.MIN_SAFE_INTEGER,

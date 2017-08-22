@@ -11,7 +11,7 @@ import VirtualizedSelect from 'react-virtualized-select';
 
 import Icon from 'features/common_ui/components/Icon';
 
-import styles from './styles.scss';
+import SelectContainer from './style';
 
 class InputSelect extends PureComponent {
   constructor(props) {
@@ -67,9 +67,17 @@ class InputSelect extends PureComponent {
       onClose: this.onMenuClose,
     };
     if (virtualized) {
-      return <VirtualizedSelect {...selectProps} openOnFocus />;
+      return (
+        <SelectContainer>
+          <VirtualizedSelect {...selectProps} openOnFocus />
+        </SelectContainer>
+      );
     }
-    return <Select {...selectProps} openOnFocus />;
+    return (
+      <SelectContainer>
+        <Select {...selectProps} openOnFocus />
+      </SelectContainer>
+    );
   }
 }
 

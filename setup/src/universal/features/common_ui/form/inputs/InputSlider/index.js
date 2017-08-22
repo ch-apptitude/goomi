@@ -7,8 +7,39 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Range } from 'rc-slider';
+import styled from 'styled-components';
+import 'rc-slider/assets/index.css';
 
-import styles from './styles.scss';
+const StyledSlider = styled.div`
+  height: 100%;
+  width: 100%;
+
+  .values {
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+      margin-top: 5px;
+    }
+  }
+
+  .rc-slider-handle {
+    &:hover {
+      border-color: orange;
+    }
+    border: solid 2px orange;
+  }
+
+  .rc-slider-rail {
+    height: 2px;
+  }
+
+  .rc-slider-track {
+    background-color: orange;
+    height: 2px;
+    top: 40%;
+  }
+`;
 
 class InputSlider extends Component {
   constructor(props) {
@@ -24,7 +55,7 @@ class InputSlider extends Component {
     });
   }
 
-  onChange = value => {
+  onChange = (value) => {
     this.setState(
       {
         value,
@@ -34,20 +65,21 @@ class InputSlider extends Component {
   };
 
   render() {
-    const { min, max, unite, className, onAfterChange } = this.props;
+    const { min, max, unite, onAfterChange } = this.props;
     return (
-      <div className={[styles.InputSlider, className].join(' ')}>
+      <StyledSlider>
         <Range value={this.state.value} min={min} max={max} onChange={this.onChange} onAfterChange={onAfterChange} />
-        {!!unite &&
-          <div className={styles.InputSlider__Values}>
+        {!!unite && (
+          <div className="values">
             <span>
               {(!!this.state.value && this.state.value[0]) || min} {unite}
             </span>
             <span>
               {(!!this.state.value && this.state.value[1]) || min} {unite}
             </span>
-          </div>}
-      </div>
+          </div>
+        )}
+      </StyledSlider>
     );
   }
 }
@@ -59,7 +91,6 @@ InputSlider.propTypes = {
   max: PropTypes.number,
   min: PropTypes.number,
   unite: PropTypes.string,
-  className: PropTypes.string,
 };
 
 InputSlider.defaultProps = {
@@ -69,7 +100,6 @@ InputSlider.defaultProps = {
   max: 100,
   min: 0,
   unite: undefined,
-  className: '',
 };
 
 export default InputSlider;

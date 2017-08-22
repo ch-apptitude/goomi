@@ -7,8 +7,21 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import StarRatingComponent from 'react-star-rating-component';
+import styled from 'styled-components';
 
-import styles from './styles.scss';
+const StyledStars = styled.div`
+  width: 100%;
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  .dv-star-rating-star {
+    margin: 0 2.5px;
+    > i {
+      color: inherit;
+    }
+  }
+`;
 
 class InputStars extends PureComponent {
   constructor(props) {
@@ -22,7 +35,7 @@ class InputStars extends PureComponent {
     }
   }
 
-  onChange = newValue => {
+  onChange = (newValue) => {
     this.setState({ value: newValue });
     this.props.onChange(newValue);
   };
@@ -30,7 +43,7 @@ class InputStars extends PureComponent {
   render() {
     const { name, starCount, starColor, emptyStarColor } = this.props;
     return (
-      <div className={styles.InputStars}>
+      <StyledStars>
         <StarRatingComponent
           name={name}
           editing
@@ -40,7 +53,7 @@ class InputStars extends PureComponent {
           starColor={starColor}
           emptyStarColor={emptyStarColor}
         />
-      </div>
+      </StyledStars>
     );
   }
 }

@@ -7,8 +7,46 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TagsInput from 'react-tagsinput';
+import styled from 'styled-components';
+import 'react-tagsinput/react-tagsinput.scss';
 
-import './styles.scss';
+import { InputStyle, PlaceholderStyle } from '../input-style';
+
+const StyledTags = styled(TagsInput)`
+  ${InputStyle}
+  padding: 9.5px 20px;
+
+  ::placeholder {
+    color: #545352;
+  }
+
+  &--focused {
+    border-color: none;
+  }
+
+  &-input {
+    margin-bottom: 0;
+    ${PlaceholderStyle}
+  }
+
+  &-tag {
+    background-color: #545352;
+    color: white;
+    border: none;
+    border-radius: 2px;
+  }
+
+  &-remove {
+    background: #706f6d;
+    height: 18px;
+    width: 13px;
+    border-radius: 50%;
+    vertical-align: middle;
+    line-height: 13px;
+    padding-left: 5px;
+    margin-left: 5px;
+  }
+`;
 
 class InputTags extends Component {
   constructor(props) {
@@ -22,7 +60,7 @@ class InputTags extends Component {
     }
   }
 
-  handleChange = tags => {
+  handleChange = (tags) => {
     this.setState({ tags });
 
     if (this.props.onChange) {
@@ -31,7 +69,7 @@ class InputTags extends Component {
   };
 
   render() {
-    return <TagsInput value={this.state.tags} onChange={this.handleChange} />;
+    return <StyledTags value={this.state.tags} onChange={this.handleChange} />;
   }
 }
 

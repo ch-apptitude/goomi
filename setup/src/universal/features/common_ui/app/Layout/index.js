@@ -7,25 +7,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
 import Header from 'features/common_ui/app/Header';
+import Footer from 'features/common_ui/app/Footer';
 import Modal from 'features/common_ui/components/Modal';
 
-import styles from './styles.scss';
+const LayoutContainer = styled.div`height: 100%;`;
 
 const Layout = ({ children }) => (
-  <div className={styles.Layout}>
+  <LayoutContainer>
     <Header />
-    <Grid fluid className={styles.Layout__Content}>
+    <Grid fluid>
       <Row>
         <Col xs={12} md={10} mdOffset={1}>
           {React.Children.map(children, (child) => child)}
         </Col>
-        <Col xs={12} md={12} className={styles.Layout__Footer} />
       </Row>
     </Grid>
     <Modal />
-  </div>
+    <Footer />
+  </LayoutContainer>
 );
 
 Layout.propTypes = {

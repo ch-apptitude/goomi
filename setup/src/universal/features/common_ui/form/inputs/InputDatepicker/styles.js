@@ -1,6 +1,7 @@
-.InputDatepicker {
-  @include borderRadius;
-  font-size: $font_size_text_big;
+import styled from 'styled-components';
+import DatePicker from 'react-datepicker';
+
+export default styled(DatePicker)`
   background: none;
   padding: 13px 21px;
   box-sizing: border-box;
@@ -9,13 +10,10 @@
 
   &::placeholder {
     color: #545352;
-    font-size: $font_size_text_big;
     letter-spacing: 0;
     opacity: 0.4;
   }
-}
-
-:global {
+  
   .react-datepicker {
     font-family: $font-family !important;
     -webkit-font-smoothing: antialiased !important;
@@ -426,4 +424,4 @@
   .react-datepicker__tether-element {
     z-index: 2147483647;
   }
-}
+`;
