@@ -8,8 +8,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FormField } from 'react-form';
 
-import Text from 'features/common_ui/components/Text';
-import Icon from 'features/common_ui/components/Icon';
 import Tooltip from 'features/common_ui/components/Tooltip';
 
 import errorMessages from 'features/common_ui/form/error-messages';
@@ -31,9 +29,9 @@ import InputSelectDate from '../inputs/InputSelectDate';
 import InputSlider from '../inputs/InputSlider';
 import InputGeoSuggest from '../inputs/InputGeoSuggest';
 
-import styles from './styles.scss';
+import { StyledLabel, StyledIconHelper, StyledError } from './style.js';
 
-export class GetFormInput extends PureComponent {
+class Field extends PureComponent {
   onChange = (value) => {
     if (this.props.type === 'email' || this.props.type === 'password' || this.props.type === 'text') {
       this.props.setValue(this.formatTextValue(value));
@@ -55,9 +53,9 @@ export class GetFormInput extends PureComponent {
       inputUnite = this.context.intl.formatMessage(unite);
     }
 
-    let className = this.props.className;
+    let className = `${this.props.className} Field`;
     if (error) {
-      className = `${className} ${styles.Field__Input_HasError}`;
+      className = `${className} has_error`;
     }
 
     const inputProps = {
@@ -158,21 +156,18 @@ export class GetFormInput extends PureComponent {
     }
     if (touched && error) {
       return (
-        <Text className={styles.Field__Error} domElement="p" color="red" size="textBig">
+        <StyledError domElement="p" color="red" size="textBig">
           {error}
-        </Text>
+        </StyledError>
       );
     }
-    if (type === 'radioGroup') {
-      return null;
-    }
-    return <div className={styles.Field__Error} />;
+    return null;
   }
 
   getHelper() {
     return (
       <Tooltip content={this.props.helper} offsetY={-5} hasEffect>
-        <Icon icon="info" className={styles.Field__Label__Helper} />
+        <StyledIconHelper icon="info" />
       </Tooltip>
     );
   }
@@ -190,60 +185,55 @@ export class GetFormInput extends PureComponent {
 
     if (!label) {
       return (
-        <Text domElement="label" color="black_light" size="textBig" htmlFor={field} className={styles.Field__Label}>
+        <StyledLabel domElement="label" color="black_light" size="textBig" htmlFor={field}>
           {this.getInput()}
           {!!helper && this.getHelper()}
           {this.getError()}
-        </Text>
+        </StyledLabel>
       );
     } else if (type === 'checkbox') {
       return (
-        <Text domElement="span" color="black_light" size="textBig" htmlFor={field} className={styles.Field__Label}>
+        <StyledLabel domElement="span" color="black_light" size="textBig" htmlFor={field}>
           {this.getInput()}
           {!!helper && this.getHelper()}
           {this.getError()}
-        </Text>
+        </StyledLabel>
       );
     }
     return (
-      <Text domElement="label" color="black_light" size="textBig" htmlFor={field} className={styles.Field__Label}>
+      <StyledLabel domElement="label" color="black_light" size="textBig" htmlFor={field}>
         <div>
           {label}
           {!!helper && this.getHelper()}
-          {required && <span className={styles.Field__Label__Required}>&nbsp;*</span>}
+          {required && <span className="wildcard_required">&nbsp;*</span>}
         </div>
         {this.getInput()}
         {this.getError()}
-      </Text>
+      </StyledLabel>
     );
   }
 }
 
-GetFormInput.contextTypes = {
-  intl: React.PropTypes.object.isRequired,
-};
-
-GetFormInput.propTypes = {
+Field.propTypes = {
   type: PropTypes.string.isRequired,
   field: PropTypes.string.isRequired,
   className: PropTypes.string,
   required: PropTypes.bool,
   disabled: PropTypes.bool,
   autoFocus: PropTypes.bool,
-  label: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.oneOf([null, undefined])]),
-  helper: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.oneOf([null, undefined])]),
+  label: PropTypes.node,
+  helper: PropTypes.node,
   error: PropTypes.oneOfType([
     PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
-    PropTypes.string,
-    PropTypes.oneOf([null, undefined]),
+    PropTypes.node,
   ]),
   placeholder: PropTypes.oneOfType([
     PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
-    PropTypes.string,
+    PropTypes.node,
   ]),
   setValue: PropTypes.func,
   getValue: PropTypes.func,
@@ -253,42 +243,17 @@ GetFormInput.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
-    PropTypes.string,
+    PropTypes.node,
   ]),
   getTouched: PropTypes.func,
   items: PropTypes.array,
   renderRadio: PropTypes.func,
   icon: PropTypes.string,
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.element]),
+  content: PropTypes.node,
 };
 
-GetFormInput.defaultProps = {
-  setTouched: () => {},
-  getValue: () => {},
-  setValue: () => {},
-  getTouched: () => true,
-  getError: () => {},
-  label: '',
-  icon: '',
-  error: undefined,
-  unite: undefined,
-  helper: undefined,
-  disabled: false,
-  autoFocus: false,
-  required: false,
-  className: styles.Field__Input,
-  content: '',
-  placeholder: '',
-  items: [],
-  renderRadio: () => <div />,
-};
+export { Field };
 
-const Field = ({ field, ...rest }) => (
-  <FormField field={field}>{(fieldActions) => <GetFormInput {...fieldActions} {...rest} field={field} />}</FormField>
+export default ({ field, ...rest }) => (
+  <FormField field={field}>{(fieldActions) => <Field {...fieldActions} {...rest} field={field} />}</FormField>
 );
-
-Field.propTypes = {
-  field: PropTypes.string.isRequired,
-};
-
-export default Field;
