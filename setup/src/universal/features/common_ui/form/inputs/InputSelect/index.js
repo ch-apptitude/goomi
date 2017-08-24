@@ -54,7 +54,7 @@ class InputSelect extends PureComponent {
     const { value } = this.state;
 
     const selectProps = {
-      className: styles.InputSelect,
+      className: "Select",
       name,
       value,
       options,

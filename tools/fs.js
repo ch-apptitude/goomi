@@ -66,7 +66,7 @@ const moveDir = async (source, target) => {
       const to = path.resolve(target, dir);
       await makeDir(path.dirname(to));
       await renameFile(from, to);
-    }),
+    })
   );
 };
 
@@ -82,7 +82,7 @@ const copyDir = async (source, target) => {
       const to = path.resolve(target, dir);
       await makeDir(path.dirname(to));
       await copyFile(from, to);
-    }),
+    })
   );
 };
 
@@ -93,8 +93,8 @@ const cleanDir = (pattern, options) =>
       {
         glob: options,
       },
-      (err, result) => (err ? reject(err) : resolve(result)),
-    ),
+      (err, result) => (err ? reject(err) : resolve(result))
+    )
   );
 
 module.exports = {

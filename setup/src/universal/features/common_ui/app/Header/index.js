@@ -8,6 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Theme from 'assets/theme';
 import { UserPropTypes } from 'features/user/constants';
 import HOCAuth from 'features/user/hoc/HOCAuth';
 
@@ -15,7 +16,6 @@ import ProfilePicture from 'features/user/components/ProfilePicture';
 import Logo from 'features/common_ui/components/Logo';
 import Button, { GreenButton } from 'features/common_ui/components/Button';
 
-import styles from './styles.scss';
 import messages from './messages';
 
 const HeaderMenu = styled.div`
@@ -30,7 +30,7 @@ const HeaderMenu = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  height: ${(props) => props.theme.metrics.header_height}px;
+  height: ${(props) => Theme.Metrics.header_height}px;
   width: 100%;
   background-color: white;
   display: flex;
@@ -65,7 +65,9 @@ const Header = ({ user, logout }) => {
   }
   return (
     <HeaderContainer>
-      <Button className={styles.Header__Logo} linkTo="/" message={<Logo />} />
+      <Button className="logo" linkTo="/">
+        <Logo />
+      </Button>
       {menu}
     </HeaderContainer>
   );

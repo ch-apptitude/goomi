@@ -1,5 +1,5 @@
 import { injectGlobal } from 'styled-components';
-import 'rc-tooltip/assets/bootstrap_white.scss';
+import 'rc-tooltip/assets/bootstrap_white.css';
 
 import Theme from 'assets/theme';
 

@@ -8,30 +8,45 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
 import Box from 'features/common_ui/components/Box';
 import Text from 'features/common_ui/components/Text';
 import Button from 'features/common_ui/components/Button';
+import Theme from 'assets/theme'
 
 import messages from './messages';
-import styles from './styles.scss';
+
+const RedirectBoxContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  .box {
+    max-width: 640px;
+  }
+
+  .title {
+    margin-bottom: 30px;
+  }
+    
+  .button {
+    margin-top: 30px;
+  }
+`;
 
 const RedirectBox = ({ title, titleValues, body, bodyValues, buttons }) => (
-  <div className={styles.RedirectBox}>
-    <Box className={styles.RedirectBox__Box}>
+  <RedirectBoxContainer>
+    <Box className="box">
       <Row>
         <Col xs={12}>
-          <Text className={styles.RedirectBox__Title} domElement="h1" size="title">
-            <FormattedMessage {...title} values={titleValues} />
-          </Text>
+          <Text className="title" tag="h1" size={Theme.Metrics.title} message={title} values={titleValues} />
         </Col>
       </Row>
       {body && (
         <Row>
           <Col xs={12}>
-            <Text className={styles.RedirectBox__Body} domElement="p">
-              <FormattedMessage {...body} values={bodyValues} />
-            </Text>
+            <Text tag="p" message={body} values={bodyValues} />
           </Col>
         </Row>
       )}
@@ -39,7 +54,7 @@ const RedirectBox = ({ title, titleValues, body, bodyValues, buttons }) => (
         {buttons.map((button) => (
           <Col xs={6} sm={4} key={button.message.id}>
             <Button
-              className={styles.RedirectBox__Button}
+              className="button"
               onClick={button.onClick}
               linkTo={button.linkTo}
               message={button.message}
@@ -48,7 +63,7 @@ const RedirectBox = ({ title, titleValues, body, bodyValues, buttons }) => (
         ))}
       </Row>
     </Box>
-  </div>
+  </RedirectBoxContainer>
 );
 
 RedirectBox.defaultProps = {

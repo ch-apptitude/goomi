@@ -9,83 +9,92 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-flexbox-grid';
 import { Form } from 'react-form';
+import styled from 'styled-components';
 
 import Field from 'features/common_ui/form/Field';
-import { GreenButton } from 'features/common_ui/components/Button';
+import Button, { GreenButton } from 'features/common_ui/components/Button';
 import Text from 'features/common_ui/components/Text';
 import Box from 'features/common_ui/components/Box';
 
 import messages from './messages';
 import validate from './validate';
-import styles from './styles.scss';
+
+const StyledForm = styled.form`
+  height: 100%;
+  width: 100%;
+
+  .rc-tabs-top {
+    border-bottom: none;
+  }
+
+  confirmEmail {
+    * {
+      text-decoration-line: underline;
+    }
+  }
+`;
 
 class EditUserForm extends PureComponent {
   confirmEmail = () => {
     if (this.props.sendNewConfirmEmail && this.props.sendNewConfirmEmail.show) {
       return (
-        <button onClick={this.props.sendNewConfirmEmail.func} className={styles.UserDetailsForm__ConfirmEmail}>
-          <FormattedMessage {...messages.resendConfirmEmail} />
-        </button>
+        <Button onClick={this.props.sendNewConfirmEmail.func} className="confirmEmail" message={messages.resendConfirmEmail} />
       );
     }
     return null;
   };
 
   renderForm = ({ submitForm }) => (
-    <form onSubmit={submitForm} className={styles.UserDetailsForm} name="profileDetailsForm">
+    <StyledForm onSubmit={submitForm} name="profileDetailsForm">
       <Box>
         <Row>
           <Col xs={12}>
-            <Text className={styles.UserDetailsForm__Title} domElement="h1" size="title">
-              <FormattedMessage {...messages.completeYourProfile} />
-            </Text>
+            <Text tag="h1" size={Theme.Metrics.title} message={messages.completeYourProfile} />
           </Col>
         </Row>
 
         <Row between="xs">
           <Col xs={12} sm={6}>
-            <Field field="firstName" type="text" label={<FormattedMessage {...messages.firstName} />} autoFocus />
+            <Field field="firstName" type="text" label={messages.firstName} autoFocus />
           </Col>
           <Col xs={12} sm={6}>
-            <Field field="lastName" type="text" label={<FormattedMessage {...messages.lastName} />} />
+            <Field field="lastName" type="text" label={messages.lastName} />
           </Col>
         </Row>
 
         <Row>
           <Col xs={12}>
-            <Field field="email" type="email" label={<FormattedMessage {...messages.email} />} />
+            <Field field="email" type="email" label={messages.email} />
             {this.confirmEmail()}
           </Col>
         </Row>
 
         <Row>
           <Col xs={12}>
-            <Field field="birthdate" type="birthDate" label={<FormattedMessage {...messages.birthDate} />} />
+            <Field field="birthdate" type="birthDate" label={messages.birthDate} />
           </Col>
         </Row>
 
         <Row>
           <Col xs={6} sm={3}>
             <GreenButton
-              className={styles.UserDetailsForm__Submit}
+              className="submit"
               type="submit"
               message={this.props.defaultValues ? messages.save : messages.continue}
             />
           </Col>
         </Row>
       </Box>
-    </form>
+    </StyledForm>
   );
 
   render() {
     const { onSubmit, defaultValues } = this.props;
-    /* eslint-disable no-console */
     return (
       <Form onSubmit={onSubmit} validate={validate} defaultValues={defaultValues}>
         {this.renderForm}
       </Form>
     );
-    /* eslint-enable no-console */
   }
 }
 

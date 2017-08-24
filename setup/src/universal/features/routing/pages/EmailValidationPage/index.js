@@ -9,15 +9,26 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
 import { sendConfirmEmail } from 'features/user/actions';
+import Theme from 'assets/theme';
 
 import { GreenButton } from 'features/common_ui/components/Button';
 import Text from 'features/common_ui/components/Text';
 import Box from 'features/common_ui/components/Box';
 
 import messages from './messages';
-import styles from './styles.scss';
+
+const ValidationResult = styled.div`
+  & > *:first-child {
+    margin-bottom: 30px;
+  }
+`;
+const EmailValidationContainer = styled.div`
+  height: 100%;
+  width: 100%;
+`;
 
 class EmailValidationPage extends Component {
   constructor(props) {
@@ -55,26 +66,20 @@ class EmailValidationPage extends Component {
       .catch(this.validationFail);
 
   renderSucceed = () => (
-    <div className={styles.EmailValidationPage__Succeed}>
-      <Text domElement="h1" size="title">
-        {this.context.intl.formatMessage(messages.validationSucceed)}
-      </Text>
+    <ValidationResult>
+      <Text tag="h1"  size={Theme.Metrics.title} message={messages.validationSucceed} />
       <GreenButton message={messages.continueProfileComplete} linkTo="/register/user-infos" />
-    </div>
+    </ValidationResult>
   );
   renderFailed = () => (
-    <div className={styles.EmailValidationPage__Failed}>
-      <Text domElement="h1" size="title">
-        {this.context.intl.formatMessage(messages[this.state.failed])}
-      </Text>
+    <ValidationResult>
+      <Text tag="h1" size={Theme.Metrics.title} message={messages[this.state.failed]} />
       <GreenButton message={messages.continueProfileComplete} linkTo="/register/user-infos" />
-    </div>
+    </ValidationResult>
   );
   renderLoading = () => (
-    <div className={styles.EmailValidationPage__Loading}>
-      <Text domElement="h1" size="title">
-        {this.context.intl.formatMessage(messages.validationInProgress)}
-      </Text>
+    <div>
+      <Text tag="h1" size={Theme.Metrics.title} message={messages.validationInProgress} />
     </div>
   );
 
@@ -82,9 +87,9 @@ class EmailValidationPage extends Component {
     const { intl } = this.context;
     const { succeed, failed, loading } = this.state;
     return (
-      <div className={styles.EmailValidationPage}>
+      <EmailValidationContainer>
         <Helmet title={intl.formatMessage(messages.emailValidationPage)} />
-        <Row className={styles.ProfilePage__ProfileForm}>
+        <Row>
           <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
             <Box>
               {succeed && this.renderSucceed()}
@@ -93,7 +98,7 @@ class EmailValidationPage extends Component {
             </Box>
           </Col>
         </Row>
-      </div>
+      </EmailValidationContainer>
     );
   }
 }

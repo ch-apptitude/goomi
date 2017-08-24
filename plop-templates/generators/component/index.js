@@ -83,19 +83,9 @@ module.exports = {
         type: 'add',
         path: `${process.cwd()}/src/universal/${absolutePath(
           false,
-          data.subFolder,
+          data.subFolder
         )}/components/{{properCase name}}/tests/index.test.js`,
         templateFile: './component/test.js.hbs',
-        abortOnFail: true,
-      });
-    }
-
-    // If they want a CSS file, add styles.css
-    if (data.wantCSS) {
-      actions.push({
-        type: 'add',
-        path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/components/{{properCase name}}/styles.scss`,
-        templateFile: './component/styles.scss.hbs',
         abortOnFail: true,
       });
     }

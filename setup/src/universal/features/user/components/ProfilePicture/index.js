@@ -6,28 +6,31 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import InitialsBadge from 'features/common_ui/components/InitialsBadge';
 
-import styles from './styles.scss';
+const SizedProfilePicture = styled.div`
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+`;
+
+const RoundedProfilePicture = styled.img`
+  border-radius: 50%;
+`;
 
 const ProfilePicture = ({ firstName, lastName, pictureUrl, size, className }) => {
   let picture;
   if (pictureUrl) {
-    picture = <img src={pictureUrl} alt="profile" className={styles.ProfilePicture} />;
+    picture = <RoundedProfilePicture src={pictureUrl} alt="profile" />;
   } else {
     picture = <InitialsBadge first={firstName} last={lastName} size={size} />;
   }
 
-  const style = {
-    width: `${size}px`,
-    height: `${size}px`,
-  };
-
   return (
-    <div style={style} className={className}>
+    <SizedProfilePicture className={className}>
       {picture}
-    </div>
+    </SizedProfilePicture>
   );
 };
 
@@ -41,7 +44,6 @@ ProfilePicture.propTypes = {
 
 ProfilePicture.defaultProps = {
   size: 100,
-  className: '',
   firstName: 'U',
   lastName: 'N',
   pictureUrl: undefined,

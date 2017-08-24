@@ -5,14 +5,12 @@
 */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import messages from './messages';
-import styles from './styles.scss';
 
 const UserProfile = () => (
-  <div className={styles.UserProfile}>
+  <div>
     <FormattedMessage {...messages.header} />
   </div>
 );

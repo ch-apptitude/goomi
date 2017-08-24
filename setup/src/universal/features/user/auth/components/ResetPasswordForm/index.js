@@ -9,22 +9,21 @@ import PropTypes from 'prop-types';
 import { Form } from 'react-form';
 import { Row, Col } from 'react-flexbox-grid';
 
+import Theme from 'assets/theme';
 import Box from 'features/common_ui/components/Box';
 import { GreenButton } from 'features/common_ui/components/Button';
 import Field from 'features/common_ui/form/Field';
 
 import validate from './validate';
 import messages from './messages';
-import styles from './styles.scss';
 
 class ResetPasswordForm extends Component {
   renderForm = ({ submitForm }) => {
-    const { intl } = this.context;
     return (
-      <form onSubmit={submitForm} className={styles.ResetPasswordForm} name="ResetPasswordForm">
+      <form onSubmit={submitForm} name="ResetPasswordForm">
         <Box>
-          <Field type="password" field="password" label={intl.formatMessage(messages.password)} autoFocus />
-          <Field type="password" field="repassword" label={intl.formatMessage(messages.repassword)} />
+          <Field type="password" field="password" label={messages.password} autoFocus />
+          <Field type="password" field="repassword" label={messages.repassword} />
         </Box>
         <Box smallHeight borderTop>
           <Row middle="xs">
@@ -50,10 +49,6 @@ class ResetPasswordForm extends Component {
 ResetPasswordForm.defaultProps = {
   onChange: () => {},
   onSubmit: () => {},
-};
-
-ResetPasswordForm.contextTypes = {
-  intl: PropTypes.object.isRequired,
 };
 
 ResetPasswordForm.propTypes = {

@@ -17,7 +17,7 @@ import Field from 'components/form/Field';
 import validate from './validate';
 import messages from './messages';
 
-const FormContainer = styled.form`
+const StyledForm = styled.form`
 `;
 
 class {{ properCase name }} extends Component {
@@ -28,15 +28,15 @@ class {{ properCase name }} extends Component {
   }
 
   renderForm = ({ submitForm }) => (
-    <FormContainer onSubmit={submitForm} name="{{ properCase name }}">
+    <StyledForm onSubmit={submitForm} name="{{ properCase name }}">
       <FormattedMessage {...messages.header} />
       <Row>
         <Col xs={12}>
           <Field field="test" label="test" />
         </Col>
       </Row>
-      <Button className={styles.{{ properCase name }}__Submit} type="submit" message={messages.submit} />
-    </FormContainer>
+      <Button className="submit" type="submit" message={messages.submit} />
+    </StyledForm>
   );
 
   render() {

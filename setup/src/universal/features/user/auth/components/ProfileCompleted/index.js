@@ -8,6 +8,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-flexbox-grid';
 import moment from 'moment';
+import styled from 'styled-components';
 
 import HOCAuth from 'features/user/hoc/HOCAuth';
 
@@ -17,34 +18,42 @@ import Text from 'features/common_ui/components/Text';
 import { GreenButton } from 'features/common_ui/components/Button';
 
 import messages from './messages';
-import styles from './styles.scss';
+
+const StyledProfileCompleted = styled.div`
+  height: 100%;
+  width: 100%;
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .continue {
+    margin-top: 30px;
+  }
+`;
 
 const ProfileCompleted = ({ user }) => (
-  <div className={styles.ProfileCompleted}>
+  <StyledProfileCompleted>
     {user && (
       <Box>
         <Row>
           <Col xs={12}>
-            <Text className={styles.ProfileCompleted__Title} domElement="h1" size="title">
-              <FormattedMessage {...messages.title} />
-            </Text>
+            <Text className="title" tag="h1" size={Theme.Metrics.title} message={messages.title} />
           </Col>
         </Row>
         <Row>
           <Col xs={12}>
-            <Text className={styles.ProfileCompleted__Body} domElement="p">
-              <FormattedMessage {...messages.body} />
-            </Text>
+            <Text tag="p" message={messages.body} />
           </Col>
         </Row>
         <Row>
           <Col>
-            <GreenButton className={styles.ProfileCompleted__Continue} linkTo={'/profile'} message={messages.continue} />
+            <GreenButton className="continue" linkTo={'/profile'} message={messages.continue} />
           </Col>
         </Row>
       </Box>
     )}
-  </div>
+  </StyledProfileCompleted>
 );
 
 ProfileCompleted.defaultProps = {

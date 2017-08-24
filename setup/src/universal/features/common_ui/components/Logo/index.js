@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export const Logo = ({className}) => <svg className={className}/>;
 
 Logo.propTypes = {
-    className: PropTypes.sting,
+    className: PropTypes.string,
 }
 
 export default Logo;

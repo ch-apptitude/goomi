@@ -15,6 +15,7 @@ import Theme from 'assets/theme';
 const defaultStyle = (props) => `
   line-height: 40px;
   cursor: pointer;
+  border: none;
   color: #1F2D3D;
   padding: 0 20px;
   border-radius: ${Theme.Metrics.borderRadius}px;
@@ -55,6 +56,7 @@ const StyledLink = styled(Link)`
 const ButtonComponent = (
   {
     message,
+    values,
     href,
     linkTo,
     params,
@@ -65,8 +67,10 @@ const ButtonComponent = (
   },
 ) => {
   let content = children;
-  if(message) {
-    content = intl.formatMessage(message);
+  if(typeof message === 'object') {
+    content = intl.formatMessage(message, values);
+  } else if(typeof children === 'undefined') {
+    content = message;
   }
 
   if(href) {
@@ -95,10 +99,14 @@ const ButtonComponent = (
   );
 };
 ButtonComponent.propTypes = {
-  message: PropTypes.shape({
-    id: PropTypes.string,
-    defaultMessage: PropTypes.string,
-  }),
+  message: PropTypes.oneOfType([ 
+    PropTypes.string, 
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      defaultMessage: PropTypes.string.isRequired,
+    }),
+  ]),
+  values: PropTypes.object,
   href: PropTypes.string,
   linkTo: PropTypes.string,
   params: PropTypes.object,
@@ -109,29 +117,36 @@ const Button = injectIntl(ButtonComponent);
 
 export default Button;
 
-export const GreenButton = Button.extends`
-  backbground-color: #13ce66;
+const GreenButton = styled(Button)`
+  background-color: #13ce66;
   color: #FFF;
   text-align: center;
 `;
 
-export const BlueButton = Button.extends`
-  backbground-color: #1fb6ff;
+const BlueButton = styled(Button)`
+  background-color: #1fb6ff;
   color: #FFF;
   text-align: center;
 `;
 
-export const LightBlueButton = Button.extends`
-  backbground-color: transparent;
+const LightBlueButton = styled(Button)`
+  background-color: transparent;
   border: solid 1px #1fb6ff;
   color: #1fb6ff;
   text-align: center;
 `;
 
 
-export const LightButton = Button.extends`
+const LightButton = styled(Button)`
   box-shadow: inset 0 0 0 1px #e0e6ed;
-  backbground-color: transparent;
+  background-color: transparent;
   color: #1F2D3D;
   text-align: center;
 `;
+
+export {
+  GreenButton,
+  BlueButton,
+  LightBlueButton,
+  LightButton,
+};

@@ -18,7 +18,7 @@ const InputStyle = css`
   width: 100%;
   color: #545352;
   margin-top: 15px;
-  ${placeholder};
+  ${PlaceholderStyle};
 `;
 
 export { PlaceholderStyle, InputStyle };

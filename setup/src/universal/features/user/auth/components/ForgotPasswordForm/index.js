@@ -15,10 +15,9 @@ import Field from 'features/common_ui/form/Field';
 
 import validate from './validate';
 import messages from './messages';
-import styles from './styles.scss';
 
 const renderForm = (intl, { submitForm }) => (
-  <form onSubmit={submitForm} className={styles.ForgotPasswordForm} name="ForgotPasswordForm">
+  <form onSubmit={submitForm} name="ForgotPasswordForm">
     <Box>
       <Field
         type="email"

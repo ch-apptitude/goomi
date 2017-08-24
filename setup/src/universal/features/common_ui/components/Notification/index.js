@@ -27,7 +27,6 @@ injectGlobal`
   }
 `;
 
-// Part of Style Here And Other In Styles.scss ...
 const style = {
   NotificationItem: {
     DefaultStyle: {

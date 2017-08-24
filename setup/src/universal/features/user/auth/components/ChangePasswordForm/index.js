@@ -8,7 +8,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-form';
 import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
+import Theme from 'assets/theme';
 import Box from 'features/common_ui/components/Box';
 import Text from 'features/common_ui/components/Text';
 import { GreenButton } from 'features/common_ui/components/Button';
@@ -17,7 +19,12 @@ import Field from 'features/common_ui/form/Field';
 import errorMessages from 'features/common_ui/form/error-messages';
 import validate from './validate';
 import messages from './messages';
-import styles from './styles.scss';
+ 
+
+const StyledResult = styled(Text)`
+  text-align: center;
+  width: 100%;
+`;
 
 class ChangePasswordForm extends Component {
   constructor(props) {
@@ -68,25 +75,21 @@ class ChangePasswordForm extends Component {
     const { intl } = this.context;
     const { loading, succeed, failed } = this.state;
     return (
-      <form onSubmit={submitForm} className={styles.ChangePasswordForm} name="ChangePasswordForm">
+      <form onSubmit={submitForm} name="ChangePasswordForm">
         <Box>
-          <Field type="password" field="oldPassword" label={intl.formatMessage(messages.oldPassword)} autoFocus />
-          <Field type="password" field="password" label={intl.formatMessage(messages.password)} />
-          <Field type="password" field="repassword" label={intl.formatMessage(messages.repassword)} />
+          <Field type="password" field="oldPassword" label={messages.oldPassword} autoFocus />
+          <Field type="password" field="password" label={messages.password} />
+          <Field type="password" field="repassword" label={messages.repassword} />
           {!!failed && (
-            <Text domElement="h1" className={styles.ChangePasswordForm__Error}>
-              {intl.formatMessage(errorMessages[failed])}
-            </Text>
+            <StyledResult tag="h1" color={Theme.Colors.error} message={errorMessages[failed]} />
           )}
         </Box>
         <Box smallHeight borderTop>
           <Row>
             <Col xs={12}>
-              {!succeed && <GreenButton type="submit" message={messages.save} fitWidth disabled={loading} />}
+              {!succeed && <GreenButton type="submit" message={messages.save} disabled={loading} block/>}
               {succeed && (
-                <Text domElement="h1" className={styles.ChangePasswordForm__Succeed}>
-                  {intl.formatMessage(messages.succeed)}
-                </Text>
+                <StyledResult tag="h1" color={Theme.Colors.success} message={messages.succeed} />
               )}
             </Col>
           </Row>

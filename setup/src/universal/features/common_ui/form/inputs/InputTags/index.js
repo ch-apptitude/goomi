@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TagsInput from 'react-tagsinput';
 import styled from 'styled-components';
-import 'react-tagsinput/react-tagsinput.scss';
+import 'react-tagsinput/react-tagsinput.css';
 
 import { InputStyle, PlaceholderStyle } from '../input-style';
 

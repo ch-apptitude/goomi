@@ -9,8 +9,8 @@ import { injectIntl, intlShape } from 'react-intl';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
-import Logo from 'components/ui/Logo';
-import Text from 'components/ui/Text';
+import Logo from 'features/common_ui/components/Logo';
+import Text from 'features/common_ui/components/Text';
 
 import messages from './messages';
 
@@ -30,7 +30,7 @@ const Footer = ({ intl }) => (
       <Row>
         <Col xs={6} sm={3}>
           <Logo />
-          <FooterCopyright domElement="h2" size="text" color="black_light">
+          <FooterCopyright tag="h2">
             Copyright {intl.formatDate(new Date(2017, 8, 1), { year: 'numeric', month: 'long' })}
           </FooterCopyright>
         </Col>

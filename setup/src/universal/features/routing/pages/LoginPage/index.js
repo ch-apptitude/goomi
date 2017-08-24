@@ -8,21 +8,25 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
 import LoginForm from 'features/user/auth/components/LoginForm';
 
 import messages from './messages';
-import styles from './styles.scss';
+
+const StyledLoginPage = styled.div`
+  height: 100%;
+`;
 
 const LoginPage = (props, { intl }) => (
-  <div className={styles.LoginPage}>
+  <StyledLoginPage>
     <Helmet title={intl.formatMessage(messages.login)} />
-    <Row className={styles.LoginPage__LoginForm}>
+    <Row>
       <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={4} mdOffset={4}>
         <LoginForm />
       </Col>
     </Row>
-  </div>
+  </StyledLoginPage>
 );
 
 LoginPage.contextTypes = {

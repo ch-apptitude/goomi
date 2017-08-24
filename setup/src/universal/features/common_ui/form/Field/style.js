@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import InputSelect from 'features/common_ui/form/inputs/InputSelect';
+import { InputStyle } from 'features/common_ui/form/inputs/input-style';
 import Text from 'features/common_ui/components/Text';
 import Icon from 'features/common_ui/components/Icon';
 
@@ -11,7 +11,7 @@ const StyledLabel = styled(Text)`
   margin-top: 20px;
 
   .Field {
-    {InputSelect}
+    ${InputStyle}
   }
 
   > * {
@@ -29,7 +29,7 @@ const StyledLabel = styled(Text)`
   input[type='number'] {
     background: #f3f1f0;
     border: none;
-    font-size: $font_size_text_big;
+    font-size: 13px;
     vertical-align: baseline;
   }
 

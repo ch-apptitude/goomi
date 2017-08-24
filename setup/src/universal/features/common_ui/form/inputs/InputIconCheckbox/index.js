@@ -26,7 +26,7 @@ InputIconCheckbox.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.bool,
   onChange: PropTypes.func,
-  icon: PropTypes.oneOf(iconList).isRequired,
+  icon: PropTypes.oneOf(Object.values(iconList)).isRequired,
 };
 
 InputIconCheckbox.defaultProps = {

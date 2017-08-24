@@ -1,5 +1,4 @@
 import App from 'features/common_ui/app/App';
-import ComponentList from 'features/routing/pages/ComponentList';
 import LoginPage from 'features/routing/pages/LoginPage';
 import ProfilePage from 'features/routing/pages/ProfilePage';
 
@@ -38,10 +37,6 @@ export default {
     {
       path: '/',
       component: HomePage,
-    },
-    !config.isProduction && {
-      path: '/components',
-      component: ComponentList,
     },
     {
       path: '/login',

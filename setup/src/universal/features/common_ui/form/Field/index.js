@@ -6,6 +6,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { intlShape, injectIntl } from 'react-intl';
 import { FormField } from 'react-form';
 
 import Tooltip from 'features/common_ui/components/Tooltip';
@@ -43,14 +44,14 @@ class Field extends PureComponent {
   setTouched = () => this.props.setValue && this.props.setTouched(true);
 
   getInput() {
-    const { error, type, field, label, placeholder, getValue, unite, disabled, required, autoFocus, ...etc } = this.props;
+    const { error, type, field, label, placeholder, getValue, unite, disabled, required, intl, autoFocus, ...etc } = this.props;
     let placeHolderMessage = placeholder;
     if (typeof placeholder === 'object') {
-      placeHolderMessage = this.context.intl.formatMessage(placeholder);
+      placeHolderMessage = intl.formatMessage(placeholder);
     }
     let inputUnite = unite;
     if (typeof unite === 'object') {
-      inputUnite = this.context.intl.formatMessage(unite);
+      inputUnite = intl.formatMessage(unite);
     }
 
     let className = `${this.props.className} Field`;
@@ -138,7 +139,7 @@ class Field extends PureComponent {
   }
 
   getError() {
-    const { getTouched, getError, type } = this.props;
+    const { getTouched, getError, type, intl } = this.props;
     const touched = getTouched();
     let error = this.props.error;
     if (getError()) {
@@ -147,16 +148,16 @@ class Field extends PureComponent {
 
     if (error && Array.isArray(error)) {
       error = error.map(
-        (err) => (errorMessages[err] ? this.context.intl.formatMessage(errorMessages[err]) : `Unsupported Error : ${err}`),
+        (err) => (errorMessages[err] ? intl.formatMessage(errorMessages[err]) : `Unsupported Error : ${err}`),
       );
     } else if (error && typeof error === 'object') {
       error = errorMessages[error.name]
-        ? this.context.intl.formatMessage(errorMessages[error.name], error.values)
+        ? intl.formatMessage(errorMessages[error.name], error.values)
         : `Unsupported Error : ${JSON.stringify(error)}`;
     }
     if (touched && error) {
       return (
-        <StyledError domElement="p" color="red" size="textBig">
+        <StyledError tag="p" color="red" size="textBig">
           {error}
         </StyledError>
       );
@@ -181,11 +182,11 @@ class Field extends PureComponent {
   };
 
   render() {
-    const { field, label, type, helper, required } = this.props;
+    const { field, label, labelValues, type, helper, required, intl } = this.props;
 
     if (!label) {
       return (
-        <StyledLabel domElement="label" color="black_light" size="textBig" htmlFor={field}>
+        <StyledLabel tag="label" color="black_light" size="textBig" htmlFor={field}>
           {this.getInput()}
           {!!helper && this.getHelper()}
           {this.getError()}
@@ -193,7 +194,7 @@ class Field extends PureComponent {
       );
     } else if (type === 'checkbox') {
       return (
-        <StyledLabel domElement="span" color="black_light" size="textBig" htmlFor={field}>
+        <StyledLabel tag="span" color="black_light" size="textBig" htmlFor={field}>
           {this.getInput()}
           {!!helper && this.getHelper()}
           {this.getError()}
@@ -201,9 +202,9 @@ class Field extends PureComponent {
       );
     }
     return (
-      <StyledLabel domElement="label" color="black_light" size="textBig" htmlFor={field}>
+      <StyledLabel tag="label" color="black_light" size="textBig" htmlFor={field}>
         <div>
-          {label}
+          {typeof label === 'object' ? intl.formatMessage(label, labelValues) : label}
           {!!helper && this.getHelper()}
           {required && <span className="wildcard_required">&nbsp;*</span>}
         </div>
@@ -221,17 +222,26 @@ Field.propTypes = {
   required: PropTypes.bool,
   disabled: PropTypes.bool,
   autoFocus: PropTypes.bool,
-  label: PropTypes.node,
+  label: PropTypes.oneOfType([
+    PropTypes.node, 
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      defaultMessage: PropTypes.string.isRequired,
+    }),
+  ]),
+  labelValues: PropTypes.object,
   helper: PropTypes.node,
   error: PropTypes.oneOfType([
     PropTypes.shape({
       id: PropTypes.string.isRequired,
+      defaultMessage: PropTypes.string.isRequired,
     }),
     PropTypes.node,
   ]),
   placeholder: PropTypes.oneOfType([
     PropTypes.shape({
       id: PropTypes.string.isRequired,
+      defaultMessage: PropTypes.string.isRequired,
     }),
     PropTypes.node,
   ]),
@@ -242,6 +252,7 @@ Field.propTypes = {
   unite: PropTypes.oneOfType([
     PropTypes.shape({
       id: PropTypes.string.isRequired,
+      defaultMessage: PropTypes.string.isRequired,
     }),
     PropTypes.node,
   ]),
@@ -250,7 +261,10 @@ Field.propTypes = {
   renderRadio: PropTypes.func,
   icon: PropTypes.string,
   content: PropTypes.node,
+  intl: intlShape.isRequired,
 };
+
+Field = injectIntl(Field);
 
 export { Field };
 

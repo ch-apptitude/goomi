@@ -1,40 +1,97 @@
-import styled from 'styled-components';
 import { createElement } from 'react';
-import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
+import { injectIntl, intlShape } from 'react-intl';
+import styled from 'styled-components';
 
-const Text = ({ tagName, children, size, weight, lineHeight, color, textTransform, message, values, intl, ...etc }) =>
-  createElement(tagName, { ...etc }, intl.formatMessage(message, values));
+import Theme from 'assets/theme';
 
-const TranslatableText = injectIntl(Text);
+const textProps = {
+  children: PropTypes.node,
+  message: PropTypes.oneOfType([
+    PropTypes.string, 
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      defaultMessage: PropTypes.string.isRequired,
+    })
+  ]),
+  values: PropTypes.object,
+  tag: PropTypes.oneOf([
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'p',
+    'sup',
+    'blackquote',
+    'sub',
+    'address',
+    'abbr',
+    'acronym',
+    'b',
+    'big',
+    'caption',
+    'cite',
+    'code',
+    'em',
+    'i',
+    'label',
+    'legend',
+    'span',
+    'div',
+    'a',
+  ]).isRequired,
+  className: PropTypes.string,
+}
 
-const StyledText = styled(TranslatableText)`
-  font-family: $font-family;
+let Text = ({
+  tag,
+  size,
+  color,
+  className, // extend className
+  children,
+  message,
+  values,
+  intl,
+  ...etc
+}) => {
+  let content = children;
+  if(typeof message === 'object') {
+    content = intl.formatMessage(message, values)
+  } else if(typeof children === 'undefined') {
+    content = message;
+  }
+  return createElement(tag, { className: className, ...etc }, content);
+}
+Text.propTypes = {
+  ...textProps,
+  intl: intlShape.isRequired,
+}
+Text = injectIntl(Text);
+
+const StyledText = styled(Text)`
+  font-family: Palanquin;
   display: inline-block;
-  color: ${(props) => props.color};
-  weight: ${(props) => props.weight};
-  line-height: ${(props) => props.lineHeight};
-  font-size: ${(props) => `${props.size}px`};
-  text-transform: ${(props) => props.textTransform};
+  color: inherit;
+  margin: 0;
+  color: ${props => props.color};
+  font-size: ${props => props.size}px;
+  line-height: ${props => props.size * 1.3}px;
+  font-weight: ${props => props.weight};
 `;
-
-StyledText.defaultProps = {
-  size: 13,
-  weight: 400,
-  lineHeight: 1,
-  color: '#2e444e',
-  textTransform: 'none',
-};
 
 StyledText.propTypes = {
   size: PropTypes.number,
-  weight: PropTypes.number,
-  lineHeight: PropTypes.number,
   color: PropTypes.string,
-  textTransform: PropTypes.string,
-  message: PropTypes.object,
-  values: PropTypes.object,
-  tagName: PropTypes.string.isRequired,
+  weight: PropTypes.oneOf(['lighter', 'normal', 'bold']),
+  ...textProps,
 };
 
-export default StyledText;
+StyledText.defaultProps = {
+  size: Theme.Metrics.normal,
+  color: Theme.Metrics.primary,
+  weight: 'normal',
+};
+
+export default Text;

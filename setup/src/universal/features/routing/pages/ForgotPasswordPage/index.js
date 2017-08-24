@@ -8,21 +8,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
 import ForgotPasswordContainer from 'features/user/auth/containers/ForgotPasswordContainer';
 
 import messages from './messages';
-import styles from './styles.scss';
+
+const StyleForgotPasswordPage = styled.div`
+  height: 100%;
+`;
 
 const ForgotPasswordPage = (_, { intl }) => (
-  <div className={styles.ForgotPasswordPage}>
+  <StyleForgotPasswordPage>
     <Helmet title={intl.formatMessage(messages.forgotPasswordPage)} />
-    <Row className={styles.ProfilePage__ProfileForm}>
+    <Row>
       <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={4} mdOffset={4}>
         <ForgotPasswordContainer />
       </Col>
     </Row>
-  </div>
+  </StyleForgotPasswordPage>
 );
 
 ForgotPasswordPage.contextTypes = {

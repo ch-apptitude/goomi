@@ -15,7 +15,7 @@ export default styled(DatePicker)`
   }
   
   .react-datepicker {
-    font-family: $font-family !important;
+    font-family: Palanquin !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
   }
@@ -95,7 +95,7 @@ export default styled(DatePicker)`
   }
 
   .react-datepicker {
-    font-family: "SofiaPro", Helvetica, Arial, sans-serif;
+    font-family: "Palanquin", Helvetica, Arial, sans-serif;
     font-weight: 400;
     font-size: 0.8rem;
     background-color: #545352;

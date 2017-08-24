@@ -10,7 +10,9 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
+import Theme from 'assets/theme';
 import { UserPropTypes } from 'features/user/constants';
 import { sendNewConfirmEmail } from 'features/user/actions';
 import HOCAuth from 'features/user/hoc/HOCAuth';
@@ -19,7 +21,25 @@ import Text from 'features/common_ui/components/Text';
 import Box from 'features/common_ui/components/Box';
 
 import messages from './messages';
-import styles from './styles.scss';
+
+const StyledUnverifiedEmail = styled.div`
+  height: 100%;
+  width: 100%;
+
+  .links {
+    margin-top: 30px;
+    line-height: 1.5em;
+    a {
+      text-decoration-line: underline;
+      display: inline;
+      font-size: 1.1em;
+    }
+  }
+
+  .title {
+    margin-bottom: 50px;
+  }
+`;
 
 class UnverifiedEmail extends React.Component {
   constructor(props) {
@@ -38,32 +58,26 @@ class UnverifiedEmail extends React.Component {
     const { user } = this.props;
     const { intl } = this.context;
     return (
-      <div className={styles.UnverifiedEmail}>
+      <StyledUnverifiedEmail>
         <Helmet title={intl.formatMessage(messages.unverifiedEmail)} />
-        <Row className={styles.ProfilePage__ProfileForm}>
+        <Row>
           <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
             <Box>
-              <Text domElement="h1" size="title" className={styles.UnverifiedEmail__Title}>
-                {intl.formatMessage(this.state.messageResent ? messages.checkYourMailBox : messages.unverifiedEmail)}
-              </Text>
-              <Text domElement="p" size="text">
-                {intl.formatMessage(messages.description, { email: user.email })}
-              </Text>
-              <Text domElement="p" size="text" className={styles.UnverifiedEmail__Links}>
+              <Text tag="h1" size={Theme.Metrics.title} className="title" message={this.state.messageResent ? messages.checkYourMailBox : messages.unverifiedEmail} />
+              <Text tag="p" message={messages.description} values={{email: user.email}} />
+              <Text tag="p" className="links">
                 {intl.formatHTMLMessage(messages.problemsWithEmail)}
                 &nbsp;
-                <Link to="/profile/edit">{intl.formatMessage(messages.changeEmail)}</Link>
+                <Button linkTo="/profile/edit" message={messages.changeEmail} />
                 &nbsp;
                 {intl.formatHTMLMessage(messages.or)}
                 &nbsp;
-                <Link onClick={this.sendConfirmEmail} to="/account/unverified-email">
-                  {intl.formatMessage(messages.resendConfirmEmail)}
-                </Link>.
+                <Button onClick={this.sendConfirmEmail} linkTo="/account/unverified-email" message={messages.resendConfirmEmail} />
               </Text>
             </Box>
           </Col>
         </Row>
-      </div>
+      </StyledUnverifiedEmail>
     );
   }
 }

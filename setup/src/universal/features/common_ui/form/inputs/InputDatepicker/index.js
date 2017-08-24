@@ -9,9 +9,7 @@ import PropTypes from 'prop-types';
 import { pure } from 'recompose';
 import moment from 'moment';
 
-import DatePicker from 'react-datepicker';
-
-import styles from './styles.scss';
+import StyledDatePicker from './styles.js';
 
 class InputDatepicker extends PureComponent {
   constructor(props) {
@@ -35,10 +33,10 @@ class InputDatepicker extends PureComponent {
   render() {
     const { className, placeholder, name, id, min } = this.props;
     return (
-      <DatePicker
+      <StyledDatePicker
         name={name}
         id={id}
-        className={[styles.InputDatepicker, className].join(' ')}
+        className={className}
         selected={this.state.value}
         onChange={this.onChange}
         placeholderText={placeholder}

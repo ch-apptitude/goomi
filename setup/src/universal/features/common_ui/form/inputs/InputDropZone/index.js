@@ -92,12 +92,12 @@ class InputDropZone extends PureComponent {
   };
 
   render() {
-    const { accept, minSize, maxSize, disableClick, name, id, content } = this.props;
+    const { accept, minSize, maxSize, disableClick, name, id, content, className } = this.props;
 
     return (
       <StyledDropzone
         id={id}
-        className={styles.InputDropZone}
+        className={className}
         name={name}
         onDrop={this.onDrop}
         multiple={false}
@@ -122,6 +122,7 @@ InputDropZone.propTypes = {
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.element]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   accept: PropTypes.string,
+  className: PropTypes.string,
   maxSize: PropTypes.number,
   minSize: PropTypes.number,
   disableClick: PropTypes.bool,

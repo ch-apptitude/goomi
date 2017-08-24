@@ -6,6 +6,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { injectIntl, intlShape } from 'react-intl';
 import styled from 'styled-components';
 
 import Text from 'features/common_ui/components/Text';
@@ -84,15 +85,15 @@ class InputCheckbox extends PureComponent {
   };
 
   render() {
-    const { name, label, id, className } = this.props;
+    const { name, label, id, className, intl } = this.props;
     const { checked } = this.state;
 
 
     return (
       <CheckBox className={checked ? 'active ${className}' : className} onClick={this.toggleCheckbox}>
         <div className="icon">{checked && <span>L</span>}</div>
-        <Text className="text" tag="p" size={Theme.Metrics.titleSize}>
-          {typeof label === 'string' ? <span>{label}</span> : label}
+        <Text className="text" tag="p" size={Theme.Metrics.title}>
+          {label.id ? intl.formatMessage(label) : label}
         </Text>
         <input
           className="hidden"
@@ -112,9 +113,16 @@ InputCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   className: PropTypes.string,
-  label: PropTypes.node.isRequired,
+  label: PropTypes.oneOfType([
+    PropTypes.node, 
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      defaultMessage: PropTypes.string.isRequired,
+    }),
+  ]),
   value: PropTypes.bool,
   onChange: PropTypes.func,
+  intl: intlShape.isRequired,
 };
 
 InputCheckbox.defaultProps = {
@@ -122,4 +130,4 @@ InputCheckbox.defaultProps = {
   onChange: () => {},
 };
 
-export default InputCheckbox;
+export default injectIntl(InputCheckbox);

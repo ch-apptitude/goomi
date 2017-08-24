@@ -1,13 +1,46 @@
 import { injectGlobal } from 'styled-components';
 
+import PalanquinRegular2 from 'assets/fonts/palanquin/Palanquin-Regular.woff2';
+import PalanquinRegular from 'assets/fonts/palanquin/Palanquin-Regular.woff';
+
+import PalanquinBold2 from 'assets/fonts/palanquin/Palanquin-Bold.woff2';
+import PalanquinBold from 'assets/fonts/palanquin/Palanquin-Bold.woff';
+
+import PalanquinLight2 from 'assets/fonts/palanquin/Palanquin-Light.woff2';
+import PalanquinLight from 'assets/fonts/palanquin/Palanquin-Light.woff';
+
 injectGlobal`
+  @font-face {
+    font-family: 'Palanquin';
+    src: 
+      url('${PalanquinRegular2}') format('woff2'),
+      url('${PalanquinRegular}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Palanquin';
+    src: 
+      url('${PalanquinBold2}') format('woff2'),
+      url('${PalanquinBold}') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Palanquin';
+    src: 
+      url('${PalanquinLight2}') format('woff2'),
+      url('${PalanquinLight}') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+  }
+
+
   html {
     height: 100%;
-    background-color: #fbda61;
-    background-image: -webkit-linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
-    background-image: -moz-linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
-    background-image: -o-linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
-    background-image: linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
+    background-color: white;
   }
 
   body {
@@ -15,11 +48,9 @@ injectGlobal`
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: $font-family;
-    font-size: $base-font-size;
+    font-family: Palanquin;
+    font-size: 13px;
     position: relative;
-    font-family: $font-family;
-    font-size: $base-font-size;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -54,13 +85,12 @@ injectGlobal`
   }
 
   a:-webkit-any-link {
-    color: inherit;
+    color: auto;
     text-decoration: none;
   }
 
   a {
-    width: auto;
-    color: inherit;
+    color: auto;
     text-decoration: none;
   }
 

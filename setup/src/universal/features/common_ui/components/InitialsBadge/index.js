@@ -28,7 +28,6 @@ const InitialsBadge = ({ first, last, size, className, color }) => {
   imageText += last.length > 1 ? last.slice(0, 1) : last;
   return (
     <Round
-      className={`${styles.InitialsBadge} ${styles.Avatar_Text} InitialsBadge__Image`}
       tag="p"
       color={color}
       size={size}

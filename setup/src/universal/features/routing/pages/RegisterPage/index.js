@@ -1,6 +1,6 @@
 /*
  *
- * Register
+ * RegisterPage
  *
  */
 
@@ -8,19 +8,23 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
 import messages from './messages';
-import styles from './styles.scss';
+
+const StyledRegisterPage = styled.div`
+  height: 100%;
+`;
 
 const RegisterPage = ({ children }, { intl }) => (
-  <div className={styles.RegisterPage}>
+  <StyledRegisterPage>
     <Helmet title={intl.formatMessage(messages.register)} />
-    <Row className={styles.RegisterPage__RegisterForm}>
+    <Row>
       <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
         {children}
       </Col>
     </Row>
-  </div>
+  </StyledRegisterPage>
 );
 RegisterPage.contextTypes = {
   intl: PropTypes.object.isRequired,

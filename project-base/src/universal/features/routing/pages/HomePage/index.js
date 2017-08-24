@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 import Text from 'features/common_ui/components/Text';
 
-const Container = styled.div`
+const StyledHome = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -25,18 +25,12 @@ const Link = styled(Text)`
 `;
 
 const HomePage = () => (
-  <Container>
+  <StyledHome>
     <div>
-      <Text tagName="h2" color="white">
-        Made by
-      </Text>
-      <Text tagName="h1" size={60} color="white">
-        APPTITUDE
-      </Text>
-      <Link tagName="a" size={20} color="white" href="https://apptitude.ch" target="_blank" rel="noopener noreferrer">
-        apptitude.ch
-      </Link>
+      <Text tag="h2" color="white" message="Made by" />
+      <Text tag="h1" size={60} color="white" message="APPTITUDE" />
+      <Text tag="a" size={20} color="white" href="https://apptitude.ch" target="_blank" rel="noopener noreferrer" message="apptitude.ch" />
     </div>
-  </Container>
+  </StyledHome>
 );
 export default HomePage;

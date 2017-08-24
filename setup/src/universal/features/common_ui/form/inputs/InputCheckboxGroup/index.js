@@ -67,7 +67,7 @@ class InputCheckboxGroup extends PureComponent {
 InputCheckboxGroup.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      icon: PropTypes.oneOf(iconList),
+      icon: PropTypes.oneOf(Object.values(iconList)),
       name: PropTypes.string.isRequired,
       label: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     }),

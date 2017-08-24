@@ -1,6 +1,44 @@
 import { injectGlobal } from 'styled-components';
 
+import PalanquinRegular2 from 'assets/fonts/palanquin/Palanquin-Regular.woff2';
+import PalanquinRegular from 'assets/fonts/palanquin/Palanquin-Regular.woff';
+
+import PalanquinBold2 from 'assets/fonts/palanquin/Palanquin-Bold.woff2';
+import PalanquinBold from 'assets/fonts/palanquin/Palanquin-Bold.woff';
+
+import PalanquinLight2 from 'assets/fonts/palanquin/Palanquin-Light.woff2';
+import PalanquinLight from 'assets/fonts/palanquin/Palanquin-Light.woff';
+
 injectGlobal`
+  @font-face {
+    font-family: 'Palanquin';
+    src: 
+      url('${PalanquinRegular2}') format('woff2'),
+      url('${PalanquinRegular}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Palanquin';
+    src: 
+      url('${PalanquinBold2}') format('woff2'),
+      url('${PalanquinBold}') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Palanquin';
+    src: 
+      url('${PalanquinLight2}') format('woff2'),
+      url('${PalanquinLight}') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+  }
+
+
+
   html {
     height: 100%;
     background-color: #fbda61;
@@ -15,11 +53,9 @@ injectGlobal`
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: $font-family;
-    font-size: $base-font-size;
+    font-family: Palanquin;
+    font-size: 14px;
     position: relative;
-    font-family: $font-family;
-    font-size: $base-font-size;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
