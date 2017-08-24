@@ -1,41 +1,19 @@
 import { createElement } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import styles from './styles.scss';
+import Theme from 'assets/theme';
 
-export const Text = ({
-  domElement,
-  size,
-  color,
-  textStyle, // uppercase || lowercase
-  htmlFor, // if domElement === Label
-  className, // extend className
-  children,
-  style,
-}) => {
-  let baseClassName = styles.Text;
-  if (className.length > 0) {
-    baseClassName = `${baseClassName} ${className}`;
-  }
-
-  if (size) {
-    baseClassName = `${baseClassName} ${styles[size]}`;
-  }
-  if (color) {
-    baseClassName = `${baseClassName} ${styles[color]}`;
-  }
-  if (textStyle) {
-    baseClassName = `${baseClassName} ${styles[textStyle]}`;
-  }
-
-  const domElementProps = { htmlFor, className: baseClassName, style };
-
-  return createElement(domElement, domElementProps, children);
-};
-
-Text.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.node]).isRequired,
-  domElement: PropTypes.oneOf([
+const textProps = {
+  children: PropTypes.node,
+  message: PropTypes.oneOfType([
+    PropTypes.string, 
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      defaultMessage: PropTypes.string.isRequired,
+    })
+  ]),
+  tag: PropTypes.oneOf([
     'h1',
     'h2',
     'h3',
@@ -61,21 +39,45 @@ Text.propTypes = {
     'span',
     'div',
   ]).isRequired,
-  size: PropTypes.oneOf(['textSmall', 'text', 'textBig', 'title', 'titleBig', 'extraBig']),
-  color: PropTypes.oneOf(['white', 'green', 'grey', 'light_grey', 'black', 'black_light', 'orange', 'red']),
-  textStyle: PropTypes.oneOf(['uppercase', 'lowercase', 'first_uppercase']),
-  htmlFor: PropTypes.string,
   className: PropTypes.string,
-  style: PropTypes.object,
+}
+
+export const Text = ({
+  tag,
+  size,
+  color,
+  className, // extend className
+  children,
+  message,
+  ...etc
+}) => createElement(domElement, { className: className, ...etc }, children);
+
+Text.propTypes = {
+  ...textProps,
+}
+
+const StyledText = styled(Text)`
+  font-family: $font-family;
+  display: inline-block;
+  color: inherit;
+  margin: 0;
+  color: ${props => props.color};
+  font-size: ${props => props.size}px;
+  line-height: ${props => props.size * 1.3}px;
+  font-weight: ${props => props.weight};
+`;
+
+StyledText.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string,
+  weight: PropTypes.oneOf(['lighter', 'normal', 'bold']),
+  ...textProps,
 };
 
 Text.defaultProps = {
-  size: 'text',
-  color: undefined,
-  textStyle: undefined,
-  htmlFor: undefined,
-  style: undefined,
-  className: '',
+  size: Theme.Metrics.normalSize,
+  color: Theme.Metrics.primary,
+  weight: 'normal',
 };
 
 export default Text;

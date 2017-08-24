@@ -7,46 +7,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'react-flexbox-grid';
+import styled from 'styled-components';
 
-import styles from './styles.scss';
+import Media from 'assets/theme/media';
 
-const Box = ({ children, borderTop, smallHeight, small, medium, ...etc }) => {
-  let boxClassNames = [styles.Box];
-  if (borderTop) {
-    boxClassNames.push(styles.Box__BorderTop);
-  }
-
-  if (smallHeight) {
-    boxClassNames.push(styles.Box__SmallHeight);
-  } else if (medium) {
-    boxClassNames.push(styles.Box__Medium);
-  } else if (small) {
-    boxClassNames.push(styles.Box__Small);
-  }
-
-  if (etc.className) {
-    boxClassNames = boxClassNames.concat(etc.className);
-  }
-  return (
-    <Grid fluid className={boxClassNames.join(' ')}>
-      {children}
-    </Grid>
-  );
-};
+const Box = styled(Grid)`
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-block;
+  background-color: white;
+  ${props => props.borderTop && `border-top: solid 1px #efecea;`}
+  
+  ${Media.xs`
+    padding: ${props => Array.isArray(props.padding) ? props.padding.map(pad => `${pad}px`).join(' ') : `${padding}px`};
+  `}
+  ${Media.sm`
+  padding: ${props => Array.isArray(props.smPadding) ? props.smPadding.map(pad => `${pad}px`).join(' ') : `${smPadding}px`};
+`}
+  ${Media.md`
+  padding: ${props => Array.isArray(props.mdPadding) ? props.padding.map(pad => `${pad}px`).join(' ') : `${mdPadding}px`};
+`}
+  ${Media.lg`
+  padding: ${props => Array.isArray(props.lgPadding) ? props.padding.map(pad => `${pad}px`).join(' ') : `${lgPadding}px`};
+`}
+`;
 
 Box.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.element, PropTypes.string, PropTypes.number]),
-  borderTop: PropTypes.bool,
-  smallHeight: PropTypes.bool,
-  small: PropTypes.bool,
-  medium: PropTypes.bool,
+  children: PropTypes.node,
+  padding: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
+  smPadding: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
+  mdPadding: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
+  lgPadding: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
 };
 
-Box.defaultProps = {
-  children: undefined,
-  borderTop: false,
-  smallHeight: false,
-  small: false,
-};
+const DefaultBox = (props) => <Box {...props} padding={5} smPadding={10} mdPadding={20} lgPadding={30} />
 
-export default Box;
+export default DefaultBox;
+
+export {
+  Box
+};

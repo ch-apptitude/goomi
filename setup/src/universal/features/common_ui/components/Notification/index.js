@@ -6,13 +6,26 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
+import { injectGlobal } from 'styled-components';
 
 import hocNotification from 'features/common_ui/hoc/hocNotification';
 import Notifications from 'react-notification-system-redux';
 
 import { messagesTitle, messages } from './messages';
-import './styles.scss';
+
+injectGlobal`
+  .notification-error .notification-title {
+    color: orange !important;
+  }
+  .notification-success .notification-title {
+    color: #4fcc82 !important;
+  }
+  .notification-dismiss {
+    background-color: transparent !important;
+    color: #545352 !important;
+  }
+`;
 
 // Part of Style Here And Other In Styles.scss ...
 const style = {
@@ -29,7 +42,7 @@ const style = {
   },
 };
 
-const notificationFormat = (notificationsSend) => {
+const notificationFormat = (notificationsSend, intl) => {
   let notifications = [];
   if (Array.isArray(notificationsSend)) {
     if (notificationsSend.length > 0) {
@@ -38,23 +51,24 @@ const notificationFormat = (notificationsSend) => {
 
       notifications[actualNotifNb] = {
         ...notifications[actualNotifNb],
-        message: <FormattedMessage {...messages[notifications[actualNotifNb].messageId]} />,
+        message: intl.formatMessage(messages[notifications[actualNotifNb].messageId]),
         position: 'br',
         autoDismiss: 1000,
       };
       if (!notifications[actualNotifNb].noHeader) {
         const level = notifications[actualNotifNb].level;
-        notifications[actualNotifNb].title = <FormattedMessage {...messagesTitle[level]} />;
+        notifications[actualNotifNb].title = intl.formatMessage(messagesTitle[level]);
       }
     }
   }
   return notifications;
 };
 
-const Notification = ({ notifications }) => <Notifications notifications={notificationFormat(notifications)} style={style} />;
+const Notification = ({ notifications, intl }) => <Notifications notifications={notificationFormat(notifications, intl)} style={style} />;
 
 Notification.propTypes = {
   notifications: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  intl: intlShape.isRequired,
 };
 
-export default hocNotification(Notification);
+export default hocNotification(injectIntl(Notification));

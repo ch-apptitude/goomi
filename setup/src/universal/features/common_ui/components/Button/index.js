@@ -6,147 +6,132 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { injectIntl, intlShape } from 'react-intl';
 import { Link } from 'react-router';
+import styled from 'styled-components';
 
-import Text from 'features/common_ui/components/Text';
-import Icon from 'features/common_ui/components/Icon';
+import Theme from 'assets/theme';
 
-import styles from './styles.scss';
+const defaultStyle = (props) => `
+  line-height: 40px;
+  cursor: pointer;
+  color: #1F2D3D;
+  padding: 0 20px;
+  border-radius: ${Theme.Metrics.borderRadius}px;
+  outline: none;
+  text-align: left;
+  background-color: transparent;
 
-const Button = (
+  ${props => props.block ? `
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+  ` : `
+    display: inline-block;
+    box-sizing: content-box;
+    width: auto;
+  `}
+  
+
+  :disabled {
+    cursor: not-allowed;
+  }
+
+  * {
+    margin: 0;
+  }
+`;
+
+const StyledButton = styled.button`
+  ${props => defaultStyle(props)}
+`;
+const StyledA = styled.a`
+  ${props => defaultStyle(props)}
+`;
+const StyledLink = styled(Link)`
+  ${props => defaultStyle(props)}
+`;
+
+const ButtonComponent = (
   {
     message,
-    inline,
-    type,
-    onClick,
+    href,
     linkTo,
     params,
     className,
-    color,
-    backgroundClass,
-    tiny,
-    icon,
-    disabled,
-    activeClassName,
-    fitWidth,
+    children,
+    intl,
+    ...etc
   },
-  { intl },
 ) => {
-  const textColor = color || 'black_light';
-
-  let textSize = 'text';
-  if (!tiny) {
-    textSize = 'textBig';
+  let content = children;
+  if(message) {
+    content = intl.formatMessage(message);
   }
 
-  const textRender = (
-    <div className={styles.Button__Content}>
-      {icon && <Icon className={styles.RegisterFormTeam__Remove} icon={icon} />}
-      {message.props ? (
-        message
-      ) : (
-        <Text domElement="p" color={textColor} size={textSize}>
-          {message.id ? intl.formatMessage(message) : message}
-        </Text>
-      )}
-    </div>
-  );
-
-  let classNameRender = styles.Button;
-  if (backgroundClass) {
-    classNameRender = `${classNameRender} ${backgroundClass}`;
-  }
-  if (className.length > 0) {
-    // Extend className from Parent
-    classNameRender = `${classNameRender} ${className}`;
-  }
-  if (tiny) {
-    // Only Text whithout Background
-    classNameRender = `${classNameRender} ${styles.Button__Tiny}`;
-  }
-  if (inline) {
-    // Width auto  -> without = width: 90%
-    classNameRender = `${classNameRender} ${styles.Button__Inline}`;
-  }
-  if (fitWidth) {
-    // Width auto  -> without = width: 90%
-    classNameRender = `${classNameRender} ${styles.Button__FitWidth}`;
-  }
-
-  if (linkTo) {
+  if(href) {
+    return <StyledA href={href} className={className} {...etc}>{content}</StyledA>
+  } else if (linkTo) {
     const toParams = {
       pathname: linkTo,
       query: { ...params },
     };
     return (
-      <Link
-        className={[classNameRender, styles.Botton__Link].join(' ')}
+      <StyledLink
         to={toParams}
-        disabled={disabled}
-        activeClassName={activeClassName}
+        activeClassName="active"
+        className={className}
+        {...etc}
       >
-        {textRender}
-      </Link>
+        {content}
+      </StyledLink>
     );
   }
 
   return (
-    <button className={classNameRender} type={type} onClick={onClick} disabled={disabled}>
-      {textRender}
-    </button>
+    <StyledButton className={className} {...etc} >
+      {content}
+    </StyledButton>
   );
 };
-
-Button.propTypes = {
-  message: PropTypes.oneOfType([
-    PropTypes.shape({ id: PropTypes.string.isRequired }),
-    PropTypes.node,
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.element,
-  ]).isRequired,
-  tiny: PropTypes.bool,
-  inline: PropTypes.bool,
-  onClick: PropTypes.func,
+ButtonComponent.propTypes = {
+  message: PropTypes.shape({
+    id: PropTypes.string,
+    defaultMessage: PropTypes.string,
+  }),
+  href: PropTypes.string,
   linkTo: PropTypes.string,
-  params: PropTypes.string,
-  color: PropTypes.string,
-  type: PropTypes.string,
-  icon: PropTypes.string,
+  params: PropTypes.object,
   className: PropTypes.string,
-  backgroundClass: PropTypes.string,
-  disabled: PropTypes.bool,
-  fitWidth: PropTypes.bool,
-  activeClassName: PropTypes.string,
+  children: PropTypes.node,
 };
-
-Button.defaultProps = {
-  tiny: false,
-  inline: false,
-  onClick: () => {},
-  linkTo: undefined,
-  params: undefined,
-  color: undefined,
-  type: undefined,
-  icon: undefined,
-  disabled: false,
-  className: '',
-  activeClassName: 'active',
-  backgroundClass: undefined,
-  fitWidth: false,
-};
-
-Button.contextTypes = {
-  intl: PropTypes.object,
-};
+const Button = injectIntl(ButtonComponent);
 
 export default Button;
 
-export const GreenButton = ({ ...etc }) => <Button {...etc} color="white" backgroundClass={styles.Button__GreenBackground} />;
-export const LightButton = ({ ...etc }) => (
-  <Button {...etc} color="black_light" backgroundClass={styles.Button__LightBackground} />
-);
+export const GreenButton = Button.extends`
+  backbground-color: #13ce66;
+  color: #FFF;
+  text-align: center;
+`;
 
-export const OrangeButton = ({ ...etc }) => <Button {...etc} color="white" backgroundClass={styles.Button__OrangeBackground} />;
-export const RedButton = ({ ...etc }) => <Button {...etc} color="white" backgroundClass={styles.Button__RedBackground} />;
-export const GreyButton = ({ ...etc }) => <Button {...etc} color="black_light" backgroundClass={styles.Button__GreyBackground} />;
+export const BlueButton = Button.extends`
+  backbground-color: #1fb6ff;
+  color: #FFF;
+  text-align: center;
+`;
+
+export const LightBlueButton = Button.extends`
+  backbground-color: transparent;
+  border: solid 1px #1fb6ff;
+  color: #1fb6ff;
+  text-align: center;
+`;
+
+
+export const LightButton = Button.extends`
+  box-shadow: inset 0 0 0 1px #e0e6ed;
+  backbground-color: transparent;
+  color: #1F2D3D;
+  text-align: center;
+`;

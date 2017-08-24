@@ -6,31 +6,49 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled, { injectGlobal } from 'styled-components';
+
+import Theme from 'assets/theme';
 
 import iconList from './icon-list';
-import styles from './styles.scss';
 
-const Icon = ({ children, classes, icon, className, ...etc }) => {
-  let iconClassName = `${styles.icon} ${styles[icon]}`;
-  if (classes) {
-    iconClassName = `${iconClassName} ${classes.map(clazz => styles[clazz]).join(' ')}`;
+injectGlobal`
+  @font-face {
+    font-family: 'typicons';
+    font-weight: normal;
+    font-style: normal;
+    src: url('assets/fonts/icon/typicons.eot');
+    src: url('assets/fonts/icon/typicons.eot?#iefix') format('embedded-opentype'),
+        url('assets/fonts/icon/typicons.woff') format('woff'),
+        url('assets/fonts/icon/typicons.ttf') format('truetype'),
+        url('assets/fonts/icon/typicons.svg#typicons') format('svg');
   }
-  if (className) {
-    iconClassName = `${iconClassName} ${className}`;
-  }
-  const result = (
-    <span className={iconClassName} {...etc}>
-      {children}
-    </span>
-  );
+`;
 
-  return result;
-};
+const Icon = styled.span`
+  font-family: 'typicons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  height: 1em;
+  font-size: 1em;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: ${props => props.color || Theme.Colors.primary};
+  :before { 
+    content: ${props => props.icon};
+  }
+`;
 
 export const iconProps = {
   children: PropTypes.node,
-  classes: PropTypes.array,
-  icon: PropTypes.oneOf(iconList).isRequired,
+  icon: PropTypes.oneOf(Object.values(iconList)).isRequired,
+  color: PropTypes.string,
   className: PropTypes.string,
 };
 

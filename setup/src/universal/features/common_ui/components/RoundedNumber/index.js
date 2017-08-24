@@ -7,26 +7,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedNumber } from 'react-intl';
+import styled from 'styled-components';
 
-import styles from './styles.scss';
+import Theme from 'assets/theme';
 
-const RoundedNumber = ({ value, size, color }) => {
-  const style = { width: `${size}px`, height: `${size}px`, lineHeight: `${size}px` };
-  return (
-    <div className={[styles.RoundedNumber, styles[color]].join(' ')} style={style}>
-      <FormattedNumber value={value} />
-    </div>
-  );
-};
+const Rounded = styled.div`
+  border-radius: 50%;
+  text-align: center;
+  color: ${props => props.color};
+  background-color: ${props => props.backgroundColor};
+  font-size: ${props => props.size/2}px;
+  width: ${props => props.size}px;
+  height: ${props => props.size}px; 
+  lineHeight: ${props => props.size}px;
+`;
+
+const RoundedNumber = ({ value, size, color, backgroundColor }) => (
+  <div className={className} color={color} backgroundColor={backgroundColor}>
+    <FormattedNumber value={value} />
+  </div>
+);
+
 RoundedNumber.propTypes = {
   value: PropTypes.number.isRequired,
   size: PropTypes.number,
-  color: PropTypes.oneOf(['orange', 'grey']),
+  color: PropTypes.string,
+  backgroundColor: PropTypes.string,
 };
 
 RoundedNumber.defaultProps = {
   size: 22,
-  color: 'grey',
+  color: Theme.Colors.primary,
+  backgroundColor: "transparent",
 };
 
 export default RoundedNumber;

@@ -84,18 +84,14 @@ class InputCheckbox extends PureComponent {
   };
 
   render() {
-    const { name, label, id } = this.props;
+    const { name, label, id, className } = this.props;
     const { checked } = this.state;
 
-    let className = styles.InputCheckbox;
-    if (checked) {
-      className = `${className} ${styles.InputCheckbox_Active}`;
-    }
 
     return (
-      <CheckBox className={checked && 'active'} onClick={this.toggleCheckbox}>
+      <CheckBox className={checked ? 'active ${className}' : className} onClick={this.toggleCheckbox}>
         <div className="icon">{checked && <span>L</span>}</div>
-        <Text className="text" domElement="p" size="textBig">
+        <Text className="text" tag="p" size={Theme.Metrics.titleSize}>
           {typeof label === 'string' ? <span>{label}</span> : label}
         </Text>
         <input
@@ -115,7 +111,8 @@ class InputCheckbox extends PureComponent {
 InputCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  label: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+  className: PropTypes.string,
+  label: PropTypes.node.isRequired,
   value: PropTypes.bool,
   onChange: PropTypes.func,
 };

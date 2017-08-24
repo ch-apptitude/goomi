@@ -7,35 +7,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RCTooltip from 'rc-tooltip';
+import './style'
 
-import styles from './styles.scss';
-
-const Tooltip = ({ trigger, offsetX, offsetY, enterDelay, leaveDelay, content, hasEffect, placement, children, arrowClass }) => {
-  let transitionName = '';
-  let destroyTooltipOnHide = true;
-  if (hasEffect) {
-    destroyTooltipOnHide = false;
-    transitionName = 'rc-tooltip-zoom';
-  }
-  const alignParams = {
-    offset: [offsetX, offsetY],
-  };
-  return (
-    <RCTooltip
-      placement={placement}
-      mouseEnterDelay={enterDelay}
-      mouseLeaveDelay={leaveDelay}
-      destroyTooltipOnHide={destroyTooltipOnHide}
-      trigger={trigger}
-      arrowContent={<div className={`rc-tooltip-arrow-inner ${arrowClass || ''}`} />}
-      overlay={<div className={styles.Tooltip__Content}>{content}</div>}
-      align={alignParams}
-      transitionName={transitionName}
-    >
-      {children}
-    </RCTooltip>
-  );
-};
+const Tooltip = ({ 
+  trigger, 
+  offsetX, 
+  offsetY, 
+  enterDelay, 
+  leaveDelay, 
+  content, 
+  placement, 
+  children, 
+  arrowClass 
+}) => (
+  <RCTooltip
+    placement={placement}
+    mouseEnterDelay={enterDelay}
+    mouseLeaveDelay={leaveDelay}
+    destroyTooltipOnHide
+    trigger={trigger}
+    arrowContent={<div className={`rc-tooltip-arrow-inner ${arrowClass || ''}`} />}
+    overlay={<ToolTipContent>{content}</ToolTipContent>}
+    align={{
+      offset: [offsetX, offsetY],
+    }}
+    transitionName={transitionName}
+  >
+    {children}
+  </RCTooltip>
+);
 
 Tooltip.propTypes = {
   content: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
@@ -60,7 +60,6 @@ Tooltip.propTypes = {
   ]),
   enterDelay: PropTypes.number,
   leaveDelay: PropTypes.number,
-  hasEffect: PropTypes.bool,
 };
 
 Tooltip.defaultProps = {
@@ -69,7 +68,6 @@ Tooltip.defaultProps = {
   offsetY: 0,
   enterDelay: 0,
   leaveDelay: 0,
-  hasEffect: false,
   placement: 'top',
   arrowClass: undefined,
 };

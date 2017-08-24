@@ -5,37 +5,49 @@
 */
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
+import Theme from 'assets/theme';
 import Text from 'features/common_ui/components/Text';
 
-import styles from './styles.scss';
+const Round = styled(Text)`
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+  lineHeight: ${props => props.size}px;
+  fontSize: ${props => (props.size*2/3)}px;
+  padding-left: 0;
+  text-align: center;
+  border-radius: 50%;
+  box-sizing: content-box !important;
+  border: 1px solid ${props => props.color} !important;
+  margin: -1px 0 0 -1px;
+`;
 
-const InitialsBadge = ({ first, last, size }) => {
+const InitialsBadge = ({ first, last, size, className, color }) => {
   let imageText = first.length > 1 ? first.slice(0, 1) : first;
   imageText += last.length > 1 ? last.slice(0, 1) : last;
-  const style = {
-    width: `${size}px`,
-    height: `${size}px`,
-    lineHeight: `${size}px`,
-  };
   return (
-    <Text
+    <Round
       className={`${styles.InitialsBadge} ${styles.Avatar_Text} InitialsBadge__Image`}
-      domElement="p"
-      color="green"
-      size="title"
-      textStyle="uppercase"
-      style={style}
-    >
-      {imageText}
-    </Text>
+      tag="p"
+      color={color}
+      size={size}
+      className={className}
+      message={imageText}
+      />
   );
 };
 
 InitialsBadge.propTypes = {
   first: PropTypes.string.isRequired,
   last: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  color: PropTypes.string,
   size: PropTypes.number.isRequired,
 };
+
+InitialsBadge.defaultProps = {
+  color: Theme.Colors.primary,
+}
 
 export default InitialsBadge;
