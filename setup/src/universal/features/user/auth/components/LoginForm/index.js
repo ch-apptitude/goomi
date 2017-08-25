@@ -6,7 +6,6 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
 import { Row, Col } from 'react-flexbox-grid';
 import { Form } from 'react-form';
 import styled from 'styled-components';
@@ -17,13 +16,11 @@ import HOCAuth from 'features/user/hoc/HOCAuth';
 import Field from 'features/common_ui/form/Field';
 import Button, { GreenButton } from 'features/common_ui/components/Button';
 import Text from 'features/common_ui/components/Text';
-import Box from 'features/common_ui/components/Box';
 
 import errorMessages from 'features/common_ui/form/error-messages';
 
 import messages from './messages';
 import validate from './validate';
-
 
 const StyledForm = styled.form`
   background-color: white;
@@ -51,43 +48,45 @@ class LoginForm extends PureComponent {
   renderForm({ submitForm, getError }) {
     return (
       <StyledForm onSubmit={submitForm} name="loginForm">
-        <Box>
-          <Row>
-            <Col xs={12}>
-              <Text className="title" tag="h1" size={Theme.Metrics.title} message={messages.login} />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <Field field="email" type="email" label={messages.email} autoFocus />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <Field field="password" type="password" label={messages.password} />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <Button
-                className="forgot"
-                linkTo="/forgot-password"
-                color={Theme.Colors.primary}
-                message={messages.password_forgot}
-              />
-            </Col>
-          </Row>
-        </Box>
+        <Row>
+          <Col xs={12}>
+            <Text className="title" tag="h1" size={Theme.Metrics.title} message={messages.login} />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <Field field="email" type="email" label={messages.email} autoFocus />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <Field field="password" type="password" label={messages.password} />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <Button
+              className="forgot"
+              linkTo="/forgot-password"
+              color={Theme.Colors.primary}
+              message={messages.password_forgot}
+            />
+          </Col>
+        </Row>
         {!!getError('general') && (
-          <Text className="error" tag="p" color={Theme.Colors.orange_dark} size={Theme.Metrics.subTitle} message={getError('general')} />
+          <Text
+            className="error"
+            tag="p"
+            color={Theme.Colors.orange_dark}
+            size={Theme.Metrics.subTitle}
+            message={getError('general')}
+          />
         )}
-        <Box borderTop>
-          <Row end="xs">
-            <Col xs={12} sm={3}>
-              <GreenButton className="submit" type="submit" message={messages.login} />
-            </Col>
-          </Row>
-        </Box>
+        <Row end="xs">
+          <Col xs={12} sm={3}>
+            <GreenButton className="submit" type="submit" message={messages.login} />
+          </Col>
+        </Row>
       </StyledForm>
     );
   }

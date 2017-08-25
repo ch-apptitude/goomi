@@ -18,6 +18,10 @@ const StyledHome = styled.div`
   > div {
     margin: auto;
     display: flex;
+
+    > *:last-child {
+      align-self: flex-end;
+    }
   }
 `;
 

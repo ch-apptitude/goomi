@@ -11,6 +11,7 @@ import { FormField } from 'react-form';
 
 import Tooltip from 'features/common_ui/components/Tooltip';
 
+import Theme from 'assets/theme';
 import errorMessages from 'features/common_ui/form/error-messages';
 
 import InputCheckbox from '../inputs/InputCheckbox';
@@ -139,7 +140,7 @@ class Field extends PureComponent {
   }
 
   getError() {
-    const { getTouched, getError, type, intl } = this.props;
+    const { getTouched, getError, intl } = this.props;
     const touched = getTouched();
     let error = this.props.error;
     if (getError()) {
@@ -147,9 +148,7 @@ class Field extends PureComponent {
     }
 
     if (error && Array.isArray(error)) {
-      error = error.map(
-        (err) => (errorMessages[err] ? intl.formatMessage(errorMessages[err]) : `Unsupported Error : ${err}`),
-      );
+      error = error.map((err) => (errorMessages[err] ? intl.formatMessage(errorMessages[err]) : `Unsupported Error : ${err}`));
     } else if (error && typeof error === 'object') {
       error = errorMessages[error.name]
         ? intl.formatMessage(errorMessages[error.name], error.values)
@@ -157,7 +156,7 @@ class Field extends PureComponent {
     }
     if (touched && error) {
       return (
-        <StyledError tag="p" color="red" size="textBig">
+        <StyledError tag="p" color={Theme.Colors.red} size={Theme.Metrics.normal}>
           {error}
         </StyledError>
       );
@@ -186,7 +185,7 @@ class Field extends PureComponent {
 
     if (!label) {
       return (
-        <StyledLabel tag="label" color="black_light" size="textBig" htmlFor={field}>
+        <StyledLabel tag="label" color={Theme.Colors.primary} size={Theme.Metrics.normal} htmlFor={field}>
           {this.getInput()}
           {!!helper && this.getHelper()}
           {this.getError()}
@@ -194,7 +193,7 @@ class Field extends PureComponent {
       );
     } else if (type === 'checkbox') {
       return (
-        <StyledLabel tag="span" color="black_light" size="textBig" htmlFor={field}>
+        <StyledLabel tag="span" color={Theme.Colors.primary} size={Theme.Metrics.normal} htmlFor={field}>
           {this.getInput()}
           {!!helper && this.getHelper()}
           {this.getError()}
@@ -202,7 +201,7 @@ class Field extends PureComponent {
       );
     }
     return (
-      <StyledLabel tag="label" color="black_light" size="textBig" htmlFor={field}>
+      <StyledLabel tag="label" color={Theme.Colors.primary} size={Theme.Metrics.normal} htmlFor={field}>
         <div>
           {typeof label === 'object' ? intl.formatMessage(label, labelValues) : label}
           {!!helper && this.getHelper()}
@@ -223,7 +222,7 @@ Field.propTypes = {
   disabled: PropTypes.bool,
   autoFocus: PropTypes.bool,
   label: PropTypes.oneOfType([
-    PropTypes.node, 
+    PropTypes.node,
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       defaultMessage: PropTypes.string.isRequired,

@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from 'react-intl';
 import styled from 'styled-components';
 
+import Theme from 'assets/theme';
 import Text from 'features/common_ui/components/Text';
 
 const CheckBox = styled.div`
@@ -27,7 +28,7 @@ const CheckBox = styled.div`
     height: 18px;
     width: 18px;
     font-size: 15px;
-    margin-top: 4px;
+    margin-top: 12px;
     border: solid 1px #dad8d7;
     border-radius: 5px;
     position: relative;
@@ -88,9 +89,8 @@ class InputCheckbox extends PureComponent {
     const { name, label, id, className, intl } = this.props;
     const { checked } = this.state;
 
-
     return (
-      <CheckBox className={checked ? 'active ${className}' : className} onClick={this.toggleCheckbox}>
+      <CheckBox className={checked ? `active ${className}` : className} onClick={this.toggleCheckbox}>
         <div className="icon">{checked && <span>L</span>}</div>
         <Text className="text" tag="p" size={Theme.Metrics.title}>
           {label.id ? intl.formatMessage(label) : label}
@@ -114,7 +114,7 @@ InputCheckbox.propTypes = {
   id: PropTypes.string.isRequired,
   className: PropTypes.string,
   label: PropTypes.oneOfType([
-    PropTypes.node, 
+    PropTypes.node,
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       defaultMessage: PropTypes.string.isRequired,

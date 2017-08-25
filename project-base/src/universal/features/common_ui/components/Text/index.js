@@ -80,7 +80,7 @@ const StyledText = styled(Text)`
   margin: 0;
   color: ${(props) => props.color};
   font-size: ${(props) => props.size}px;
-  line-height: ${(props) => props.size * 1.3}px;
+  line-height: normal;
   font-weight: ${(props) => props.weight};
 `;
 
