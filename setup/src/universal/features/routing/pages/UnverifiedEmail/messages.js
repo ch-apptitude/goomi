@@ -16,7 +16,7 @@ export default defineMessages({
   },
   description: {
     id: 'routing.UnverifiedEmail.description',
-    defaultMessage: `Pour utiliser les services de {{name}}, vous devez confirmer votre adresse mail.
+    defaultMessage: `Pour utiliser les services de Goomi, vous devez confirmer votre adresse mail.
         Utilisez le lien de l'email que nous vous avons envoyé à l'adresse : {email}.`,
   },
   resendConfirmEmail: {

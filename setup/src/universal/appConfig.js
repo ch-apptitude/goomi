@@ -19,16 +19,16 @@ const config = Object.assign(
       'en',
       // LOCAL FOR GENERATOR
     ],
-    localStoragePrefix: '{{name}}',
+    localStoragePrefix: 'Goomi',
     apiHost: API_HOST, // /!\ Need to cahnge this for the build prod :: write directly the APIHOST
     apiPort: API_PORT, // /!\ Need to cahnge this for the build prod :: write directly the APIPORT
     apiVersion: API_VERSION,
     app: {
-      title: '{{name}}',
+      title: 'Goomi',
       description: 'Platforme for sports coach',
 
       head: {
-        titleTemplate: '{{name}} : %s',
+        titleTemplate: 'Goomi : %s',
 
         link: [
           {
