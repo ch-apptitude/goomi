@@ -8,11 +8,11 @@ import Theme from 'assets/theme';
 const textProps = {
   children: PropTypes.node,
   message: PropTypes.oneOfType([
-    PropTypes.string, 
+    PropTypes.string,
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       defaultMessage: PropTypes.string.isRequired,
-    })
+    }),
   ]),
   values: PropTypes.object,
   tag: PropTypes.oneOf([
@@ -43,12 +43,13 @@ const textProps = {
     'a',
   ]).isRequired,
   className: PropTypes.string,
-}
+};
 
 let Text = ({
   tag,
   size,
   color,
+  weight,
   className, // extend className
   children,
   message,
@@ -57,17 +58,19 @@ let Text = ({
   ...etc
 }) => {
   let content = children;
-  if(typeof message === 'object') {
-    content = intl.formatMessage(message, values)
-  } else if(typeof children === 'undefined') {
+  if (typeof message === 'object') {
+    content = intl.formatMessage(message, values);
+  } else if (typeof children === 'undefined') {
     content = message;
   }
-  return createElement(tag, { className: className, ...etc }, content);
-}
+  return createElement(tag, { className, ...etc }, content);
+};
+
 Text.propTypes = {
   ...textProps,
   intl: intlShape.isRequired,
-}
+};
+
 Text = injectIntl(Text);
 
 const StyledText = styled(Text)`
@@ -75,10 +78,10 @@ const StyledText = styled(Text)`
   display: inline-block;
   color: inherit;
   margin: 0;
-  color: ${props => props.color};
-  font-size: ${props => props.size}px;
-  line-height: ${props => props.size * 1.3}px;
-  font-weight: ${props => props.weight};
+  color: ${(props) => props.color};
+  font-size: ${(props) => props.size}px;
+  line-height: ${(props) => props.size * 1.3}px;
+  font-weight: ${(props) => props.weight};
 `;
 
 StyledText.propTypes = {
@@ -90,8 +93,8 @@ StyledText.propTypes = {
 
 StyledText.defaultProps = {
   size: Theme.Metrics.normal,
-  color: Theme.Metrics.primary,
+  color: Theme.Colors.primary,
   weight: 'normal',
 };
 
-export default Text;
+export default StyledText;
