@@ -30,7 +30,7 @@ const HeaderMenu = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  height: ${(props) => Theme.Metrics.header_height}px;
+  height: ${Theme.Metrics.header_height}px;
   width: 100%;
   background-color: white;
   display: flex;

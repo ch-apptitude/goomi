@@ -16,7 +16,7 @@ const StyledHome = styled.div`
   display: flex;
 
   > div {
-    margin: auto;
+    margin: calc(25% - ${Theme.Metrics.header_height}px) auto auto auto;
     display: flex;
 
     > *:last-child {
