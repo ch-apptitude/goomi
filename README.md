@@ -1,6 +1,6 @@
 # GOOMI
 
-Start a React project without configuration with Redux, Redux-Saga, PostCSS, intl, server side rendering
+Start a React project without configuration with Redux, Redux-Saga, styled-components, intl, server side rendering
 
 *Made by [Nathan Loisel](https://twitter.com/Nathloisel) & [Jeremy Barthoux](https://twitter.com/jeremybarthoux), supported by [Apptitude](https://apptitude.ch)*
 
@@ -14,8 +14,6 @@ Start a React project without configuration with Redux, Redux-Saga, PostCSS, int
 
 
 ## Installation
-
-Download to your project directory, add `README.md`, and commit:
 
 ```
 npm install -g goomi
@@ -73,7 +71,7 @@ goomi generate component
 ```
 - Generate a Container
 ```
-goomi generate component
+goomi generate container
 ```
 - Add a new language
 ```
