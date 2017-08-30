@@ -77,7 +77,7 @@ goomi generate container
 ```
 goomi generate language
 ```
-- Generate translation files
+- Extract translation files from each components to one file
 ```
 goomi extract-intl
 ```
