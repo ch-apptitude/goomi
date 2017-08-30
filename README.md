@@ -4,12 +4,14 @@ Start a React project without configuration with Redux, Redux-Saga, PostCSS, int
 
 *Made by [Nathan Loisel](https://twitter.com/Nathloisel) & [Jeremy Barthoux](https://twitter.com/jeremybarthoux), supported by [Apptitude](https://apptitude.ch)*
 
-## Table of Contents
+## Features
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Support](#support)
-- [Contributing](#contributing)
+ - Generate all the boilerplate code with flexible [generators](#generators)
+ - Internationalization with [react-intl](https://github.com/yahoo/react-intl)
+ - CSS in JS styling with [styled-components](https://github.com/styled-components/styled-components)
+ - React state management with [redux](https://github.com/reactjs/react-redux)
+ - Easily manage asynchronous tasks with [redux-saga](https://github.com/redux-saga/redux-saga)
+
 
 ## Installation
 
@@ -37,27 +39,25 @@ myApplicationName
 ├── package-lock.json
 ├── .gitignore
 ├── webpack
-├── generators
 └── src
     └── client
     └── server
     └── universal
-      └── assets
-      └── features
-      └── hoc
+      └── asset    <-- all static assets (images, fonts, themes)
+      └── features <-- contains all components, containers, reducer and sagas organized by features (generated with CLI)
       └── redux
-      └── services
       └── appConfig.js
 ```
 When the installation is over, run `npm run dev`  to start the application in dev mode.
 
 ### Generators
-A couple of generators are embedded inside goomi.
+A couple of generators are embedded inside goomi based on [plop](https://github.com/amwmedia/plop).
+
 - List all generators
 
-- Generate a Feature
+- Generate a Feature folder
 ```
-goomi generate
+goomi generate feature
 ```
 - Generate a new route
 ```
@@ -84,7 +84,11 @@ goomi generate language
 goomi extract-intl
 ```
 
-
+## TODO
+ - React Native support
+ - Electron support
+ - import generators locally to edit them
+ - document and harmonize the --all command parameter
 
 ## Support
 
