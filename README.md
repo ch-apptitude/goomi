@@ -89,6 +89,7 @@ goomi extract-intl
  - Electron support
  - import generators locally to edit them
  - document and harmonize the --all command parameter
+ - precommit linting (can be specified at the project init)
 
 ## Support
 
