@@ -19,9 +19,7 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const Title = styled(Text)`
-    margin-bottom: 30px;
-`;
+const Title = styled(Text)`margin-bottom: 30px;`;
 
 const NotFound = () => (
   <Container>
@@ -32,7 +30,7 @@ const NotFound = () => (
     </Row>
     <Row>
       <Col xs={12}>
-        <Title message={messages.title} tag="h2" size={Theme.Metrics.subTitle}/>
+        <Title message={messages.title} tag="h2" size={Theme.Metrics.subTitle} />
       </Col>
     </Row>
     <Row>

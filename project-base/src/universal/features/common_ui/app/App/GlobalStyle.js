@@ -38,14 +38,9 @@ injectGlobal`
   }
 
 
-
   html {
     height: 100%;
-    background-color: #fbda61;
-    background-image: -webkit-linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
-    background-image: -moz-linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
-    background-image: -o-linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
-    background-image: linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
+    background-color: white;
   }
 
   body {
@@ -54,7 +49,7 @@ injectGlobal`
     padding: 0;
     width: 100%;
     font-family: Palanquin;
-    font-size: 14px;
+    font-size: 13px;
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -90,13 +85,12 @@ injectGlobal`
   }
 
   a:-webkit-any-link {
-    color: inherit;
+    color: auto;
     text-decoration: none;
   }
 
   a {
-    width: auto;
-    color: inherit;
+    color: auto;
     text-decoration: none;
   }
 
