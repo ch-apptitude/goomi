@@ -88,6 +88,8 @@ goomi extract-intl
  - import generators locally to edit them
  - document and harmonize the --all command parameter
  - precommit linting (can be specified at the project init)
+ - add offline available option [workshopjs](https://workboxjs.org)
+ - add parametrization (with ssr, with redux, ...)
 
 ## Support
 
