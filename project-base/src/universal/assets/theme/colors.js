@@ -10,7 +10,7 @@ const colors = {
 };
 
 export default {
-  primary: colors.green,
+  primary: colors.black_light,
   secondary: colors.orange,
   error: colors.red,
   success: colors.green,

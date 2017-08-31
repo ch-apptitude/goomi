@@ -14,10 +14,15 @@ const StyledHome = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
+  flex-direction: column;
 
   > div {
-    margin: calc(25% - ${Theme.Metrics.header_height}px) auto auto auto;
+    margin: auto auto 25px auto;
     display: flex;
+
+    :last-child {
+      margin: 25px auto auto auto;
+    }
 
     > *:last-child {
       align-self: flex-end;
@@ -27,6 +32,9 @@ const StyledHome = styled.div`
 
 const HomePage = () => (
   <StyledHome>
+    <div>
+      <Text tag="h1" size={100} color={Theme.Colors.primary} message="Goomi" />
+    </div>
     <div>
       <Text tag="h2" color={Theme.Colors.primary} message="Made by" />
       <Text tag="h1" size={60} color={Theme.Colors.primary} message="APPTITUDE" />
