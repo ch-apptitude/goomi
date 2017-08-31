@@ -1,4 +1,5 @@
-# GOOMI
+![](goomi.jpg)
+
 
 Start a React project without configuration with Redux, Redux-Saga, styled-components, intl, server side rendering
 
