@@ -13,7 +13,6 @@ const config = Object.assign(
       // LOCAL FOR GENERATOR
     ],
     localStoragePrefix: '{{name}}',
-    port: 3000,
     app: {
       title: '{{name}}',
       description: '',

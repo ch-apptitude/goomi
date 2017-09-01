@@ -47,7 +47,7 @@ myApplicationName
       └── redux
       └── appConfig.js
 ```
-When the installation is over, run `npm run dev`  to start the application in dev mode.
+When the installation is over, run `npm start`  to start the application in dev mode and `npm run dev-ssr` if you want to test server-side rendering.
 
 ### Generators
 A couple of generators are embedded inside goomi based on [plop](https://github.com/amwmedia/plop).

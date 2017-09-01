@@ -45,6 +45,49 @@ module.exports = {
           },
         ],
       },
+      // FONTS
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|ico)$/,
+        loader: 'file-loader?limit=10000',
+      },
+      // STYLE: CSS (externals)
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader', // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+          },
+        ],
+        include: nodeModulesSrc,
+      },
+      // IMAGES
+      {
+        test: /\.(jpg|png|gif)$/,
+        loaders: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              mozjpeg: {
+                progressive: true,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              optipng: {
+                optimizationLevel: 4,
+              },
+              pngquant: {
+                quality: '75-90',
+                speed: 3,
+              },
+            },
+          },
+        ],
+      },
       { test: /\.html$/, loader: 'html-loader' },
     ],
   },
