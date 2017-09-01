@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const fs = require('fs');
+const fs = require('fs-extra');
 const printPlopChanges = (changes) => console.log(chalk.green('[SUCCESS]'), 'Files copied');
 /* changes.forEach(function(line) {
     console.log(chalk.green('[SUCCESS]'), line.type, line.path);

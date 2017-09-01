@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
+const path = require('path');
 
 const copy = function(answers, config, plop) {
   try {
@@ -7,7 +8,7 @@ const copy = function(answers, config, plop) {
     throw err;
   }
   // otherwise
-  return `Successfully initialized ${process.cwd()}/${answers.name}`;
+  return `Successfully initialized ${path.join(process.cwd(), answers.name)}`;
 };
 
 const initialize = {
@@ -16,26 +17,27 @@ const initialize = {
     const actions = [
       {
         type: 'addMany',
-        destination: `${process.cwd()}/${data.name}`,
-        templateFiles: 'project-base/{.,}**/{.,}*',
+        destination: path.join(process.cwd(), data.name),
+        base: 'project-base',
+        templateFiles: path.join('project-base', '{.,}**', '{.,}*'),
       },
       {
         type: 'copy',
-        origin: `${__dirname}/assets`,
-        destination: `${process.cwd()}/${data.name}/src/universal/assets`,
+        origin:  path.join(__dirname, 'assets'),
+        destination: path.join(process.cwd(), data.name, 'src', 'universal', 'assets'),
       },
       {
         type: 'copy',
-        origin: `${__dirname}/config/.vscode`,
-        destination: `${process.cwd()}/${data.name}/.vscode`,
+        origin: path.join(__dirname, 'config', '.vscode'),
+        destination: path.join(process.cwd(), data.name, '.vscode'),
       },
     ];
 
     if (data.all) {
       actions.push({
         type: 'copy',
-        origin: `${__dirname}/setup`,
-        destination: `${process.cwd()}/${data.name}`,
+        origin: path.join(__dirname, 'setup'),
+        destination: path.join(process.cwd(), data.name),
       });
     }
     return actions;
