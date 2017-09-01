@@ -87,7 +87,7 @@ prog
   .option('-a, --all', 'Install user feature, react-form components, and some basic UI components')
   .action(initialize)
   .command('generate')
-  .argument('[generatorName]', 'Name of the application', [goomiGenerators.getGeneratorList().concat('')])
+  .argument('[generatorName]', 'Name of the application')
   .action(runGenerator)
   .command('extract-intl')
   .action(extractMessages);
