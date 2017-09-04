@@ -54,36 +54,44 @@ const glob = (pattern) =>
     globPkg(pattern, (err, val) => (err ? reject(err) : resolve(val)));
   });
 
-const moveDir = async (source, target) => {
-  const dirs = await readDir('**/*.*', {
+function moveDir(source, target) {
+  return readDir('**/*.*', {
     cwd: source,
     nosort: true,
     dot: true,
+  }).then(function(dirs) {
+    return Promise.all(
+      dirs.map(function(dir) {
+        const from = path.resolve(source, dir);
+        const to = path.resolve(target, dir);
+        makeDir(path.dirname(to)).then(function() {
+          renameFile(from, to).then(function() {
+            return Promise.resolve();
+          });
+        });
+      })
+    );
   });
-  await Promise.all(
-    dirs.map(async (dir) => {
-      const from = path.resolve(source, dir);
-      const to = path.resolve(target, dir);
-      await makeDir(path.dirname(to));
-      await renameFile(from, to);
-    })
-  );
 };
 
-const copyDir = async (source, target) => {
-  const dirs = await readDir('**/*.*', {
+function copyDir(source, target) {
+  return readDir('**/*.*', {
     cwd: source,
     nosort: true,
     dot: true,
+  }).then(function(dirs) {
+    return Promise.all(
+      dirs.map(function(dir) {
+        const from = path.resolve(source, dir);
+        const to = path.resolve(target, dir);
+        makeDir(path.dirname(to)).then(function() {
+          copyFile(from, to).then(function() {
+            return Promise.resolve();
+          });
+        });
+      })
+    );
   });
-  await Promise.all(
-    dirs.map(async (dir) => {
-      const from = path.resolve(source, dir);
-      const to = path.resolve(target, dir);
-      await makeDir(path.dirname(to));
-      await copyFile(from, to);
-    })
-  );
 };
 
 const cleanDir = (pattern, options) =>

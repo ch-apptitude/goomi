@@ -10,17 +10,15 @@ let messages = {};
 
 const posixPath = (fileName) => fileName.replace(/\\/g, '/');
 
-async function writeMessages(fileName, msgs) {
-  await writeFile(fileName, `${JSON.stringify(msgs, null, 2)}\n`);
+function writeMessages(fileName, msgs) {
+  return writeFile(fileName, `${JSON.stringify(msgs, null, 2)}\n`);
 }
 
 // merge messages to source files
-async function mergeToFile(locale, toBuild) {
-  const fileName = `${process.cwd()}/src/universal/features/language/translations/${locale}.json`;
-  const originalMessages = {};
-  try {
-    const oldFile = await readFile(fileName);
-
+function mergeToFile(locale, toBuild) {
+  return readFile(fileName).then(function(oldFile) {
+    const fileName = `${process.cwd()}/src/universal/features/language/translations/${locale}.json`;
+    const originalMessages = {};
     let oldJson;
     try {
       oldJson = JSON.parse(oldFile);
@@ -32,36 +30,37 @@ async function mergeToFile(locale, toBuild) {
       originalMessages[message.id] = message;
       delete originalMessages[message.id].files;
     });
-  } catch (err) {
+    
+    Object.keys(messages).forEach((id) => {
+      const newMsg = messages[id];
+      originalMessages[id] = originalMessages[id] || {
+        id,
+      };
+      const msg = originalMessages[id];
+      msg.description = newMsg.description || msg.description;
+      msg.defaultMessage = newMsg.defaultMessage || msg.defaultMessage;
+      msg.message = msg.message || '';
+      msg.files = newMsg.files;
+    });
+  
+    const result = Object.keys(originalMessages).map((key) => originalMessages[key]).filter((msg) => msg.files || msg.message);
+  
+    writeMessages(fileName, result).then(function() {
+        if (toBuild && locale !== '_default') {
+          const buildFileName = `build/messages/${locale}.json`;
+          writeMessages(buildFileName, result).then(function() {
+            return Promise.resolve();
+          }).catch(function(err) {
+            console.error(`Failed to update ${buildFileName}`);
+            return Promise.reject();
+          });
+        }
+    });
+  }).catch(function(err) {
     if (err.code !== 'ENOENT') {
-      throw err;
+      return Promise.reject(err);
     }
-  }
-
-  Object.keys(messages).forEach((id) => {
-    const newMsg = messages[id];
-    originalMessages[id] = originalMessages[id] || {
-      id,
-    };
-    const msg = originalMessages[id];
-    msg.description = newMsg.description || msg.description;
-    msg.defaultMessage = newMsg.defaultMessage || msg.defaultMessage;
-    msg.message = msg.message || '';
-    msg.files = newMsg.files;
   });
-
-  const result = Object.keys(originalMessages).map((key) => originalMessages[key]).filter((msg) => msg.files || msg.message);
-
-  await writeMessages(fileName, result);
-
-  if (toBuild && locale !== '_default') {
-    const buildFileName = `build/messages/${locale}.json`;
-    try {
-      await writeMessages(buildFileName, result);
-    } catch (err) {
-      console.error(`Failed to update ${buildFileName}`);
-    }
-  }
 }
 
 // call everytime before updating file!
@@ -80,17 +79,17 @@ function mergeMessages() {
   });
 }
 
-async function updateMessages(toBuild) {
+function updateMessages(toBuild) {
   mergeMessages();
   const config = require(`${process.cwd()}/src/universal/appConfig`);
-  await Promise.all(['_default', ...config.locale].map((locale) => mergeToFile(locale, toBuild)));
+  return Promise.all(['_default', ...config.locale].map((locale) => mergeToFile(locale, toBuild)));
 }
 
 /**
  * Extract react-intl messages and write it to src/messages/_default.json
  * Also extends known localizations
  */
-async function extractMessages() {
+function extractMessages() {
   const compare = (a, b) => {
     if (a === b) {
       return 0;
@@ -101,9 +100,8 @@ async function extractMessages() {
 
   const compareMessages = (a, b) => compare(a.id, b.id);
 
-  const processFile = async (fileName) => {
-    try {
-      const code = await readFile(fileName);
+  const processFile = (fileName) => {
+    return readFile(fileName).then(function(code) {
       const posixName = posixPath(fileName);
       const result = transform(code, {
         presets: ['react', 'es2015', 'stage-2'],
@@ -114,14 +112,19 @@ async function extractMessages() {
       } else {
         delete fileToMessages[posixName];
       }
-    } catch (err) {
+      return Promise.resolve();
+    }).catch(function(err) {
       console.error(`extractMessages: In ${fileName}:\n`, err.SyntaxError || err);
-    }
+      return Promise.reject();
+
+    });
   };
 
-  const files = await glob(GLOB_PATTERN);
-  await Promise.all(files.map(processFile));
-  await updateMessages(false);
+  glob(GLOB_PATTERN).then(function(files) {
+    Promise.all(files.map(processFile)).then(function() {
+      updateMessages(false);
+    });
+  });
 }
 
 module.exports = extractMessages;
