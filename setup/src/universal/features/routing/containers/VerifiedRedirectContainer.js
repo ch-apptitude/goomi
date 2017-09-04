@@ -39,7 +39,7 @@ class VerifiedRedirect extends Component {
   sendValidationEmail = () => {
     const { sendValidationEmail } = this.props;
     new Promise((resolve, reject) => sendValidationEmail({ resolve, reject })).then(() => {
-      this.setState((state) => ({ buttons: state.buttons.slice(0, 1), body: messages.VerifiedRedirectBodyRedirect }));
+      this.setState(state => ({ buttons: state.buttons.slice(0, 1), body: messages.VerifiedRedirectBodyRedirect }));
       setTimeout(() => this.context.router.push('/'), 5000);
     });
   };
@@ -65,7 +65,7 @@ VerifiedRedirect.contextTypes = {
   router: PropTypes.object.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   sendValidationEmail: (...etc) => dispatch(sendNewConfirmEmail(...etc)),
 });
 

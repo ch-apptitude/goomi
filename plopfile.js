@@ -12,7 +12,7 @@ const copy = function(answers, config, plop) {
 };
 
 const initialize = {
-  actions: (data) => {
+  actions: data => {
     console.log('Initialisation in progess...');
     const actions = [
       {
@@ -23,7 +23,7 @@ const initialize = {
       },
       {
         type: 'copy',
-        origin:  path.join(__dirname, 'assets'),
+        origin: path.join(__dirname, 'assets'),
         destination: path.join(process.cwd(), data.name, 'src', 'universal', 'assets'),
       },
       {
@@ -44,7 +44,7 @@ const initialize = {
   },
 };
 
-module.exports = (plop) => {
+module.exports = plop => {
   plop.setActionType('copy', copy);
   plop.setGenerator('init', initialize);
 };

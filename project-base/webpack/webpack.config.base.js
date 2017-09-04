@@ -90,16 +90,17 @@ module.exports = function(options) {
           test: /\.(eot|svg|ttf|woff|woff2|ico)$/,
           loader: 'file-loader?limit=10000',
         },
-        
+
         // STYLE: CSS (externals)
         {
           test: /\.css$/,
           use: [
             {
-              loader: "style-loader" // creates style nodes from JS strings
-            }, {
-                loader: "css-loader" // translates CSS into CommonJS
-            }
+              loader: 'style-loader', // creates style nodes from JS strings
+            },
+            {
+              loader: 'css-loader', // translates CSS into CommonJS
+            },
           ],
           include: options.nodeModulesSrc /*,*/,
         },

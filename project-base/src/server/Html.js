@@ -4,7 +4,7 @@ import serialize from 'serialize-javascript';
 import Helmet from 'react-helmet';
 import { fromJS } from 'immutable';
 
-const setHTML = (content) => ({
+const setHTML = content => ({
   __html: content,
 });
 /* eslint-disable react/no-danger*/

@@ -4,12 +4,8 @@
     "module": "commonjs",
     "baseUrl": "./src/universal",
     "paths": {
-      "*": [
-        "*"
-      ]
+      "*": ["*"]
     }
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
