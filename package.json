@@ -1,7 +1,7 @@
 {
   "name": "goomi",
   "version": "1.0.63",
-  "description": "A React project generator that includes SSR, Redux, Saga, PostCSS",
+  "description": "A React project generator that includes SSR, redux, redux-saga, styled-components",
   "main": "index.js",
   "dependencies": {
     "babel-core": "^6.25.0",
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/ch-apptitude/goomi.git"
   },
-  "keywords": ["react", "boilerplate", "ssr", "redux", "redux-saga", "postcss"],
+  "keywords": ["react", "boilerplate", "ssr", "redux", "redux-saga", "styled-components"],
   "author": "Apptitude <nathan.loisel@apptitude.ch> (http://apptitude.ch)",
   "license": "MIT",
   "bugs": {
