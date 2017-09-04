@@ -1,6 +1,6 @@
 {
   "name": "goomi",
-  "version": "1.0.62",
+  "version": "1.0.63",
   "description": "A React project generator that includes SSR, Redux, Saga, PostCSS",
   "main": "index.js",
   "dependencies": {
