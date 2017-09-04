@@ -76,6 +76,6 @@ const config = Object.assign(
       },
     },
   },
-  environment,
+  environment
 );
 module.exports = config;

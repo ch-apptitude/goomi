@@ -4,11 +4,12 @@ const readFile = require('./fs').readFile;
 const writeFile = require('./fs').writeFile;
 const glob = require('./fs').glob;
 
+const configFile = require(path.join(process.cwd(), 'src', 'universal', 'appConfig'));
 const GLOB_PATTERN = `${process.cwd()}/src/universal/features/**/*.{js,jsx}`;
 const fileToMessages = {};
 let messages = {};
 
-const posixPath = (fileName) => fileName.replace(/\\/g, '/');
+const posixPath = fileName => fileName.replace(/\\/g, '/');
 
 function writeMessages(fileName, msgs) {
   return writeFile(fileName, `${JSON.stringify(msgs, null, 2)}\n`);
@@ -16,58 +17,64 @@ function writeMessages(fileName, msgs) {
 
 // merge messages to source files
 function mergeToFile(locale, toBuild) {
-  return readFile(fileName).then(function(oldFile) {
-    const fileName = `${process.cwd()}/src/universal/features/language/translations/${locale}.json`;
-    const originalMessages = {};
-    let oldJson;
-    try {
-      oldJson = JSON.parse(oldFile);
-    } catch (err) {
-      throw new Error(`Error parsing messages JSON in file ${fileName}`);
-    }
+  const fileName = path.join(process.cwd(), 'src', 'universal', 'features', 'language', 'translations', `${locale}.json`);
+  return readFile(fileName)
+    .then(function(oldFile) {
+      const originalMessages = {};
+      let oldJson;
+      try {
+        oldJson = JSON.parse(oldFile);
+      } catch (err) {
+        throw new Error(`Error parsing messages JSON in file ${fileName}`);
+      }
 
-    oldJson.forEach((message) => {
-      originalMessages[message.id] = message;
-      delete originalMessages[message.id].files;
-    });
-    
-    Object.keys(messages).forEach((id) => {
-      const newMsg = messages[id];
-      originalMessages[id] = originalMessages[id] || {
-        id,
-      };
-      const msg = originalMessages[id];
-      msg.description = newMsg.description || msg.description;
-      msg.defaultMessage = newMsg.defaultMessage || msg.defaultMessage;
-      msg.message = msg.message || '';
-      msg.files = newMsg.files;
-    });
-  
-    const result = Object.keys(originalMessages).map((key) => originalMessages[key]).filter((msg) => msg.files || msg.message);
-  
-    writeMessages(fileName, result).then(function() {
+      oldJson.forEach(message => {
+        originalMessages[message.id] = message;
+        delete originalMessages[message.id].files;
+      });
+
+      Object.keys(messages).forEach(id => {
+        const newMsg = messages[id];
+        originalMessages[id] = originalMessages[id] || {
+          id,
+        };
+        const msg = originalMessages[id];
+        msg.description = newMsg.description || msg.description;
+        msg.defaultMessage = newMsg.defaultMessage || msg.defaultMessage;
+        msg.message = msg.message || '';
+        msg.files = newMsg.files;
+      });
+
+      const result = Object.keys(originalMessages)
+        .map(key => originalMessages[key])
+        .filter(msg => msg.files || msg.message);
+
+      writeMessages(fileName, result).then(function() {
         if (toBuild && locale !== '_default') {
           const buildFileName = `build/messages/${locale}.json`;
-          writeMessages(buildFileName, result).then(function() {
-            return Promise.resolve();
-          }).catch(function(err) {
-            console.error(`Failed to update ${buildFileName}`);
-            return Promise.reject();
-          });
+          writeMessages(buildFileName, result)
+            .then(function() {
+              return Promise.resolve();
+            })
+            .catch(function(err) {
+              console.error(`Failed to update ${buildFileName}`);
+              return Promise.reject();
+            });
         }
+      });
+    })
+    .catch(function(err) {
+      if (err.code !== 'ENOENT') {
+        return Promise.reject(err);
+      }
     });
-  }).catch(function(err) {
-    if (err.code !== 'ENOENT') {
-      return Promise.reject(err);
-    }
-  });
 }
 
 // call everytime before updating file!
 function mergeMessages() {
   messages = {};
-  Object.keys(fileToMessages).forEach((fileName) => {
-    fileToMessages[fileName].forEach((newMsg) => {
+  Object.keys(fileToMessages).forEach(fileName => {
+    fileToMessages[fileName].forEach(newMsg => {
       const message = messages[newMsg.id] || {};
       messages[newMsg.id] = {
         description: newMsg.description || message.description,
@@ -81,8 +88,7 @@ function mergeMessages() {
 
 function updateMessages(toBuild) {
   mergeMessages();
-  const config = require(`${process.cwd()}/src/universal/appConfig`);
-  return Promise.all(['_default', ...config.locale].map((locale) => mergeToFile(locale, toBuild)));
+  return Promise.all(['_default', ...configFile.locale].map(locale => mergeToFile(locale, toBuild)));
 }
 
 /**
@@ -100,24 +106,29 @@ function extractMessages() {
 
   const compareMessages = (a, b) => compare(a.id, b.id);
 
-  const processFile = (fileName) => {
-    return readFile(fileName).then(function(code) {
-      const posixName = posixPath(fileName);
-      const result = transform(code, {
-        presets: ['react', 'es2015', 'stage-2'],
-        plugins: ['react-intl'],
-      }).metadata['react-intl'];
-      if (result.messages && result.messages.length) {
-        fileToMessages[posixName] = result.messages.sort(compareMessages);
-      } else {
-        delete fileToMessages[posixName];
-      }
-      return Promise.resolve();
-    }).catch(function(err) {
-      console.error(`extractMessages: In ${fileName}:\n`, err.SyntaxError || err);
-      return Promise.reject();
-
-    });
+  const processFile = fileName => {
+    return readFile(fileName)
+      .then(function(code) {
+        const posixName = posixPath(fileName);
+        let result;
+        try {
+          result = transform(code, {
+            presets: ['react', 'es2015', 'stage-2'],
+          });
+        } catch (e) {
+          console.error(e);
+        }
+        if (typeof result !== 'undefined' && result.messages && result.messages.length) {
+          fileToMessages[posixName] = result.messages.sort(compareMessages);
+        } else {
+          delete fileToMessages[posixName];
+        }
+        return Promise.resolve();
+      })
+      .catch(function(err) {
+        console.error(`extractMessages: In ${fileName}:\n`, err.SyntaxError || err);
+        return Promise.reject();
+      });
   };
 
   glob(GLOB_PATTERN).then(function(files) {
