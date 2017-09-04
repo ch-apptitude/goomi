@@ -33,7 +33,7 @@ Inside that directory, it will generate the initial project structure and instal
 ```
 myApplicationName
 ├── README.md
-├── node_modules
+├── node_modules 
 ├── package.json
 ├── package-lock.json
 ├── .gitignore
