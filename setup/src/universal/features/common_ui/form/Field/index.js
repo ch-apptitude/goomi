@@ -31,10 +31,10 @@ import InputSelectDate from '../inputs/InputSelectDate';
 import InputSlider from '../inputs/InputSlider';
 import InputGeoSuggest from '../inputs/InputGeoSuggest';
 
-import { StyledLabel, StyledIconHelper, StyledError } from './style.js';
+import { StyledLabel, StyledIconHelper, StyledError } from './style';
 
 class Field extends PureComponent {
-  onChange = (value) => {
+  onChange = value => {
     if (this.props.type === 'email' || this.props.type === 'password' || this.props.type === 'text') {
       this.props.setValue(this.formatTextValue(value));
     } else {

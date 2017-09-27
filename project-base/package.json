@@ -18,6 +18,7 @@
     "clean": "rm -rf build/*",
     "extract-intl": "babel-node tools/run extractMessages"
   },
+  "moduleRoots": ["src/client", "src/universal", "src/server", "node-modules"],
   "dependencies": {
     "bluebird": "^3.5.0",
     "es6-promise": "^4.1.0",
@@ -36,7 +37,7 @@
     "rc-tooltip": "^3.4.3",
     "react": "^15.4.1",
     "react-datepicker": "^0.39.0",
-    "react-dom": "^15.4.1", 
+    "react-dom": "^15.4.1",
     "react-dropzone": "^3.13.0",
     "react-flexbox-grid": "^1.0.2",
     "react-form": "^1.2.6",

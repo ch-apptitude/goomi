@@ -8,12 +8,12 @@ const fs = require('fs-extra');
 const extractMessages = require('./tools/extractMessages');
 const goomiOut = require('./out');
 
-const installNpm = (projectName) => {
+const installNpm = projectName => {
   console.log('npm install in progress (can take few minutes)');
   const loading = goomiOut.loading();
   const npm = exec('npm install', { cwd: `${process.cwd()}/${projectName}` });
 
-  npm.stdout.on('data', (data) => {
+  npm.stdout.on('data', data => {
     clearInterval(loading);
     console.log(data.toString());
   });
@@ -81,7 +81,7 @@ const runGenerator = (args, options) => {
 };
 
 prog
-  .version('1.0.0')
+  .version('1.0.70')
   .command('init')
   .argument('<projectName>', 'Name of the application')
   .option('-a, --all', 'Install user feature, react-form components, and some basic UI components')
