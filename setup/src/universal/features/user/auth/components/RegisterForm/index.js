@@ -1,282 +1,112 @@
 /**
 *
-* Field
+* RegisterForm
 *
 */
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { intlShape, injectIntl } from 'react-intl';
-import { FormField } from 'react-form';
-
-import Tooltip from 'features/common_ui/components/Tooltip';
+import { FormattedMessage } from 'react-intl';
+import { Form } from 'react-form';
+import styled from 'styled-components';
 
 import Theme from 'assets/theme';
-import errorMessages from 'features/common_ui/form/error-messages';
+import Field from 'features/common_ui/form/Field';
+import { GreenButton } from 'features/common_ui/components/Button';
+import Text from 'features/common_ui/components/Text';
+import Box from 'features/common_ui/components/Box';
+import { Row, Col } from 'react-flexbox-grid';
 
-import InputCheckbox from '../inputs/InputCheckbox';
-import InputIconCheckbox from '../inputs/InputIconCheckbox';
-import InputCheckboxGroup from '../inputs/InputCheckboxGroup';
-import InputDatepicker from '../inputs/InputDatepicker';
-import InputTimepicker from '../inputs/InputTimepicker';
-import InputNumber from '../inputs/InputNumber';
-import InputStars from '../inputs/InputStars';
-import InputTags from '../inputs/InputTags';
-import InputText from '../inputs/InputText';
-import InputTextArea from '../inputs/InputTextArea';
-import InputRadioGroup from '../inputs/InputRadioGroup';
-import InputDropZone from '../inputs/InputDropZone';
-import InputSelect from '../inputs/InputSelect';
-import InputSelectDate from '../inputs/InputSelectDate';
-import InputSlider from '../inputs/InputSlider';
-import InputGeoSuggest from '../inputs/InputGeoSuggest';
+import messages from './messages';
 
-import { StyledLabel, StyledIconHelper, StyledError } from './style.js';
+import validate from './validate';
 
-class F extends PureComponent {
-  onChange = (value) => {
-    if (this.props.type === 'email' || this.props.type === 'password' || this.props.type === 'text') {
-      this.props.setValue(this.formatTextValue(value));
-    } else {
-      this.props.setValue(value);
-    }
-  };
+const StyledForm = styled.form`
+  height: 100%;
+  width: 100%;
 
-  setTouched = () => this.props.setValue && this.props.setTouched(true);
-
-  getInput() {
-    const { error, type, field, label, placeholder, getValue, unite, disabled, required, intl, autoFocus, ...etc } = this.props;
-    let placeHolderMessage = placeholder;
-    if (typeof placeholder === 'object') {
-      placeHolderMessage = intl.formatMessage(placeholder);
-    }
-    let inputUnite = unite;
-    if (typeof unite === 'object') {
-      inputUnite = intl.formatMessage(unite);
-    }
-
-    let className = this.props.className ? `${this.props.className}` : '';
-    if (error) {
-      className = `${className} has_error`;
-    }
-
-    const inputProps = {
-      id: field,
-      className,
-      name: field,
-      value: getValue(),
-      onChange: this.onChange,
-      onBlur: this.setTouched,
-      onFocus: etc.onFocus,
-      onSelect: etc.onSelect,
-      onSubmit: etc.onSubmit,
-      onReset: etc.onReset,
-      onKeyDown: etc.onKeyDown,
-      onKeyPress: etc.onKeyPress,
-      onKeyUp: etc.onKeyUp,
-      disabled,
-    };
-
-    if (type === 'phone') {
-      inputProps.className = [inputProps.className, 'Field'].join(' ');
-      return <InputText type="tel" placeholder={placeHolderMessage} required={required} {...inputProps} autoFocus={autoFocus} />;
-    } else if (type === 'checkbox' && this.props.icon) {
-      return <InputIconCheckbox icon={this.props.icon} {...inputProps} />;
-    } else if (type === 'checkbox') {
-      return <InputCheckbox label={label} {...inputProps} />;
-    } else if (type === 'checkboxGroup') {
-      return <InputCheckboxGroup label={label} {...inputProps} options={this.props.items} />;
-    } else if (type === 'date') {
-      inputProps.className = [inputProps.className, 'Field'].join(' ');
-      return (
-        <InputDatepicker
-          {...inputProps}
-          placeholder={placeHolderMessage}
-          min={etc.min}
-          required={required}
-          autoFocus={autoFocus}
-        />
-      );
-    } else if (type === 'time') {
-      inputProps.className = [inputProps.className, 'Field'].join(' ');
-      return <InputTimepicker placeholder={placeHolderMessage} required={required} {...inputProps} autoFocus={autoFocus} />;
-    } else if (type === 'number') {
-      inputProps.className = [inputProps.className, 'Field'].join(' ');
-      return (
-        <InputNumber
-          {...inputProps}
-          unite={inputUnite}
-          placeholder={placeHolderMessage}
-          min={etc.min}
-          max={etc.max}
-          required={required}
-          autoFocus={autoFocus}
-        />
-      );
-    } else if (type === 'stars') {
-      return <InputStars {...inputProps} />;
-    } else if (type === 'textarea') {
-      inputProps.className = [inputProps.className, 'Field'].join(' ');
-      return <InputTextArea placeholder={placeHolderMessage} required={required} {...inputProps} autoFocus={autoFocus} />;
-    } else if (type === 'tags') {
-      inputProps.className = [inputProps.className, 'Field'].join(' ');
-      return <InputTags placeholder={placeHolderMessage} required={required} {...inputProps} autoFocus={autoFocus} />;
-    } else if (type === 'geoSuggest') {
-      inputProps.className = [inputProps.className, 'Field'].join(' ');
-      return <InputGeoSuggest placeholder={placeHolderMessage} {...inputProps} autoFocus={autoFocus} />;
-    } else if (type === 'radioGroup') {
-      return (
-        <InputRadioGroup
-          placeholder={placeHolderMessage}
-          {...inputProps}
-          items={this.props.items}
-          renderRadio={this.props.renderRadio}
-          required={required}
-        />
-      );
-    } else if (type === 'select') {
-      inputProps.className = [inputProps.className, 'Field'].join(' ');
-      return <InputSelect options={this.props.items} {...inputProps} placeholder={placeHolderMessage} required={required} />;
-    } else if (type === 'birthDate') {
-      inputProps.className = [inputProps.className, 'Field'].join(' ');
-      return <InputSelectDate {...inputProps} placeholder={placeHolderMessage} required={required} autoFocus={autoFocus} />;
-    } else if (type === 'dropzone') {
-      return <InputDropZone {...inputProps} content={this.props.content} required={required} />;
-    } else if (type === 'slider') {
-      return <InputSlider {...inputProps} min={etc.min} max={etc.max} unite={inputUnite} />;
-    }
-    inputProps.className = [inputProps.className, 'Field'].join(' ');
-    return <InputText type={type} placeholder={placeHolderMessage} required={required} {...inputProps} autoFocus={autoFocus} />;
+  .title {
+    padding-bottom: 30px;
   }
+`;
 
-  getError() {
-    const { getTouched, getError, intl } = this.props;
-    const touched = getTouched();
-    let error = this.props.error;
-    if (getError()) {
-      error = getError();
-    }
-
-    if (error && Array.isArray(error)) {
-      error = error.map((err) => (errorMessages[err] ? intl.formatMessage(errorMessages[err]) : `Unsupported Error : ${err}`));
-    } else if (error && typeof error === 'object') {
-      error = errorMessages[error.name]
-        ? intl.formatMessage(errorMessages[error.name], error.values)
-        : `Unsupported Error : ${JSON.stringify(error)}`;
-    }
-    if (touched && error) {
-      return (
-        <StyledError tag="p" color={Theme.Colors.red} size={Theme.Metrics.normal}>
-          {error}
-        </StyledError>
-      );
-    }
-    return null;
-  }
-
-  getHelper() {
+class RegisterForm extends PureComponent {
+  renderForm({ submitForm, getError }) {
     return (
-      <Tooltip content={this.props.helper} offsetY={-5} hasEffect>
-        <StyledIconHelper icon="info" />
-      </Tooltip>
+      <StyledForm onSubmit={submitForm} name="registerForm">
+        <Box>
+          <Row>
+            <Col xs={12}>
+              <Text className="title" tag="h1" size={Theme.Metrics.title}>
+                <FormattedMessage {...messages.register} />
+              </Text>
+            </Col>
+          </Row>
+          <Row between="xs">
+            <Col xs={12} sm={6}>
+              <Field field="firstName" type="text" required label={messages.firstName} autoFocus />
+            </Col>
+            <Col xs={12} sm={6}>
+              <Field field="lastName" type="text" required label={messages.lastName} />
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs={12}>
+              <Field field="email" type="email" required label={messages.email} />
+            </Col>
+          </Row>
+
+          <Row between="xs">
+            <Col xs={12} sm={6}>
+              <Field field="pwd" type="password" required label={messages.password} />
+            </Col>
+            <Col xs={12} sm={6}>
+              <Field field="repwd" type="password" required label={messages.repassword} />
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs={12}>
+              <Field field="cgv" type="checkbox" label={messages.cgv} />
+            </Col>
+          </Row>
+        </Box>
+        {!!getError('general') && <Text tag="p" color={Theme.Colors.error} message={getError('general')} />}
+
+        <Box borderTop smallHeight>
+          <Row end="xs">
+            <Col xs={6} sm={3}>
+              <GreenButton type="submit" message={messages.submitRegister} />
+            </Col>
+          </Row>
+        </Box>
+      </StyledForm>
     );
   }
 
-  formatTextValue = (value, type) => {
-    let newValue = value.replace(/(\s?)/, '');
-    if (type === 'email') {
-      newValue = value.replace(/(\s+)/, '');
-    }
-    return newValue;
-  };
-
   render() {
-    const { field, label, labelValues, type, helper, required, intl } = this.props;
-
-    if (!label) {
-      return (
-        <StyledLabel tag="label" color={Theme.Colors.primary} size={Theme.Metrics.normal} htmlFor={field}>
-          {this.getInput()}
-          {!!helper && this.getHelper()}
-          {this.getError()}
-        </StyledLabel>
-      );
-    } else if (type === 'checkbox') {
-      return (
-        <StyledLabel tag="span" color={Theme.Colors.primary} size={Theme.Metrics.normal} htmlFor={field}>
-          {this.getInput()}
-          {!!helper && this.getHelper()}
-          {this.getError()}
-        </StyledLabel>
-      );
-    }
+    const { onSubmit, defaultValues } = this.props;
     return (
-      <StyledLabel tag="label" color={Theme.Colors.primary} size={Theme.Metrics.normal} htmlFor={field}>
-        <div>
-          {typeof label === 'object' ? intl.formatMessage(label, labelValues) : label}
-          {!!helper && this.getHelper()}
-          {required && <span className="wildcard_required">&nbsp;*</span>}
-        </div>
-        {this.getInput()}
-        {this.getError()}
-      </StyledLabel>
+      <Form onSubmit={onSubmit} defaultValues={defaultValues} validate={validate}>
+        {this.renderForm}
+      </Form>
     );
   }
 }
 
-F.propTypes = {
-  type: PropTypes.string.isRequired,
-  field: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  required: PropTypes.bool,
-  disabled: PropTypes.bool,
-  autoFocus: PropTypes.bool,
-  label: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      defaultMessage: PropTypes.string.isRequired,
-    }),
-  ]),
-  labelValues: PropTypes.object,
-  helper: PropTypes.node,
-  error: PropTypes.oneOfType([
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      defaultMessage: PropTypes.string.isRequired,
-    }),
-    PropTypes.node,
-  ]),
-  placeholder: PropTypes.oneOfType([
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      defaultMessage: PropTypes.string.isRequired,
-    }),
-    PropTypes.node,
-  ]),
-  setValue: PropTypes.func,
-  getValue: PropTypes.func,
-  setTouched: PropTypes.func,
-  getError: PropTypes.func,
-  unite: PropTypes.oneOfType([
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      defaultMessage: PropTypes.string.isRequired,
-    }),
-    PropTypes.node,
-  ]),
-  getTouched: PropTypes.func,
-  items: PropTypes.array,
-  renderRadio: PropTypes.func,
-  icon: PropTypes.string,
-  content: PropTypes.node,
-  intl: intlShape.isRequired,
+RegisterForm.contextTypes = {
+  intl: PropTypes.object.isRequired
 };
 
-const Field = injectIntl(F);
+RegisterForm.defaultProps = {
+  onSubmit: console.log, // eslint-disable-line no-console
+  defaultValues: undefined
+};
 
-export { Field };
+RegisterForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  defaultValues: PropTypes.any
+};
 
-export default ({ field, ...rest }) => (
-  <FormField field={field}>{(fieldActions) => <Field {...fieldActions} {...rest} field={field} />}</FormField>
-);
+export default RegisterForm;
