@@ -4,7 +4,6 @@ const readFile = require('./fs').readFile;
 const writeFile = require('./fs').writeFile;
 const glob = require('./fs').glob;
 
-const configFile = require(path.join(process.cwd(), 'src', 'universal', 'appConfig'));
 const GLOB_PATTERN = `${process.cwd()}/src/universal/features/**/*.{js,jsx}`;
 const fileToMessages = {};
 let messages = {};
@@ -36,7 +35,7 @@ function mergeToFile(locale, toBuild) {
       Object.keys(messages).forEach(id => {
         const newMsg = messages[id];
         originalMessages[id] = originalMessages[id] || {
-          id,
+          id
         };
         const msg = originalMessages[id];
         msg.description = newMsg.description || msg.description;
@@ -80,13 +79,14 @@ function mergeMessages() {
         description: newMsg.description || message.description,
         defaultMessage: newMsg.defaultMessage || message.defaultMessage,
         message: newMsg.message || message.message || '',
-        files: message.files ? [...message.files, fileName].sort() : [fileName],
+        files: message.files ? [...message.files, fileName].sort() : [fileName]
       };
     });
   });
 }
 
 function updateMessages(toBuild) {
+  const configFile = require(path.join(process.cwd(), 'src', 'universal', 'appConfig'));
   mergeMessages();
   return Promise.all(['_default', ...configFile.locale].map(locale => mergeToFile(locale, toBuild)));
 }
@@ -113,7 +113,7 @@ function extractMessages() {
         let result;
         try {
           result = transform(code, {
-            presets: ['react', 'es2015', 'stage-2'],
+            presets: ['react', 'es2015', 'stage-2']
           });
         } catch (e) {
           console.error(e);
