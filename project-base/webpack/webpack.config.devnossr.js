@@ -9,7 +9,6 @@ const definePlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(process.env.NODE_ENV === 'development' || 'true')),
 });
 
-
 var root = process.cwd();
 var src = path.resolve(root, 'src');
 var nodeModulesSrc = path.resolve(root, 'node_modules');
@@ -96,5 +95,8 @@ module.exports = {
     proxy: {
       '/api*': 'http://localhost:8181',
     },
+  },
+  performance: {
+    hints: false,
   },
 };
