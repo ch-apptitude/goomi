@@ -16,9 +16,7 @@ import { UserPropTypes } from 'features/user/constants';
 
 import messages from './messages';
 
-const StyledProfilePage = styled(Row)`
-  height: 100%;
-`;
+const StyledProfilePage = styled(Row)`height: 100%;`;
 
 const StyledProfileNavigtion = styled(Row)`
   width: 100%;
@@ -41,7 +39,7 @@ const StyledProfileNavigtion = styled(Row)`
       padding-left: 0;
     }
 
-    link-ctive {
+    link-active {
       position: relative;
 
       *,
@@ -67,12 +65,7 @@ const ProfileNavigtion = () => (
   <StyledProfileNavigtion>
     <Col xs={12} sm={10} smOffset={1}>
       <Col xs={12} sm={2} smOffset={1} className="links">
-        <Button
-          linkTo={'/profile'}
-          className="link"
-          message={messages.parameters}
-          activeClassName="link-active"
-        />
+        <Button linkTo={'/profile'} className="link" message={messages.parameters} activeClassName="link-active" />
       </Col>
     </Col>
   </StyledProfileNavigtion>
