@@ -35,7 +35,7 @@ const StyledProfileCompleted = styled.div`
 const ProfileCompleted = ({ user }) => (
   <StyledProfileCompleted>
     {user && (
-      <Box>
+      <div>
         <Row>
           <Col xs={12}>
             <Text className="title" tag="h1" size={Theme.Metrics.title} message={messages.title} />
@@ -51,7 +51,7 @@ const ProfileCompleted = ({ user }) => (
             <GreenButton className="continue" linkTo={'/profile'} message={messages.continue} />
           </Col>
         </Row>
-      </Box>
+      </div>
     )}
   </StyledProfileCompleted>
 );

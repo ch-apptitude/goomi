@@ -34,7 +34,7 @@ const StyledRegisterSuccess = styled.div`
 const RegisterSuccess = ({ user }) => (
   <StyledRegisterSuccess>
     {user && (
-      <Box>
+      <div>
         <Row>
           <Col xs={12}>
             <Text className="title" tag="h1" size={Theme.Metrics.title} message={messages.success} />
@@ -47,14 +47,10 @@ const RegisterSuccess = ({ user }) => (
         </Row>
         <Row>
           <Col xs={6} sm={4}>
-            <GreenButton
-              className="continue"
-              linkTo="/register/user-infos"
-              message={messages.continue}
-            />
+            <GreenButton className="continue" linkTo="/register/user-infos" message={messages.continue} />
           </Col>
         </Row>
-      </Box>
+      </div>
     )}
   </StyledRegisterSuccess>
 );

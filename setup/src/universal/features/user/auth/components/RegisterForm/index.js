@@ -34,53 +34,49 @@ class RegisterForm extends PureComponent {
   renderForm({ submitForm, getError }) {
     return (
       <StyledForm onSubmit={submitForm} name="registerForm">
-        <Box>
-          <Row>
-            <Col xs={12}>
-              <Text className="title" tag="h1" size={Theme.Metrics.title}>
-                <FormattedMessage {...messages.register} />
-              </Text>
-            </Col>
-          </Row>
-          <Row between="xs">
-            <Col xs={12} sm={6}>
-              <Field field="firstName" type="text" required label={messages.firstName} autoFocus />
-            </Col>
-            <Col xs={12} sm={6}>
-              <Field field="lastName" type="text" required label={messages.lastName} />
-            </Col>
-          </Row>
+        <Row>
+          <Col xs={12}>
+            <Text className="title" tag="h1" size={Theme.Metrics.title}>
+              <FormattedMessage {...messages.register} />
+            </Text>
+          </Col>
+        </Row>
+        <Row between="xs">
+          <Col xs={12} sm={6}>
+            <Field field="firstName" type="text" required label={messages.firstName} autoFocus />
+          </Col>
+          <Col xs={12} sm={6}>
+            <Field field="lastName" type="text" required label={messages.lastName} />
+          </Col>
+        </Row>
 
-          <Row>
-            <Col xs={12}>
-              <Field field="email" type="email" required label={messages.email} />
-            </Col>
-          </Row>
+        <Row>
+          <Col xs={12}>
+            <Field field="email" type="email" required label={messages.email} />
+          </Col>
+        </Row>
 
-          <Row between="xs">
-            <Col xs={12} sm={6}>
-              <Field field="pwd" type="password" required label={messages.password} />
-            </Col>
-            <Col xs={12} sm={6}>
-              <Field field="repwd" type="password" required label={messages.repassword} />
-            </Col>
-          </Row>
+        <Row between="xs">
+          <Col xs={12} sm={6}>
+            <Field field="pwd" type="password" required label={messages.password} />
+          </Col>
+          <Col xs={12} sm={6}>
+            <Field field="repwd" type="password" required label={messages.repassword} />
+          </Col>
+        </Row>
 
-          <Row>
-            <Col xs={12}>
-              <Field field="cgv" type="checkbox" label={messages.cgv} />
-            </Col>
-          </Row>
-        </Box>
+        <Row>
+          <Col xs={12}>
+            <Field field="cgv" type="checkbox" label={messages.cgv} />
+          </Col>
+        </Row>
         {!!getError('general') && <Text tag="p" color={Theme.Colors.error} message={getError('general')} />}
 
-        <Box borderTop smallHeight>
-          <Row end="xs">
-            <Col xs={6} sm={3}>
-              <GreenButton type="submit" message={messages.submitRegister} />
-            </Col>
-          </Row>
-        </Box>
+        <Row end="xs">
+          <Col xs={6} sm={3}>
+            <GreenButton type="submit" message={messages.submitRegister} />
+          </Col>
+        </Row>
       </StyledForm>
     );
   }
@@ -96,17 +92,17 @@ class RegisterForm extends PureComponent {
 }
 
 RegisterForm.contextTypes = {
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
 };
 
 RegisterForm.defaultProps = {
   onSubmit: console.log, // eslint-disable-line no-console
-  defaultValues: undefined
+  defaultValues: undefined,
 };
 
 RegisterForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  defaultValues: PropTypes.any
+  defaultValues: PropTypes.any,
 };
 
 export default RegisterForm;
