@@ -8,6 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Theme from 'assets/theme';
+import logoGoomi from 'assets/static/goomi-logo-green.png';
 import Text from 'features/common_ui/components/Text';
 
 const StyledHome = styled.div`
@@ -33,11 +34,9 @@ const StyledHome = styled.div`
 const HomePage = () => (
   <StyledHome>
     <div>
-      <Text tag="h1" size={100} color={Theme.Colors.primary} message="Goomi" />
+      <img src={logoGoomi} alt="logo" />
     </div>
     <div>
-      <Text tag="h2" color={Theme.Colors.primary} message="Made by" />
-      <Text tag="h1" size={60} color={Theme.Colors.primary} message="APPTITUDE" />
       <Text
         tag="a"
         size={20}
