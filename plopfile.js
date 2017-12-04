@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-const copy = function(answers, config, plop) {
+const copy = function (answers, config, plop) {
   try {
     fs.copySync(config.origin, config.destination);
   } catch (err) {
@@ -44,7 +44,22 @@ const initialize = {
   },
 };
 
+const addsetup = {
+  actions: data => {
+    console.log('Add Setup in progess...');
+    const actions = [
+      {
+        type: 'copy',
+        origin: path.join(__dirname, 'setup'),
+        destination: path.join(process.cwd()),
+      }
+    ];
+    return actions;
+  },
+};
+
 module.exports = plop => {
   plop.setActionType('copy', copy);
   plop.setGenerator('init', initialize);
+  plop.setGenerator('addsetup', addsetup);
 };

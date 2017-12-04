@@ -26,7 +26,7 @@ const initialize = (args, options) => {
   const initProjectBase = init.getGenerator('init');
   initProjectBase
     .runActions({ name: args.projectName, all: options.all })
-    .then(function(result) {
+    .then(function (result) {
       if (result.failures.length) {
         goomiOut.printPlopFailures(result.failures, args.projectName);
       } else {
@@ -34,7 +34,28 @@ const initialize = (args, options) => {
         installNpm(args.projectName);
       }
     })
-    .catch(function(err) {
+    .catch(function (err) {
+      console.error(chalk.red('[ERROR]'), err.message, err.stack);
+      process.exit(1);
+    });
+};
+
+const addsetup = (args, options) => {
+  // load an instance of plop from a plopfile
+  const setup = nodePlop(`${__dirname}/plopfile.js`);
+  // INIT
+  const setupProject = setup.getGenerator('addsetup');
+  setupProject
+    .runActions({ name: args.projectName })
+    .then(function (result) {
+      if (result.failures.length) {
+        goomiOut.printPlopFailures(result.failures, args.projectName);
+      } else {
+        goomiOut.printPlopChanges(result.changes);
+        // installNpm(args.projectName);
+      }
+    })
+    .catch(function (err) {
       console.error(chalk.red('[ERROR]'), err.message, err.stack);
       process.exit(1);
     });
@@ -50,11 +71,11 @@ function doThePlop(generator) {
   generator
     .runPrompts()
     .then(generator.runActions)
-    .then(function(result) {
+    .then(function (result) {
       goomiOut.printPlopChanges(result.change);
       goomiOut.printPlopFailures(result.failures);
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.error(chalk.red('[ERROR]'), err.message, err.stack);
       process.exit(1);
     });
@@ -63,12 +84,12 @@ function doThePlop(generator) {
 const runGenerator = (args, options) => {
   const generators = goomiGenerators.getGeneratorList();
   if (!args.generatorName) {
-    plopOout.chooseOptionFromList(generators).then(function(generatorName) {
+    plopOout.chooseOptionFromList(generators).then(function (generatorName) {
       doThePlop(goomiGenerators.getGenerator(generatorName));
     });
   } else if (
     generators
-      .map(function(v) {
+      .map(function (v) {
         return v.name;
       })
       .indexOf(args.generatorName) > -1
@@ -90,6 +111,9 @@ prog
   .argument('[generatorName]', 'Name of the application')
   .action(runGenerator)
   .command('extract-intl')
-  .action(extractMessages);
+  .action(extractMessages)
+  .command('addsetup')
+  .argument('<projectName>', 'Name of the application')
+  .action(addsetup);
 
 prog.parse(process.argv);
