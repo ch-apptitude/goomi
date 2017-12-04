@@ -4,7 +4,6 @@ import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 import LanguageProvider from 'features/language/LanguageProvider';
 import routes from 'features/routing/routes';
-import Text from '../universal/features/common_ui/components/Text';
 
 /* eslint-disable */
 class Root extends Component {
