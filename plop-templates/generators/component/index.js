@@ -58,20 +58,20 @@ module.exports = {
     if (data.type === COMPONENT_TYPE.FORM) {
       actions.push({
         type: 'add',
-        path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/components/{{properCase name}}/validate.js`,
+        path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/{{properCase name}}/validate.js`,
         templateFile: './component/validate.js.hbs',
         abortOnFail: true,
       });
       actions.push({
         type: 'add',
-        path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/components/{{properCase name}}/index.js`,
+        path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/{{properCase name}}/index.js`,
         templateFile: './component/form.js.hbs',
         abortOnFail: true,
       });
     } else {
       actions.push({
         type: 'add',
-        path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/components/{{properCase name}}/index.js`,
+        path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/{{properCase name}}/index.js`,
         templateFile: data.type === COMPONENT_TYPE.CLASS ? './component/es6.js.hbs' : './component/stateless.js.hbs',
         abortOnFail: true,
       });
@@ -84,7 +84,7 @@ module.exports = {
         path: `${process.cwd()}/src/universal/${absolutePath(
           false,
           data.subFolder
-        )}/components/{{properCase name}}/tests/index.test.js`,
+        )}/{{properCase name}}/tests/index.test.js`,
         templateFile: './component/test.js.hbs',
         abortOnFail: true,
       });
@@ -94,7 +94,7 @@ module.exports = {
     if (data.wantMessages) {
       actions.push({
         type: 'add',
-        path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/components/{{properCase name}}/messages.js`,
+        path: `${process.cwd()}/src/universal/${absolutePath(false, data.subFolder)}/{{properCase name}}/messages.js`,
         templateFile: './component/messages.js.hbs',
         abortOnFail: true,
       });
